@@ -20,7 +20,8 @@ from src.metal_auxiliaries import CLASS_TARGETS
 from src.model_predictor import MetalSitesPredictor
 
 # INFO:
-__version__ = '0.0.1'
+__program__ = "MetalHawk"
+__version__ = '0.1.0'
 __author__ = 'Michail Vrettas, PhD'
 __email__ = 'vrettasm@duck.com'
 
@@ -220,7 +221,7 @@ if __name__ == "__main__":
 
         # Shows the version of the program.
         parser.add_argument("--version", action="version",
-                            version=f" MetalSitesPredictor (c), version: {__version__}",
+                            version=f" {__program__} (c), version: {__version__}",
                             help="Print version information and exit.")
 
         # Make sure the defaults are set.
