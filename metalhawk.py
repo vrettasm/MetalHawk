@@ -183,13 +183,13 @@ if __name__ == "__main__":
                                                                                   
                                          The selected model can predict one of the following target classes:
                                          -------------------------------------------------------------------
-                                            0: LIN (Linear ...)
-                                            1: TRI 
-                                            2: TET
-                                            3: SPL
-                                            4: SQP
-                                            5: TBP
-                                            6: OCT
+                                            0: LIN (Linear)
+                                            1: TRI (Trigonal planar)
+                                            2: TET (Tetrahedral)
+                                            3: SPL (Square planar)
+                                            4: SQP (Square pyramidal)
+                                            5: TBP (Trigonal bi-pyramidal)
+                                            6: OCT (Octahedral)
                                          
                                          Along with the predicted class the program provides the "entropy" value,
                                          as a measure of uncertainty. Note that for seven classes, assuming equal
