@@ -73,7 +73,7 @@ class MetalSitesPredictor(object):
                                     f"File {f_path} doesn't exist.")
         # _end_if_
 
-        # Run the analysis.
+        # Run the analysis. With fixed settings.
         self.metal_tool(f_path, max_length=8, n_closest=6)
 
         # Create the feature vector.
@@ -82,8 +82,8 @@ class MetalSitesPredictor(object):
         # Get the prediction probabilities.
         y_probs = self.nn_model.predict_proba(x_test.reshape(1, -1))
 
-        # Remove the singleton dimension. It makes the rest
-        # of the function calls faster.
+        # Remove the singleton dimension. It makes
+        # the rest of the function calls faster.
         y_probs = y_probs.squeeze()
 
         # Compute the entropy (using the probabilities).
