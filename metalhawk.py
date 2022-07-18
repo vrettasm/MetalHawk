@@ -174,12 +174,14 @@ if __name__ == "__main__":
         parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,
                                          description=textwrap.dedent('''
                                          
-                                         Python Metal Sites Predictor, with artificial neural networks (ANN).
+                                         [MetalHawk]
+                                         
+                                         Python metal sites predictor, with artificial neural networks (ANN).
                                          
                                          We have trained (and optimized) two different models. One on CSD metal
                                          sites and a second one on PDB metal sites. By default the program will
-                                         choose the CSD model to use for prediction, unless we pass the option
-                                         '--no-csd'.
+                                         choose the CSD model to use for prediction, unless we pass explicitly
+                                         the option '--no-csd'.
                                                                                   
                                          The selected model can predict one of the following target classes:
                                          -------------------------------------------------------------------
