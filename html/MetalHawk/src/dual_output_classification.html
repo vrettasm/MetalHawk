@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>MetalHawk.src.dual_output_classification API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>MetalHawk.src.dual_output_classification</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import numpy as np
+from copy import deepcopy
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import RobustScaler
+
+
+class DualOutputClassifier(object):
+    &#34;&#34;&#34;
+    This class implements a &#34;dual-output&#34; classifier where the model
+    is trained to predict one target first, and then use this output
+    to condition the prediction of the second class. In practice, we
+    train two different classifiers!
+
+    The procedure works as follows:
+        1) The first classifier is trained on the &#34;first-k&#34; features
+        of the input matrix [x] to predict &#34;Coordinate Numbers&#34; (CN).
+        These include only the distances from the contact map.
+
+        2) The second classifier is trained on all features [x + CN]
+        of the augmented matrix to predict &#34;Geometric Classes&#34; (GC).
+        These include the distances from the contact map + the angles
+        around the central metal atom + the estimated CN (1st classifier).
+    &#34;&#34;&#34;
+
+    # Default constructor.
+    def __init__(self, method=None, add_scaler=False, *args, **kwargs):
+        &#34;&#34;&#34;
+        Initializes the class object with the all the parameters that we
+        will pass to the estimators.
+
+        :param method: any scikit estimator method.
+
+        :param add_scaler: include data StandardScaler in the pipelines.
+
+        :param args: these are the arguments that we want to pass to the
+        model&#39;s __init__ method.
+
+        :param kwargs: these are the key-worded arguments that we want to
+        pass to the model&#39;s __init__ method.
+        &#34;&#34;&#34;
+        # Get a reference of the arguments.
+        self.args = args
+
+        # Get a reference of the keyword arguments.
+        self.kwargs = kwargs
+
+        # Classifier placeholder.
+        self.classifiers = None
+
+        # Accept the estimator.
+        self.method = method
+
+        # Add a data scaler.
+        self.add_scaler = add_scaler
+
+        # Number of features for the first classifier.
+        self.k = None
+    # _end_def_
+
+    # Mandatory function.
+    def fit(self, x, y, k=None):
+        &#34;&#34;&#34;
+        This method will call sequentially the fit() methods
+        of all the classifiers.
+
+        :param x: input numpy array (2D).
+
+        :param y: output (targets) numpy array (2D).
+
+        :param k: number of features for the first classifier.
+
+        :return: self.
+        &#34;&#34;&#34;
+        # Make sure the inputs/targets are 2 dimensional.
+        x, y = map(np.atleast_2d, (x, y))
+
+        # Sanity check.
+        if x.shape[0] != y.shape[0]:
+            # Cancel the fit.
+            self.k = None
+
+            # Raise the error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               &#34;Input dimensions mismatch.&#34;)
+        # _end_if_
+
+        # Sanity check.
+        if y.shape[1] != 2:
+            # Cancel the fit.
+            self.k = None
+
+            # Raise the error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               &#34;Output dimensions mismatch.&#34;)
+        # _end_if_
+
+        # Sanity check.
+        if k is None:
+
+            # In this case use all the input features.
+            k = x.shape[1]
+        else:
+
+            # Make sure we are not out of bounds.
+            k = np.minimum(k, x.shape[1])
+        # _end_if_
+
+        # Ensure correct type.
+        k = int(k)
+
+        # Store it in the object to use in the predictions.
+        self.k = k
+
+        # Stores (locally in class) the two classifiers.
+        self.classifiers = []
+
+        # Start building the steps list.
+        clf_steps = []
+
+        # The data Scaler is not applied in all methods.
+        if self.add_scaler:
+            clf_steps.append((&#39;RobustScaler&#39;,
+                              RobustScaler(copy=True)))
+        # _end_if_
+
+        # Add the estimation method in the end.
+        clf_steps.append((f&#39;{self.method.__name__}&#39;,
+                          self.method(*self.args, **self.kwargs)))
+
+        # NOTE: Get a &#34;DEEPCOPY&#34; of the clf_steps otherwise the second
+        # fit will be referenced in the first pipe, and we will get an
+        # error in the prediction function.
+
+        # Create a new pipeline for the &#34;first&#34; target.
+        pipe_1 = Pipeline(steps=deepcopy(clf_steps), verbose=True)
+
+        # Create a new pipeline for the &#34;second&#34; target.
+        pipe_2 = Pipeline(steps=deepcopy(clf_steps), verbose=True)
+
+        # Information about 1-st classifier.
+        print(&#34;\n &gt;&gt;&gt; Fitting 1st classifier ... &#34;)
+
+        # Use the first-k input features of array x for
+        # the prediction of the coordinates number (CN).
+        self.classifiers.append(pipe_1.fit(x[:, :k], y[:, 1]))
+
+        # Information about 2-nd classifier.
+        print(&#34;\n &gt;&gt;&gt; Fitting 2nd classifier ... &#34;)
+
+        # Use the all input features of &#39;x + CN&#39; for
+        # the prediction of the geometry classes (GM).
+        self.classifiers.append(pipe_2.fit(np.hstack([x, y[:, 1:]]), y[:, 0]))
+
+        # Return the object itself.
+        return self
+
+    # _end_def_
+
+    # Mandatory function.
+    def predict(self, x):
+        &#34;&#34;&#34;
+        This function will call the two predict() functions,
+        of the pre-fitted predictors, with a specific order.
+
+        :param x: test input variables.
+
+        :return: the predictions &#39;y_predict&#39;.
+        &#34;&#34;&#34;
+
+        # Sanity check.
+        if self.k is None:
+            raise RuntimeError(f&#34;{self.__class__.__name__}: The model is not fit yet.&#34;)
+        # _end_if_
+
+        # Make sure the dimensions are 2D.
+        x = np.atleast_2d(x)
+
+        # Create the (return) predictions array.
+        y_predict = np.zeros((x.shape[0], 2), dtype=float)
+
+        # Get the prediction from the &#39;1st&#39; pipeline.
+        y_predict[:, 1] = self.classifiers[0].predict(x[:, :self.k])
+
+        # Augment the input array &#39;x&#39; with the
+        # prediction from the first classifier.
+        z = np.hstack([x, y_predict[:, 1:]])
+
+        # Get the prediction from the &#39;2nd&#39; pipeline.
+        y_predict[:, 0] = self.classifiers[1].predict(z)
+
+        # Return the total (dual) predictions.
+        return y_predict
+    # _end_def_
+
+    # Mandatory function.
+    def predict_proba(self, x):
+        &#34;&#34;&#34;
+        This function will call the two predict() functions,
+        of the pre-fitted predictors, with a specific order.
+
+        :param x: test input variables.
+
+        :return: predictions probabilities &#39;y_predict_proba&#39;.
+        &#34;&#34;&#34;
+        # Make sure the dimensions are 2D.
+        x = np.atleast_2d(x)
+
+        # Get the predictions from the &#39;1st&#39; pipeline.
+        y_predict = self.classifiers[0].predict(x[:, :self.k])
+
+        # Augment the input array &#39;x&#39; with the
+        # prediction from the first classifier.
+        z = np.hstack([x, y_predict])
+
+        # Create the (return) predictions array.
+        y_predict_proba = np.zeros((x.shape[0], 2), dtype=float)
+
+        # Get the prediction probabilities from the &#39;1st&#39; pipeline.
+        y_predict_proba[:, 1] = self.classifiers[0].predict_proba(x[:, :self.k])
+
+        # Get the prediction probabilities from the &#39;2nd&#39; pipeline.
+        y_predict_proba[:, 0] = self.classifiers[1].predict_proba(z)
+
+        # Return the total (dual) prediction probabilities.
+        return y_predict_proba
+    # _end_def_
+
+# _end_class_</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="MetalHawk.src.dual_output_classification.DualOutputClassifier"><code class="flex name class">
+<span>class <span class="ident">DualOutputClassifier</span></span>
+<span>(</span><span>method=None, add_scaler=False, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This class implements a "dual-output" classifier where the model
+is trained to predict one target first, and then use this output
+to condition the prediction of the second class. In practice, we
+train two different classifiers!</p>
+<p>The procedure works as follows:
+1) The first classifier is trained on the "first-k" features
+of the input matrix [x] to predict "Coordinate Numbers" (CN).
+These include only the distances from the contact map.</p>
+<pre><code>2) The second classifier is trained on all features [x + CN]
+of the augmented matrix to predict "Geometric Classes" (GC).
+These include the distances from the contact map + the angles
+around the central metal atom + the estimated CN (1st classifier).
+</code></pre>
+<p>Initializes the class object with the all the parameters that we
+will pass to the estimators.</p>
+<p>:param method: any scikit estimator method.</p>
+<p>:param add_scaler: include data StandardScaler in the pipelines.</p>
+<p>:param args: these are the arguments that we want to pass to the
+model's <strong>init</strong> method.</p>
+<p>:param kwargs: these are the key-worded arguments that we want to
+pass to the model's <strong>init</strong> method.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DualOutputClassifier(object):
+    &#34;&#34;&#34;
+    This class implements a &#34;dual-output&#34; classifier where the model
+    is trained to predict one target first, and then use this output
+    to condition the prediction of the second class. In practice, we
+    train two different classifiers!
+
+    The procedure works as follows:
+        1) The first classifier is trained on the &#34;first-k&#34; features
+        of the input matrix [x] to predict &#34;Coordinate Numbers&#34; (CN).
+        These include only the distances from the contact map.
+
+        2) The second classifier is trained on all features [x + CN]
+        of the augmented matrix to predict &#34;Geometric Classes&#34; (GC).
+        These include the distances from the contact map + the angles
+        around the central metal atom + the estimated CN (1st classifier).
+    &#34;&#34;&#34;
+
+    # Default constructor.
+    def __init__(self, method=None, add_scaler=False, *args, **kwargs):
+        &#34;&#34;&#34;
+        Initializes the class object with the all the parameters that we
+        will pass to the estimators.
+
+        :param method: any scikit estimator method.
+
+        :param add_scaler: include data StandardScaler in the pipelines.
+
+        :param args: these are the arguments that we want to pass to the
+        model&#39;s __init__ method.
+
+        :param kwargs: these are the key-worded arguments that we want to
+        pass to the model&#39;s __init__ method.
+        &#34;&#34;&#34;
+        # Get a reference of the arguments.
+        self.args = args
+
+        # Get a reference of the keyword arguments.
+        self.kwargs = kwargs
+
+        # Classifier placeholder.
+        self.classifiers = None
+
+        # Accept the estimator.
+        self.method = method
+
+        # Add a data scaler.
+        self.add_scaler = add_scaler
+
+        # Number of features for the first classifier.
+        self.k = None
+    # _end_def_
+
+    # Mandatory function.
+    def fit(self, x, y, k=None):
+        &#34;&#34;&#34;
+        This method will call sequentially the fit() methods
+        of all the classifiers.
+
+        :param x: input numpy array (2D).
+
+        :param y: output (targets) numpy array (2D).
+
+        :param k: number of features for the first classifier.
+
+        :return: self.
+        &#34;&#34;&#34;
+        # Make sure the inputs/targets are 2 dimensional.
+        x, y = map(np.atleast_2d, (x, y))
+
+        # Sanity check.
+        if x.shape[0] != y.shape[0]:
+            # Cancel the fit.
+            self.k = None
+
+            # Raise the error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               &#34;Input dimensions mismatch.&#34;)
+        # _end_if_
+
+        # Sanity check.
+        if y.shape[1] != 2:
+            # Cancel the fit.
+            self.k = None
+
+            # Raise the error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               &#34;Output dimensions mismatch.&#34;)
+        # _end_if_
+
+        # Sanity check.
+        if k is None:
+
+            # In this case use all the input features.
+            k = x.shape[1]
+        else:
+
+            # Make sure we are not out of bounds.
+            k = np.minimum(k, x.shape[1])
+        # _end_if_
+
+        # Ensure correct type.
+        k = int(k)
+
+        # Store it in the object to use in the predictions.
+        self.k = k
+
+        # Stores (locally in class) the two classifiers.
+        self.classifiers = []
+
+        # Start building the steps list.
+        clf_steps = []
+
+        # The data Scaler is not applied in all methods.
+        if self.add_scaler:
+            clf_steps.append((&#39;RobustScaler&#39;,
+                              RobustScaler(copy=True)))
+        # _end_if_
+
+        # Add the estimation method in the end.
+        clf_steps.append((f&#39;{self.method.__name__}&#39;,
+                          self.method(*self.args, **self.kwargs)))
+
+        # NOTE: Get a &#34;DEEPCOPY&#34; of the clf_steps otherwise the second
+        # fit will be referenced in the first pipe, and we will get an
+        # error in the prediction function.
+
+        # Create a new pipeline for the &#34;first&#34; target.
+        pipe_1 = Pipeline(steps=deepcopy(clf_steps), verbose=True)
+
+        # Create a new pipeline for the &#34;second&#34; target.
+        pipe_2 = Pipeline(steps=deepcopy(clf_steps), verbose=True)
+
+        # Information about 1-st classifier.
+        print(&#34;\n &gt;&gt;&gt; Fitting 1st classifier ... &#34;)
+
+        # Use the first-k input features of array x for
+        # the prediction of the coordinates number (CN).
+        self.classifiers.append(pipe_1.fit(x[:, :k], y[:, 1]))
+
+        # Information about 2-nd classifier.
+        print(&#34;\n &gt;&gt;&gt; Fitting 2nd classifier ... &#34;)
+
+        # Use the all input features of &#39;x + CN&#39; for
+        # the prediction of the geometry classes (GM).
+        self.classifiers.append(pipe_2.fit(np.hstack([x, y[:, 1:]]), y[:, 0]))
+
+        # Return the object itself.
+        return self
+
+    # _end_def_
+
+    # Mandatory function.
+    def predict(self, x):
+        &#34;&#34;&#34;
+        This function will call the two predict() functions,
+        of the pre-fitted predictors, with a specific order.
+
+        :param x: test input variables.
+
+        :return: the predictions &#39;y_predict&#39;.
+        &#34;&#34;&#34;
+
+        # Sanity check.
+        if self.k is None:
+            raise RuntimeError(f&#34;{self.__class__.__name__}: The model is not fit yet.&#34;)
+        # _end_if_
+
+        # Make sure the dimensions are 2D.
+        x = np.atleast_2d(x)
+
+        # Create the (return) predictions array.
+        y_predict = np.zeros((x.shape[0], 2), dtype=float)
+
+        # Get the prediction from the &#39;1st&#39; pipeline.
+        y_predict[:, 1] = self.classifiers[0].predict(x[:, :self.k])
+
+        # Augment the input array &#39;x&#39; with the
+        # prediction from the first classifier.
+        z = np.hstack([x, y_predict[:, 1:]])
+
+        # Get the prediction from the &#39;2nd&#39; pipeline.
+        y_predict[:, 0] = self.classifiers[1].predict(z)
+
+        # Return the total (dual) predictions.
+        return y_predict
+    # _end_def_
+
+    # Mandatory function.
+    def predict_proba(self, x):
+        &#34;&#34;&#34;
+        This function will call the two predict() functions,
+        of the pre-fitted predictors, with a specific order.
+
+        :param x: test input variables.
+
+        :return: predictions probabilities &#39;y_predict_proba&#39;.
+        &#34;&#34;&#34;
+        # Make sure the dimensions are 2D.
+        x = np.atleast_2d(x)
+
+        # Get the predictions from the &#39;1st&#39; pipeline.
+        y_predict = self.classifiers[0].predict(x[:, :self.k])
+
+        # Augment the input array &#39;x&#39; with the
+        # prediction from the first classifier.
+        z = np.hstack([x, y_predict])
+
+        # Create the (return) predictions array.
+        y_predict_proba = np.zeros((x.shape[0], 2), dtype=float)
+
+        # Get the prediction probabilities from the &#39;1st&#39; pipeline.
+        y_predict_proba[:, 1] = self.classifiers[0].predict_proba(x[:, :self.k])
+
+        # Get the prediction probabilities from the &#39;2nd&#39; pipeline.
+        y_predict_proba[:, 0] = self.classifiers[1].predict_proba(z)
+
+        # Return the total (dual) prediction probabilities.
+        return y_predict_proba</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="MetalHawk.src.dual_output_classification.DualOutputClassifier.fit"><code class="name flex">
+<span>def <span class="ident">fit</span></span>(<span>self, x, y, k=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method will call sequentially the fit() methods
+of all the classifiers.</p>
+<p>:param x: input numpy array (2D).</p>
+<p>:param y: output (targets) numpy array (2D).</p>
+<p>:param k: number of features for the first classifier.</p>
+<p>:return: self.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fit(self, x, y, k=None):
+    &#34;&#34;&#34;
+    This method will call sequentially the fit() methods
+    of all the classifiers.
+
+    :param x: input numpy array (2D).
+
+    :param y: output (targets) numpy array (2D).
+
+    :param k: number of features for the first classifier.
+
+    :return: self.
+    &#34;&#34;&#34;
+    # Make sure the inputs/targets are 2 dimensional.
+    x, y = map(np.atleast_2d, (x, y))
+
+    # Sanity check.
+    if x.shape[0] != y.shape[0]:
+        # Cancel the fit.
+        self.k = None
+
+        # Raise the error.
+        raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                           &#34;Input dimensions mismatch.&#34;)
+    # _end_if_
+
+    # Sanity check.
+    if y.shape[1] != 2:
+        # Cancel the fit.
+        self.k = None
+
+        # Raise the error.
+        raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                           &#34;Output dimensions mismatch.&#34;)
+    # _end_if_
+
+    # Sanity check.
+    if k is None:
+
+        # In this case use all the input features.
+        k = x.shape[1]
+    else:
+
+        # Make sure we are not out of bounds.
+        k = np.minimum(k, x.shape[1])
+    # _end_if_
+
+    # Ensure correct type.
+    k = int(k)
+
+    # Store it in the object to use in the predictions.
+    self.k = k
+
+    # Stores (locally in class) the two classifiers.
+    self.classifiers = []
+
+    # Start building the steps list.
+    clf_steps = []
+
+    # The data Scaler is not applied in all methods.
+    if self.add_scaler:
+        clf_steps.append((&#39;RobustScaler&#39;,
+                          RobustScaler(copy=True)))
+    # _end_if_
+
+    # Add the estimation method in the end.
+    clf_steps.append((f&#39;{self.method.__name__}&#39;,
+                      self.method(*self.args, **self.kwargs)))
+
+    # NOTE: Get a &#34;DEEPCOPY&#34; of the clf_steps otherwise the second
+    # fit will be referenced in the first pipe, and we will get an
+    # error in the prediction function.
+
+    # Create a new pipeline for the &#34;first&#34; target.
+    pipe_1 = Pipeline(steps=deepcopy(clf_steps), verbose=True)
+
+    # Create a new pipeline for the &#34;second&#34; target.
+    pipe_2 = Pipeline(steps=deepcopy(clf_steps), verbose=True)
+
+    # Information about 1-st classifier.
+    print(&#34;\n &gt;&gt;&gt; Fitting 1st classifier ... &#34;)
+
+    # Use the first-k input features of array x for
+    # the prediction of the coordinates number (CN).
+    self.classifiers.append(pipe_1.fit(x[:, :k], y[:, 1]))
+
+    # Information about 2-nd classifier.
+    print(&#34;\n &gt;&gt;&gt; Fitting 2nd classifier ... &#34;)
+
+    # Use the all input features of &#39;x + CN&#39; for
+    # the prediction of the geometry classes (GM).
+    self.classifiers.append(pipe_2.fit(np.hstack([x, y[:, 1:]]), y[:, 0]))
+
+    # Return the object itself.
+    return self</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.dual_output_classification.DualOutputClassifier.predict"><code class="name flex">
+<span>def <span class="ident">predict</span></span>(<span>self, x)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function will call the two predict() functions,
+of the pre-fitted predictors, with a specific order.</p>
+<p>:param x: test input variables.</p>
+<p>:return: the predictions 'y_predict'.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def predict(self, x):
+    &#34;&#34;&#34;
+    This function will call the two predict() functions,
+    of the pre-fitted predictors, with a specific order.
+
+    :param x: test input variables.
+
+    :return: the predictions &#39;y_predict&#39;.
+    &#34;&#34;&#34;
+
+    # Sanity check.
+    if self.k is None:
+        raise RuntimeError(f&#34;{self.__class__.__name__}: The model is not fit yet.&#34;)
+    # _end_if_
+
+    # Make sure the dimensions are 2D.
+    x = np.atleast_2d(x)
+
+    # Create the (return) predictions array.
+    y_predict = np.zeros((x.shape[0], 2), dtype=float)
+
+    # Get the prediction from the &#39;1st&#39; pipeline.
+    y_predict[:, 1] = self.classifiers[0].predict(x[:, :self.k])
+
+    # Augment the input array &#39;x&#39; with the
+    # prediction from the first classifier.
+    z = np.hstack([x, y_predict[:, 1:]])
+
+    # Get the prediction from the &#39;2nd&#39; pipeline.
+    y_predict[:, 0] = self.classifiers[1].predict(z)
+
+    # Return the total (dual) predictions.
+    return y_predict</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.dual_output_classification.DualOutputClassifier.predict_proba"><code class="name flex">
+<span>def <span class="ident">predict_proba</span></span>(<span>self, x)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function will call the two predict() functions,
+of the pre-fitted predictors, with a specific order.</p>
+<p>:param x: test input variables.</p>
+<p>:return: predictions probabilities 'y_predict_proba'.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def predict_proba(self, x):
+    &#34;&#34;&#34;
+    This function will call the two predict() functions,
+    of the pre-fitted predictors, with a specific order.
+
+    :param x: test input variables.
+
+    :return: predictions probabilities &#39;y_predict_proba&#39;.
+    &#34;&#34;&#34;
+    # Make sure the dimensions are 2D.
+    x = np.atleast_2d(x)
+
+    # Get the predictions from the &#39;1st&#39; pipeline.
+    y_predict = self.classifiers[0].predict(x[:, :self.k])
+
+    # Augment the input array &#39;x&#39; with the
+    # prediction from the first classifier.
+    z = np.hstack([x, y_predict])
+
+    # Create the (return) predictions array.
+    y_predict_proba = np.zeros((x.shape[0], 2), dtype=float)
+
+    # Get the prediction probabilities from the &#39;1st&#39; pipeline.
+    y_predict_proba[:, 1] = self.classifiers[0].predict_proba(x[:, :self.k])
+
+    # Get the prediction probabilities from the &#39;2nd&#39; pipeline.
+    y_predict_proba[:, 0] = self.classifiers[1].predict_proba(z)
+
+    # Return the total (dual) prediction probabilities.
+    return y_predict_proba</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="MetalHawk.src" href="index.html">MetalHawk.src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="MetalHawk.src.dual_output_classification.DualOutputClassifier" href="#MetalHawk.src.dual_output_classification.DualOutputClassifier">DualOutputClassifier</a></code></h4>
+<ul class="">
+<li><code><a title="MetalHawk.src.dual_output_classification.DualOutputClassifier.fit" href="#MetalHawk.src.dual_output_classification.DualOutputClassifier.fit">fit</a></code></li>
+<li><code><a title="MetalHawk.src.dual_output_classification.DualOutputClassifier.predict" href="#MetalHawk.src.dual_output_classification.DualOutputClassifier.predict">predict</a></code></li>
+<li><code><a title="MetalHawk.src.dual_output_classification.DualOutputClassifier.predict_proba" href="#MetalHawk.src.dual_output_classification.DualOutputClassifier.predict_proba">predict_proba</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

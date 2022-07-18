@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>MetalHawk.metalhawk API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>MetalHawk.metalhawk</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python3 -O
+
+import sys
+import argparse
+
+# Check the current python version before running.
+if sys.version_info &lt; (3, 7, 0):
+    sys.exit(&#34;Error: MetalHawk requires Python 3.8 or greater.&#34;)
+# _end_if_
+
+import os
+import textwrap
+import pandas as pd
+from tqdm import tqdm
+from pathlib import Path
+from datetime import datetime
+
+
+from src.metal_auxiliaries import CLASS_TARGETS
+from src.model_predictor import MetalSitesPredictor
+
+# INFO:
+__version__ = &#39;0.0.1&#39;
+__author__ = &#39;Michail Vrettas, PhD&#39;
+__email__ = &#39;vrettasm@duck.com&#39;
+
+
+# Main function.
+def main(input_file=None, csd_target_model=True, output_path=None, verbose=False):
+    &#34;&#34;&#34;
+    Main function that wraps the call of the predict method. First we create
+    a MetalSitesPredictor object. We assume that the trained model is located
+    in a folder named &#34;/models/&#34; that exists inside the parent directory (i.e.
+    the same directory where the current script is stored).
+
+    :param input_file: This is the input (PDB format) file that we want to predict
+    the metal site class.
+
+    :param csd_target_model: This is the target model we want to use. CSD (default)
+    or PDB. Note that if we don&#39;t use the correct target model, the prediction will
+    still predict values.
+
+    :param output_path: The directory (path) where we want to store the output
+    file.
+
+    :param verbose: This is a boolean flag that determines whether we want to
+    display additional information on the screen. Default is &#34;False&#34;.
+
+    :return: None.
+    &#34;&#34;&#34;
+
+    try:
+        # Get the parent folder of the module.
+        parent_dir = Path(__file__).resolve().parent
+
+        # Make sure the model directory is Path.
+        model_dir = Path(parent_dir/&#34;models/&#34;)
+
+        # Sanity check.
+        if not model_dir.is_dir():
+            raise FileNotFoundError(f&#34;Model directory {model_dir} doesn&#39;t exist.&#34;)
+        # _end_if_
+
+        # Construct the path of the model we want to load.
+        if csd_target_model:
+
+            # CSD -&gt; CSD (Bayesian optimized model).
+            target_path = Path(model_dir/&#34;HPO_CSD_CSD_CV.model&#34;)
+        else:
+
+            # PDB -&gt; PDB (Bayesian optimized model).
+            target_path = Path(model_dir/&#34;HPO_PDB_PDB_CV.model&#34;)
+        # _end_if_
+
+        # Create a predictor object.
+        nn_predict = MetalSitesPredictor(dir_model=target_path)
+
+        # Count the successful predictions.
+        count_success = 0
+
+        # Store the prediction results.
+        results = {&#34;file&#34;: [], &#34;prediction&#34;: [], &#34;entropy&#34;: []}
+
+        # Check for verbose.
+        if verbose:
+            # In verbose mode, use the list without &#39;tqdm&#39;.
+            file_range = input_file
+        else:
+
+            # In the standard mode, use &#39;tqdm&#39;.
+            file_range = tqdm(input_file, &#34; Predicting metal sites ... &#34;)
+        # _end_if_
+
+        # Process all input files.
+        for it, f_in in enumerate(file_range):
+
+            # Make sure is a Path.
+            f_path = Path(f_in)
+
+            # If the file exists.
+            if f_path.is_file():
+
+                # Make the predictions.
+                class_i, entropy_i = nn_predict(f_path)
+
+                # Store the results in the final dictionary.
+                results[&#34;file&#34;].append(f_path.stem)
+                results[&#34;entropy&#34;].append(entropy_i)
+                results[&#34;prediction&#34;].append(CLASS_TARGETS[class_i])
+
+                # Increase counter.
+                count_success += 1
+
+                # Check for verbosity.
+                if verbose:
+
+                    # This might clatter the screen output if there are many files!
+                    print(f&#34; {it}: File= {f_path.stem},&#34;
+                          f&#34; Prediction= {CLASS_TARGETS[class_i]},&#34;
+                          f&#34; Entropy= {entropy_i:.4E} \n&#34;)
+                # _end_if_
+
+            else:
+                raise FileNotFoundError(f&#34;File {f_path} not found.&#34;)
+            # _end_if_
+
+        # _end_for_
+
+        # Convert results to DataFrame.
+        df = pd.DataFrame(results)
+
+        # Print the results.
+        print(f&#34;\n {df}&#34;)
+
+        # Final message.
+        if verbose:
+
+            # Print the total predictions.
+            print(f&#34; Successfully predicted {count_success} file(s)&#34;)
+        # _end_if_
+
+        # Check if we want to save the results in a csv file.
+        if output_path:
+
+            # Make a header for the filename.
+            header = &#34;CSD&#34; if csd_target_model else &#34;PDB&#34;
+
+            # Make sure its Path object.
+            output_path = Path(output_path)
+
+            # Get the timestamp.
+            date_now = datetime.now().strftime(&#34;%Y_%m_%d_%I_%M_%S&#34;)
+
+            # Save to output_path with a date-related name.
+            df.to_csv(Path(output_path/f&#34;{header}_metal_sites_predictions_{date_now}.csv&#34;))
+        # _end_if_
+
+    except Exception as e1:
+
+        # Exit the program.
+        sys.exit(f&#34; Program ended with message: {e1}&#34;)
+    # _end_try_
+
+# _end_main_
+
+
+# Run the main script.
+if __name__ == &#34;__main__&#34;:
+
+    # Check if we have given input parameters.
+    if len(sys.argv) &gt; 1:
+
+        # Create a parser object.
+        parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,
+                                         description=textwrap.dedent(&#39;&#39;&#39;
+                                         
+                                         [MetalHawk]
+                                         
+                                         Python metal sites predictor, with artificial neural networks (ANN).
+                                         
+                                         We have trained (and optimized) two different models. One on CSD metal
+                                         sites and a second one on PDB metal sites. By default the program will
+                                         choose the CSD model to use for prediction, unless we pass explicitly
+                                         the option &#39;--no-csd&#39;.
+                                                                                  
+                                         The selected model can predict one of the following target classes:
+                                         -------------------------------------------------------------------
+                                            0: LIN (Linear)
+                                            1: TRI (Trigonal planar)
+                                            2: TET (Tetrahedral)
+                                            3: SPL (Square planar)
+                                            4: SQP (Square pyramidal)
+                                            5: TBP (Trigonal bi-pyramidal)
+                                            6: OCT (Octahedral)
+                                         
+                                         Along with the predicted class the program provides the &#34;entropy&#34; value,
+                                         as a measure of uncertainty. Note that for seven classes, assuming equal
+                                         priors, the maximum value of entropy is equal to: &#39;1.945910149055313&#39;.
+                                         &#39;&#39;&#39;))
+
+        # Input (PDB) file with the residue coordinates.
+        parser.add_argument(&#34;-f&#34;, &#34;--file&#34;, type=str, nargs=&#39;+&#39;, required=True,
+                            help=&#34;Input file(s) (Path/String).&#34;)
+
+        # Add the target model format (True=CSD).
+        parser.add_argument(&#34;--csd&#34;, dest=&#34;csd_model&#34;, action=&#34;store_true&#34;,
+                            help=&#34;The default target model is the &#39;CSD&#39;.&#34;)
+
+        # Add the alternative target model format (False=PDB).
+        parser.add_argument(&#34;--no-csd&#34;, dest=&#34;csd_model&#34;, action=&#34;store_false&#34;,
+                            help=&#34;Alternatively we set the target model to &#39;PDB&#39;.&#34;)
+
+        # Output path to save the predictions.
+        parser.add_argument(&#34;-o&#34;, &#34;--out&#34;, type=str, default=None,
+                            help=&#34;Output &#39;path&#39; to save the predicted values. &#34;)
+
+        # Enables verbosity.
+        parser.add_argument(&#34;--verbose&#34;, dest=&#34;verbose&#34;, action=&#34;store_true&#34;,
+                            help=&#34;Display information while running.&#34;)
+
+        # Shows the version of the program.
+        parser.add_argument(&#34;--version&#34;, action=&#34;version&#34;,
+                            version=f&#34; MetalSitesPredictor (c), version: {__version__}&#34;,
+                            help=&#34;Print version information and exit.&#34;)
+
+        # Make sure the defaults are set.
+        parser.set_defaults(csd_model=True, verose=False, out=None)
+
+        # Parse the arguments.
+        args = parser.parse_args()
+
+        # Call the main function.
+        main(input_file=args.file, csd_target_model=args.csd_model,
+             output_path=args.out, verbose=args.verbose)
+
+    else:
+        # Display error message.
+        sys.exit(f&#34;Error: Not enough input parameters. {os.linesep}&#34;
+                 f&#34; Run : {sys.argv[0]} -h/--help &#34;)
+    # _end_if_
+
+# _end_program_</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="MetalHawk.metalhawk.main"><code class="name flex">
+<span>def <span class="ident">main</span></span>(<span>input_file=None, csd_target_model=True, output_path=None, verbose=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Main function that wraps the call of the predict method. First we create
+a MetalSitesPredictor object. We assume that the trained model is located
+in a folder named "/models/" that exists inside the parent directory (i.e.
+the same directory where the current script is stored).</p>
+<p>:param input_file: This is the input (PDB format) file that we want to predict
+the metal site class.</p>
+<p>:param csd_target_model: This is the target model we want to use. CSD (default)
+or PDB. Note that if we don't use the correct target model, the prediction will
+still predict values.</p>
+<p>:param output_path: The directory (path) where we want to store the output
+file.</p>
+<p>:param verbose: This is a boolean flag that determines whether we want to
+display additional information on the screen. Default is "False".</p>
+<p>:return: None.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def main(input_file=None, csd_target_model=True, output_path=None, verbose=False):
+    &#34;&#34;&#34;
+    Main function that wraps the call of the predict method. First we create
+    a MetalSitesPredictor object. We assume that the trained model is located
+    in a folder named &#34;/models/&#34; that exists inside the parent directory (i.e.
+    the same directory where the current script is stored).
+
+    :param input_file: This is the input (PDB format) file that we want to predict
+    the metal site class.
+
+    :param csd_target_model: This is the target model we want to use. CSD (default)
+    or PDB. Note that if we don&#39;t use the correct target model, the prediction will
+    still predict values.
+
+    :param output_path: The directory (path) where we want to store the output
+    file.
+
+    :param verbose: This is a boolean flag that determines whether we want to
+    display additional information on the screen. Default is &#34;False&#34;.
+
+    :return: None.
+    &#34;&#34;&#34;
+
+    try:
+        # Get the parent folder of the module.
+        parent_dir = Path(__file__).resolve().parent
+
+        # Make sure the model directory is Path.
+        model_dir = Path(parent_dir/&#34;models/&#34;)
+
+        # Sanity check.
+        if not model_dir.is_dir():
+            raise FileNotFoundError(f&#34;Model directory {model_dir} doesn&#39;t exist.&#34;)
+        # _end_if_
+
+        # Construct the path of the model we want to load.
+        if csd_target_model:
+
+            # CSD -&gt; CSD (Bayesian optimized model).
+            target_path = Path(model_dir/&#34;HPO_CSD_CSD_CV.model&#34;)
+        else:
+
+            # PDB -&gt; PDB (Bayesian optimized model).
+            target_path = Path(model_dir/&#34;HPO_PDB_PDB_CV.model&#34;)
+        # _end_if_
+
+        # Create a predictor object.
+        nn_predict = MetalSitesPredictor(dir_model=target_path)
+
+        # Count the successful predictions.
+        count_success = 0
+
+        # Store the prediction results.
+        results = {&#34;file&#34;: [], &#34;prediction&#34;: [], &#34;entropy&#34;: []}
+
+        # Check for verbose.
+        if verbose:
+            # In verbose mode, use the list without &#39;tqdm&#39;.
+            file_range = input_file
+        else:
+
+            # In the standard mode, use &#39;tqdm&#39;.
+            file_range = tqdm(input_file, &#34; Predicting metal sites ... &#34;)
+        # _end_if_
+
+        # Process all input files.
+        for it, f_in in enumerate(file_range):
+
+            # Make sure is a Path.
+            f_path = Path(f_in)
+
+            # If the file exists.
+            if f_path.is_file():
+
+                # Make the predictions.
+                class_i, entropy_i = nn_predict(f_path)
+
+                # Store the results in the final dictionary.
+                results[&#34;file&#34;].append(f_path.stem)
+                results[&#34;entropy&#34;].append(entropy_i)
+                results[&#34;prediction&#34;].append(CLASS_TARGETS[class_i])
+
+                # Increase counter.
+                count_success += 1
+
+                # Check for verbosity.
+                if verbose:
+
+                    # This might clatter the screen output if there are many files!
+                    print(f&#34; {it}: File= {f_path.stem},&#34;
+                          f&#34; Prediction= {CLASS_TARGETS[class_i]},&#34;
+                          f&#34; Entropy= {entropy_i:.4E} \n&#34;)
+                # _end_if_
+
+            else:
+                raise FileNotFoundError(f&#34;File {f_path} not found.&#34;)
+            # _end_if_
+
+        # _end_for_
+
+        # Convert results to DataFrame.
+        df = pd.DataFrame(results)
+
+        # Print the results.
+        print(f&#34;\n {df}&#34;)
+
+        # Final message.
+        if verbose:
+
+            # Print the total predictions.
+            print(f&#34; Successfully predicted {count_success} file(s)&#34;)
+        # _end_if_
+
+        # Check if we want to save the results in a csv file.
+        if output_path:
+
+            # Make a header for the filename.
+            header = &#34;CSD&#34; if csd_target_model else &#34;PDB&#34;
+
+            # Make sure its Path object.
+            output_path = Path(output_path)
+
+            # Get the timestamp.
+            date_now = datetime.now().strftime(&#34;%Y_%m_%d_%I_%M_%S&#34;)
+
+            # Save to output_path with a date-related name.
+            df.to_csv(Path(output_path/f&#34;{header}_metal_sites_predictions_{date_now}.csv&#34;))
+        # _end_if_
+
+    except Exception as e1:
+
+        # Exit the program.
+        sys.exit(f&#34; Program ended with message: {e1}&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="MetalHawk" href="index.html">MetalHawk</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="MetalHawk.metalhawk.main" href="#MetalHawk.metalhawk.main">main</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

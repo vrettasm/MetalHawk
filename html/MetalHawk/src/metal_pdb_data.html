@@ -1,0 +1,3327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>MetalHawk.src.metal_pdb_data API documentation</title>
+<meta name="description" content="This module includes the main class that handles
+the data generation from the Metal PDB files." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>MetalHawk.src.metal_pdb_data</code></h1>
+</header>
+<section id="section-intro">
+<p>This module includes the main class that handles
+the data generation from the Metal PDB files.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+This module includes the main class that handles
+the data generation from the Metal PDB files.
+&#34;&#34;&#34;
+
+# Python import(s).
+import h5py
+import numpy as np
+import pandas as pd
+
+from os import linesep
+from pathlib import Path
+from operator import itemgetter
+from collections import defaultdict
+from scipy.spatial import ConvexHull
+from scipy.spatial.qhull import QhullError
+from scipy.spatial.distance import cdist
+
+from src.metal_auxiliaries import (MetalAtom,
+                                   METAL_TARGETS,
+                                   fast_compute_angle,
+                                   fast_euclidean_norm)
+&#34;&#34;&#34;
+PDB/CSD Record Format
+
+COLUMNS        DATA  TYPE    FIELD        DEFINITION
+-------------------------------------------------------------------------------------
+ 1 -  6        Record name   &#34;ATOM  &#34;
+ 7 - 11        Integer       serial       Atom serial number.
+13 - 16        Atom          name         Atom name.
+17             Character     altLoc       Alternate location indicator.
+18 - 20        Residue name  resName      Residue name.
+22             Character     chainID      Chain identifier.
+23 - 26        Integer       resSeq       Residue sequence number.
+27             AChar         iCode        Code for insertion of residues.
+31 - 38        Real(8.3)     x            Orthogonal coordinates for X in Angstroms.
+39 - 46        Real(8.3)     y            Orthogonal coordinates for Y in Angstroms.
+47 - 54        Real(8.3)     z            Orthogonal coordinates for Z in Angstroms.
+55 - 60        Real(6.2)     occupancy    Occupancy.
+61 - 66        Real(6.2)     tempFactor   Temperature factor.
+77 - 78        LString(2)    element      Element symbol, right-justified.
+79 - 80        LString(2)    charge       Charge on the atom.
+-------------------------------------------------------------------------------------
+
+NOTE: The numbering of the columns starts from &#39;1&#39;, not &#39;0&#39;.
+
+&#34;&#34;&#34;
+
+
+class MetalPdbData(object):
+    &#34;&#34;&#34;
+    Provides assistance with processing the metal PDB files.
+    It generates contact/distance maps from the &#34;n-closest&#34;
+    atoms near the center metal atom.
+
+    Optionally, it can use the selected atoms and create a
+    ConvexHull object, were we can later extract its volume
+    and its surface area.
+
+    Optionally, we can compute the angles among the center
+    metal atom and its nearest points (excluding Hydrogen
+    and Carbon).
+    &#34;&#34;&#34;
+
+    # Object variables.
+    __slots__ = (&#34;_compute_angles&#34;, &#34;_compute_convex_hull&#34;, &#34;_dataset&#34;, &#34;_distance_map&#34;,
+                 &#34;_volume&#34;, &#34;_area&#34;, &#34;_center_metal_atom&#34;, &#34;_angles&#34;, &#34;_stats_counter&#34;)
+
+    # Constructor.
+    def __init__(self, compute_angles=False, compute_convex_hull=False):
+        &#34;&#34;&#34;
+        Constructs an object that will create the contact map, along with
+        the rest of the data arrays from a given PDB / CSD (metal) file.
+        Initially all the class fields are set to None.
+
+        :param compute_angles: Boolean flag that enables the computation of
+        the angles among the estimated contact map points. Default is False.
+
+        :param compute_convex_hull: Boolean flag that enables the computation of
+        a &#34;convex hull&#34;, from the contact map points. This will allow estimating
+        quantities such as the area and the volume of the points.
+        Default is False.
+        &#34;&#34;&#34;
+
+        # Set the flag.
+        self._compute_angles = compute_angles
+        &#34;&#34;&#34;
+        This flag allows the computation of the angles
+        between the selected points of the contact map.
+        &#34;&#34;&#34;
+
+        # Set the flag.
+        self._compute_convex_hull = compute_convex_hull
+        &#34;&#34;&#34;
+        This flag allows the computation of the convex hull
+        related quantities, such as area and volume of the
+        contact map points.
+        &#34;&#34;&#34;
+
+        self._area = None
+        &#34;&#34;&#34;
+        This is the area of the convex-hull object created by
+        the (x,y,z) coordinates of the selected atoms, around
+        the central metal atom.
+        &#34;&#34;&#34;
+
+        self._volume = None
+        &#34;&#34;&#34;
+        This is the volume of the convex-hull object, created by
+        the (x,y,z) coordinates of the selected atoms around the
+        central metal atom.
+        &#34;&#34;&#34;
+
+        self._dataset = None
+        &#34;&#34;&#34;
+        This is the dataset that will hold all the atoms around
+        the central metal atom, along with the distances of the
+        of these atoms (excluding &#39;H&#39; and &#39;C&#39;), from the center
+        atom.
+        &#34;&#34;&#34;
+
+        self._distance_map = None
+        &#34;&#34;&#34;
+        This is the distance/contact map that has been generated
+        by the PDB file using all the pairwise distances from all
+        the selected metal atoms.
+        &#34;&#34;&#34;
+
+        self._angles = None
+        &#34;&#34;&#34;
+        This is a numpy array that contains the computed angles
+        between all the map points.  The first three columns of
+        the array contain the index positions of the points and
+        the last column contains the angle in degrees.
+        &#34;&#34;&#34;
+
+        self._center_metal_atom = None
+        &#34;&#34;&#34;
+        The center metal atom is the point of reference for all
+        the distance / contact maps. It is of &#39;MetalAtom&#39; type.
+        &#34;&#34;&#34;
+
+        self._stats_counter = {&#34;n_calls&#34;: 0,
+                               &#34;metals_freq&#34;: defaultdict(int)}
+        &#34;&#34;&#34;
+        This dictionary will hold statistics for the object. It
+        will hold information like: 1) the number of times that
+        was called, 2) the frequency of the metal site atoms it
+        found, etc.
+        &#34;&#34;&#34;
+    # _end_def_
+
+    # Auxiliary method.
+    def reset_all_data(self, show_warning=False):
+        &#34;&#34;&#34;
+        Clears all the data and resets them back to empty lists.
+        This is to ensure that if we accidentally call the main
+        function twice, we will not append the same data in the
+        lists.
+
+        :param show_warning: Boolean flag to prompt a warning
+        before resetting the data. There is no option to stop
+        the process.
+
+        :return: None.
+        &#34;&#34;&#34;
+
+        # Reset everything to None/False.
+        for field in self.__slots__:
+
+            # Skip the flags and the statistics dictionary.
+            if field in {&#34;_stats_counter&#34;, &#34;_compute_angles&#34;,
+                         &#34;_compute_convex_hull&#34;}:
+                continue
+            # _end_if_
+
+            # Make sure the field exists.
+            if hasattr(self, field):
+
+                # Reset its value to None.
+                setattr(self, field, None)
+
+            # _end_if_
+
+        # _end_for_
+
+        # Check if we want to display a warning.
+        if show_warning:
+            print(f&#34;WARNING: {self.__class__.__name__}: &#34;
+                  f&#34;All the data have been reset to &#39;None&#39;!&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def compute_angles(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the compute_angles flag.
+
+        :return: the boolean value of the compute_angles flag.
+        &#34;&#34;&#34;
+        return self._compute_angles
+
+    # _end_def_
+
+    @compute_angles.setter
+    def compute_angles(self, new_value):
+        &#34;&#34;&#34;
+        Accessor (setter) of the compute_angles flag.
+
+        :param new_value: (bool).
+        &#34;&#34;&#34;
+
+        # Check for correct type.
+        if isinstance(new_value, bool):
+
+            # Update the flag value.
+            self._compute_angles = new_value
+        else:
+            raise TypeError(f&#34;{self.__class__.__name__}: &#34;
+                            f&#34;Compute angles flag should be bool: {type(new_value)}.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def compute_convex_hull(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the compute_convex_hull flag.
+
+        :return: the boolean value of the compute_convex_hull flag.
+        &#34;&#34;&#34;
+        return self._compute_convex_hull
+
+    # _end_def_
+
+    @compute_convex_hull.setter
+    def compute_convex_hull(self, new_value):
+        &#34;&#34;&#34;
+        Accessor (setter) of the compute_convex_hull flag.
+
+        :param new_value: (bool).
+        &#34;&#34;&#34;
+
+        # Check for correct type.
+        if isinstance(new_value, bool):
+
+            # Update the flag value.
+            self._compute_convex_hull = new_value
+        else:
+            raise TypeError(f&#34;{self.__class__.__name__}: &#34;
+                            f&#34;Compute convex hull flag should be bool: {type(new_value)}.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def get_statistics(self):
+        &#34;&#34;&#34;
+        Provides access to the statistics that have
+        been collected during the current life-time
+        of the object.
+
+        :return: the dictionary with the statistics.
+        &#34;&#34;&#34;
+        return self._stats_counter
+    # _end_def_
+
+    @property
+    def dataset(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the dataset.
+
+        :return:  a tuple with a pandas DataFrame containing ALL
+        the atoms along with a list with the sorted distances of
+        the non hydrogen atoms from the central metal atom.
+        &#34;&#34;&#34;
+
+        # Check if the dataset exists.
+        if self._dataset is not None:
+
+            # Return all the data.
+            return self._dataset
+        else:
+
+            # Raise an error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Dataset is not initialized yet.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def distance_map(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the distance/contact map.
+
+        :return: a symmetric [N x N] map with zeros in
+        the diagonal.
+        &#34;&#34;&#34;
+
+        # Check if the distance map exist.
+        if self._distance_map is not None:
+
+            # Return the map.
+            return self._distance_map
+        else:
+
+            # Raise an error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Distance map has not been estimated.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def min_length(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the number of contacts that
+        have been estimated. I.e. the number of atoms we
+        have compared the central atom with.
+
+        :return: the height (or the width) of the distance
+        map.
+        &#34;&#34;&#34;
+
+        # Check if the distance map exist.
+        if self._distance_map is not None:
+
+            # Return the height of the map.
+            return self._distance_map.shape[0]
+        else:
+
+            # Raise an error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Distance map has not been estimated.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def angles(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the calculated angles.
+
+        :return: an array of angles between the contact
+        map points.
+        &#34;&#34;&#34;
+
+        # Check if the angles list exist.
+        if self._angles is not None:
+
+            # Return the list.
+            return self._angles
+        else:
+
+            # Raise an error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Angles array has not been estimated.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def convex_area(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the convex-hull surface area from
+        all the selected points around the central metal atom.
+
+        :return: a list of floats in $L^2$ units [L: Angstrom].
+        &#34;&#34;&#34;
+
+        # Check if the area list is empty.
+        if self._area is not None:
+
+            # Return the list with the surface areas.
+            return self._area
+        else:
+
+            # Raise an error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Convex-hull surface areas &#34;
+                               f&#34;have not been estimated.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def convex_volume(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the convex-hull volume from
+        all the selected atoms around the central metal.
+
+        :return: a list of floats in $L^3$ units.
+
+        --&gt; L: should be in Angstrom.
+        &#34;&#34;&#34;
+
+        # Check if the volume list is empty.
+        if self._volume is not None:
+
+            # Return the convex volume.
+            return self._volume
+        else:
+
+            # Raise an error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Convex-hull volumes list &#34;
+                               f&#34;has not been estimated.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def center_metal_atom(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the center metal atom.
+
+        :return: a MetalAtom (namedtuple).
+        &#34;&#34;&#34;
+
+        # Check if atom exists.
+        if self._center_metal_atom is not None:
+
+            # Return the MetalAtom object.
+            return self._center_metal_atom
+        else:
+
+            # Raise an error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Central metal atom is not found yet.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @staticmethod
+    def angles_from_coordinates(points_xyz, n_closest=None):
+        &#34;&#34;&#34;
+        Computes a list of angles among the points in the input array.
+        We always assume that the first item in the &#34;points_xyz&#34; has
+        the central atom.
+
+        :param points_xyz: Input array with the (x, y, z) coordinates.
+        Each row in the input array is a different point (in 3D space).
+
+        :param n_closest: Number of neighbouring points to consider when
+        computing the angles. If &#39;None&#39;, then we will compute and return
+        all the angles.
+
+        :return: A list with the angles.
+        &#34;&#34;&#34;
+
+        # Total number of points in the input list.
+        L = len(points_xyz)
+
+        # If there are less than three atoms we can&#39;t
+        # compute any angles.
+        if L &lt; 3:
+            return None
+        # _end_if_
+
+        # Check if an input is given.
+        if n_closest is None:
+            # Maximum number of points to consider.
+            n_closest = L-1
+        else:
+            # Make sure we are not out of bounds.
+            n_closest = np.minimum(L-1, np.maximum(1, n_closest))
+        # _end_if_
+
+        # Ensure the input is int.
+        n_closest = int(n_closest)
+
+        # Store the angles.
+        angles_list = []
+
+        # Localize the list append method.
+        angles_list_append = angles_list.append
+
+        # Localize the angle method.
+        get_angle = fast_compute_angle
+
+        # Get a reference of the central metal atom.
+        # NOTE: This is assumed to be in location 0.
+        pt_center = points_xyz[0]
+
+        # Compute the angles among the central
+        # metal atom and its closest neighbors.
+        for j in range(1, n_closest+1):
+
+            # Get the second (LEFT) point.
+            pt_j = points_xyz[j]
+
+            for k in range(j + 1, n_closest+1):
+
+                # Get the third (RIGHT) point.
+                pt_k = points_xyz[k]
+
+                # Get the angle in question (in degrees).
+                angles_list_append((j, 0, k,
+                                    get_angle(pt_j, pt_center, pt_k)))
+            # _end_for_
+
+        # _end_for_
+
+        # Return the numpy array (float).
+        return np.array(angles_list, dtype=float)
+    # _end_def_
+
+    # Auxiliary method.
+    def read_data_file(self, f_path, f_type=&#34;CSD&#34;):
+        &#34;&#34;&#34;
+        Reads the input data file and returns a list with
+        the entries using the PDB file format (see above).
+
+        :param f_path: Path of the metal input file.
+
+        :param f_type: File type CSD (default)/ PDB.
+
+        :return: A list with the required entries.
+        &#34;&#34;&#34;
+
+        # Check the file type.
+        if f_type not in {&#34;CSD&#34;, &#34;PDB&#34;}:
+            raise ValueError(f&#34;{self.__class__.__name__}: &#34;
+                             f&#34;The acceptable file types are &#39;CSD&#39; or &#39;PDB&#39;: {f_type}&#34;)
+        # _end_if_
+
+        # Create a temporary data structure
+        # to hold the data from the file.
+        data_list = []
+
+        # Read the data from the file.
+        with open(f_path, &#34;r&#34;) as f_in:
+
+            # Localize append method for speed.
+            data_list_append = data_list.append
+
+            # Process each line.
+            for row in f_in.readlines():
+
+                # Make sure we capture any exceptions
+                try:
+                    # Get the first entry in the line.
+                    # Make sure there are no empty spaces
+                    # around the word.
+                    entry = str(row[0:6]).strip().upper()
+
+                    # Break when you reach the end of the model.
+                    if &#34;END&#34; == entry:
+                        break
+
+                    # Process only &#39;atom&#39; or &#39;hetero-atom&#39; entries.
+                    elif entry in {&#34;ATOM&#34;, &#34;HETATM&#34;}:
+
+                        # Create a new row for the dataframe.
+                        record = {&#34;ID&#34;: int(row[6:11]),
+                                  &#34;NAME&#34;: str(row[12:16]).strip().upper(),
+                                  &#34;X&#34;: float(row[30:38]),
+                                  &#34;Y&#34;: float(row[38:46]),
+                                  &#34;Z&#34;: float(row[46:54]),
+                                  &#34;TYPE&#34;: str(row[76:78]).strip().upper()}
+
+                        # Update the list.
+                        data_list_append(record)
+
+                    # _end_if_
+
+                except ValueError as v_err:
+
+                    # Show a warning message.
+                    print(f&#34;{self.__class__.__name__}: &#34;
+                          f&#34;WARNING: {v_err} at {f_path.stem}&#34;)
+
+                    # If methods &#39;int&#39; and &#39;float&#39; can&#39;t convert the strings
+                    # they will throw a ValueError. In this case skip and go
+                    # to the next row.
+                    continue
+                # _end_try_
+
+            # _end_for_
+
+        # _end_with_
+
+        # Return the list with the file entries.
+        return data_list
+    # _end_def_
+
+    @staticmethod
+    def find_central_atom(df: pd.DataFrame = None) -&gt; MetalAtom:
+        &#34;&#34;&#34;
+        Find which metal atom (from the accepted list)
+        is closest to the center of mass.
+
+        :param df: dataframe with the entries from the
+        input (metal) PDB file.
+
+        :return: center_metal (as MetalAtom object).
+        &#34;&#34;&#34;
+
+        # Make sure we have an input dataframe.
+        if df is None:
+            return None
+        # _end_if_
+
+        # Find the center mass. This is simply
+        # the mean coordinates from all atoms.
+        center_mass = df[[&#34;X&#34;, &#34;Y&#34;, &#34;Z&#34;]].mean(axis=0). \
+            to_numpy(dtype=float)
+
+        # Center metal and minimum distance.
+        center_metal, min_dist = None, np.inf
+
+        # Localize the Euclidean norm function.
+        get_euclidean_norm = fast_euclidean_norm
+
+        # Localize the array function.
+        np_array = np.array
+
+        # Scan all the values of the df.
+        for it in df.to_dict(&#34;records&#34;):
+
+            # Consider only metal atoms from a target list.
+            if it[&#34;TYPE&#34;].upper().startswith(METAL_TARGETS):
+
+                # Atom coordinates vector.
+                it_coord = np_array([it[&#34;X&#34;],
+                                     it[&#34;Y&#34;],
+                                     it[&#34;Z&#34;]], dtype=float)
+
+                # Distance between coordinates.
+                diff = center_mass - it_coord
+
+                # Euclidean norm.
+                this_dist = get_euclidean_norm(diff)
+
+                # Update the minimum.
+                if np.isfinite(this_dist) and this_dist &lt; min_dist:
+                    # Update the minimum.
+                    min_dist = this_dist
+
+                    # Update the new center atom.
+                    center_metal = MetalAtom(**it, DIST=min_dist)
+                # _end_if_
+
+            # _end_if_
+
+        # _end_for_
+
+        return center_metal
+    # _end_def_
+
+    # Auxiliary method.
+    def estimate_distances(self, f_path, f_type=&#34;CSD&#34;, max_length=None,
+                           n_closest=None):
+        &#34;&#34;&#34;
+        This is the main function of the MetalPdbData class. It accepts
+        as input a Path(/path/to/the/PDB) and then estimates the sorted
+        distances of all the non--hydrogen atoms from the central metal
+        atom.
+
+        :param f_path: Path of the (metal) CSD / PDB file.
+
+        :param f_type: File type CSD (default) or PDB.
+
+        :param max_length: Integer that defines the maximum number of
+        atoms to consider for the contact map. If &#39;None&#39; (default) it
+        will use all the available atoms.
+
+        :param n_closest: Number of neighbouring points to consider when
+        computing the angles.  If &#39;None&#39; (default), then we will compute
+        and return all the angles.
+
+        :return: None.
+        &#34;&#34;&#34;
+
+        # Check file type.
+        if f_type not in {&#34;CSD&#34;, &#34;PDB&#34;}:
+            raise ValueError(f&#34;{self.__class__.__name__}: &#34;
+                             f&#34;File type {f_type} is not recognized.&#34;)
+        # _end_if_
+
+        # If a value has been given.
+        if max_length is not None:
+
+            # Check the type.
+            if not isinstance(max_length, int):
+
+                # This will raise an error if an input has
+                # been given, but it is not an integer type.
+                raise TypeError(f&#34;{self.__class__.__name__}: The maximum length for &#34;
+                                f&#34;a contact map should be an integer: {max_length}. &#34;)
+            # _end_if_
+
+        # _end_if_
+
+        # First we need to  make sure all data are cleared.
+        # That means setting all the fields values to None.
+        self.reset_all_data()
+
+        # Ensure the f_path is Path.
+        f_path = Path(f_path)
+
+        # Make sure is a file.
+        if f_path.is_file():
+
+            # STEP: 1
+            # Create the dataframe from the raw data file.
+            df = pd.DataFrame(data=self.read_data_file(f_path, f_type))
+
+            # Sanity check.
+            if df.empty:
+                raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                                   f&#34;The input data file {f_path} did not return any data.&#34;)
+            # _end_if_
+
+            # STEP: 2
+            # Find the center metal atom.
+            center_metal = MetalPdbData.find_central_atom(df)
+
+            # Sanity check.
+            if center_metal is None:
+
+                # Display a waring message.
+                raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                                   f&#34;Center metal not found in {f_path.stem}.&#34;)
+            # _end_if_
+
+            # Copy the central atom in the object.
+            self._center_metal_atom = center_metal
+
+            # Increase the call counter.
+            self._stats_counter[&#34;n_calls&#34;] += 1
+
+            # Update the statistics dictionary.
+            self._stats_counter[&#34;metals_freq&#34;][center_metal.TYPE] += 1
+
+            # STEP: 4
+            # Get all the distances (ignoring &#34;H&#34; and &#34;C&#34; atoms).
+            #
+
+            # Distances list.
+            distances = []
+
+            # Localize append method (for faster execution).
+            distances_append = distances.append
+
+            # Localize the Euclidean norm function.
+            get_euclidean_norm = fast_euclidean_norm
+
+            # XYZ coordinates of the central metal.
+            center_coord = np.array([center_metal.X,
+                                     center_metal.Y,
+                                     center_metal.Z], dtype=float)
+
+            # Scan all the entries in the dataframe, but
+            # consider only non hydrogen or carbon atoms.
+            for it in df.to_dict(&#34;records&#34;):
+
+                # Skip Hydrogen and Carbon atoms.
+                if it[&#34;TYPE&#34;] in {&#34;H&#34;, &#34;C&#34;}:
+                    continue
+                # _end_if_
+
+                # Atom coordinates vector.
+                it_coord = np.array([it[&#34;X&#34;],
+                                     it[&#34;Y&#34;],
+                                     it[&#34;Z&#34;]], dtype=float)
+
+                # Distance between coordinates.
+                diff = center_coord - it_coord
+
+                # Euclidean norm.
+                dist = get_euclidean_norm(diff)
+
+                # Make sure the distance is finite.
+                if np.isfinite(dist):
+
+                    # Store the pair (id, distance).
+                    distances_append((it[&#34;ID&#34;], dist))
+
+                # _end_if_
+
+            # _end_for_
+
+            # Sort the list of distances (from small to large).
+            sorted_distances = sorted(distances, key=itemgetter(1))
+
+            # Store a copy of the results in the object.
+            self._dataset = (df.copy(), np.copy(sorted_distances))
+
+            # Make sure the max_length has been set.
+            if max_length is None:
+
+                # Set the max to the same length.
+                max_length = len(sorted_distances)
+
+            else:
+
+                # Make sure we are not out of bounds.
+                max_length = np.minimum(max_length,
+                                        len(sorted_distances))
+            # _end_if_
+
+            # Ensure this var is integer.
+            max_length = int(max_length)
+
+            # STEP 5:
+            # Use &#39;cdist&#39; to get the distances among all
+            # atoms. This is very fast (using &#39;C&#39; code).
+
+            # This will &#39;speed up&#39; the search.
+            df.set_index([&#34;ID&#34;], inplace=True)
+
+            # Empty list.
+            coord_xyz = []
+
+            # Localize the append method.
+            coord_xyz_append = coord_xyz.append
+
+            # Copy the first &#34;max_length&#34; coordinates
+            # in a separate list for further process.
+            for n, (id_n, _) in enumerate(sorted_distances):
+
+                # Bounds Check: for safety.
+                if n &gt;= max_length:
+                    break
+                # _end_if_
+
+                # Copy the coordinates vector.
+                coord_xyz_append(df.loc[id_n][[&#34;X&#34;, &#34;Y&#34;, &#34;Z&#34;]])
+            # _end_for_
+
+            # Convert to numpy array.
+            coord_xyz = np.array(coord_xyz, dtype=float)
+
+            # Compute distances between each pair of the same
+            # array and add the distance map to the object.
+            self._distance_map = cdist(coord_xyz, coord_xyz,
+                                       metric=&#34;euclidean&#34;)
+            # STEP 6:
+            #
+            # Optionally get the angles among the &#39;n_closest&#39; points.
+            if self.compute_angles:
+
+                # Store the angles in the object.
+                self._angles = self.angles_from_coordinates(coord_xyz,
+                                                            n_closest=n_closest)
+            # _end_if_
+
+            # STEP 7:
+            #
+            # Optionally get the convex hull quantities.
+            if self.compute_convex_hull:
+
+                # In 3D, we need at least 4 points to define a convex hull.
+                if max_length &gt; 3:
+
+                    # If we don&#39;t have enough points an error will be raised.
+                    try:
+                        # Construct a Convex hull from the selected points.
+                        conv_hull = ConvexHull(coord_xyz, qhull_options=&#39;QJ&#39;)
+
+                        # Get the convex hull surface area.
+                        self._area = conv_hull.area
+
+                        # Get the convex hull volume.
+                        self._volume = conv_hull.volume
+
+                    except QhullError as e:
+
+                        # This error message is not catastrophic. It just
+                        # means that we will not have the ConvexHull obj.
+                        print(f&#34;{self.__class__.__name__}: Error -&gt; {e}&#34;)
+
+                    # _end_try_
+                else:
+                    # Inform the user we need to increase the max_length.
+                    print(f&#34;{self.__class__.__name__}: WARNING: &#34;
+                          &#34;You need at least four points (max_length &gt;= 4) &#34;
+                          &#34;to define a convex hull in 3D.&#34;)
+                # _end_if_
+
+            # _end_if_
+
+        # _end_if_
+
+    # _end_def_
+
+    # Auxiliary.
+    def save_data(self, output_dir=None):
+        &#34;&#34;&#34;
+        Save the object&#39;s data to an HDF5 file.
+
+        :param output_dir: The directory we want to save the data.
+        The default output is the current working directory (CWD).
+
+        :return: None.
+        &#34;&#34;&#34;
+
+        # Check for the output.
+        if output_dir is None:
+            output_dir = Path.cwd()
+        # _end_if_
+
+        # Create an output path.
+        path_out = Path(Path(output_dir) / f&#34;metal_{id(self)}.h5&#34;)
+
+        # This will hold the fields we are saving to file.
+        data_fields = []
+
+        # Create a HDF5 output file (write only).
+        with h5py.File(path_out, &#34;w&#34;) as f_out:
+
+            # Sanity check.
+            if self._area is not None:
+                # Update the list.
+                data_fields.append(&#34;area&#34;)
+
+                # Save the convex-hull area.
+                f_out.create_dataset(&#34;area&#34;,
+                                     data=self._area)
+            # _end_if_
+
+            # Sanity check.
+            if self._angles is not None:
+                # Update the list.
+                data_fields.append(&#34;angles&#34;)
+
+                # Save the angle values.
+                f_out.create_dataset(&#34;angles&#34;,
+                                     data=self._angles)
+            # _end_if_
+
+            # Sanity check.
+            if self._volume is not None:
+                # Update the list.
+                data_fields.append(&#34;volume&#34;)
+
+                # Save the convex-hull volume.
+                f_out.create_dataset(&#34;volume&#34;,
+                                     data=self._volume)
+            # _end_if_
+
+            # Sanity check.
+            if self._distance_map is not None:
+                # Update the list.
+                data_fields.append(&#34;dist_map&#34;)
+
+                # Save the distance maps list.
+                f_out.create_dataset(&#34;dist_map&#34;,
+                                     data=self._distance_map)
+            # _end_if_
+
+            # Sanity check.
+            if self._dataset is not None:
+                # Unpack the data.
+                _, sorted_distances = self._dataset
+
+                # Update the list.
+                data_fields.append(&#34;sorted_distances&#34;)
+
+                # Save the sorted distances.
+                f_out.create_dataset(&#34;idx_sorted_dist&#34;,
+                                     data=sorted_distances)
+            # _end_if_
+
+        # _end_with_
+
+        # Display info.
+        print(f&#34;Saved {data_fields} to: {path_out}&#34;)
+    # _end_def_
+
+    # Auxiliary.
+    def __call__(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        This is only a &#34;wrapper&#34; of the
+        &#34;estimate_distances&#34; method.
+        &#34;&#34;&#34;
+        return self.estimate_distances(*args, **kwargs)
+    # _end_def_
+
+    # Create the feature vector for the ML algorithms.
+    def features_vector(self, map_length=7, num_angles=15):
+        &#34;&#34;&#34;
+        Using the pre-computed distance maps and the angles
+        construct a &#34;feature vector&#34; according to the input
+        requirements.
+
+        If the input requirements are higher than the estimated
+        map/angles, the feature vector will be filled with &#39;-1&#39;
+        which is the default (N/A) values.
+
+        :param map_length: The size of the map we want to extract.
+        Note that the maps are square (MxM).
+
+        :param num_angles: The number of angles we want to include.
+
+        :return: a feature vector with dimensions: &#39;n*(n-1)/2 + m&#39;,
+        where n=map_length and m=num_angles.
+        &#34;&#34;&#34;
+
+        # Sanity check.
+        if self._distance_map is None:
+            raise RuntimeError(f&#34;{self.__class__.__name__}: Distance map is missing.&#34;)
+        # _end_if_
+
+        # Sanity check.
+        if self._angles is None:
+            raise RuntimeError(f&#34;{self.__class__.__name__}: Angles list is missing.&#34;)
+        # _end_if_
+
+        # Local minimum value.
+        _min_value = 5
+
+        # Make sure the input parameters are integers.
+        map_length = max(_min_value, int(map_length))
+        num_angles = max(_min_value, int(num_angles))
+
+        # Preallocate the array with default values.
+        new_distance_map = -1.0 * np.ones((map_length,
+                                           map_length), dtype=float)
+
+        # Preallocate the array with default values.
+        new_angles = -1.0 * np.ones(num_angles, dtype=float)
+
+        # Start copying the angle values.
+        for j, value in enumerate(self._angles, start=0):
+
+            # Checking bounds.
+            if j &gt; num_angles:
+                break
+            # _end_if_
+
+            # Get only the last value.
+            new_angles[j] = value[-1]
+        # _end_for_
+
+        # Get the length of the estimated distance map.
+        # Note: The matrix is square (LxL).
+        L = self._distance_map.shape[0]
+
+        # Check according to the shapes.
+        if L &lt; map_length:
+
+            # If the estimated distance map we will have entries
+            # with the default value of &#39;-1&#39;.
+            new_distance_map[:L, :L] = self._distance_map.copy()
+
+        elif L &gt; map_length:
+
+            # Here we use only a sub-set of the estimated distance map.
+            new_distance_map = self._distance_map[:map_length, :map_length].copy()
+
+        else:
+
+            # Here we have the same dimensions: L == map_length.
+            new_distance_map = self._distance_map.copy()
+        # _end_if_
+
+        # Augment the total vector (with the unpacked values).
+        feature_vector = [*new_distance_map[np.triu_indices(map_length, k=1)],
+                          *new_angles]
+
+        # Return the feature vector (as list).
+        return feature_vector
+    # _end_def_
+
+    # Auxiliary.
+    def __str__(self):
+        &#34;&#34;&#34;
+        Print a readable string presentation of the object.
+        This will include its id(), along with its variables.
+
+        :return: a string representation of a MetalPdbData object.
+        &#34;&#34;&#34;
+
+        # Make the output string 1/5.
+        str_data_exists = False if self._dataset is None else True
+
+        # Make the output string 2/5.
+        str_contact_map = None if self._distance_map is None else self._distance_map.shape
+
+        # Make the output string 3/5.
+        str_list_angles = None if self._compute_angles is False else self._angles.shape
+
+        # Make the output string 4/5.
+        str_convex_area = None if self._area is None else np.round(self._area, 3)
+
+        # Make the output string 5/5.
+        str_convex_vol0 = None if self._volume is None else np.round(self._volume, 3)
+
+        # Return the f-string.
+        return f&#34; MetalPdbData Id({id(self)}): {linesep}&#34; \
+               f&#34; Dataset exists     = {str_data_exists} {linesep}&#34; \
+               f&#34; Contact map shape  = {str_contact_map} {linesep}&#34; \
+               f&#34; Angles list shape  = {str_list_angles} {linesep}&#34; \
+               f&#34; Convex Hull area   = {str_convex_area} {linesep}&#34; \
+               f&#34; Convex Hull volume = {str_convex_vol0} {linesep}&#34; \
+               f&#34; Central metal atom = {self._center_metal_atom} {linesep}&#34; \
+               f&#34; Statistics         = {self._stats_counter}&#34;
+    # _end_def_
+
+# _end_class_</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData"><code class="flex name class">
+<span>class <span class="ident">MetalPdbData</span></span>
+<span>(</span><span>compute_angles=False, compute_convex_hull=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Provides assistance with processing the metal PDB files.
+It generates contact/distance maps from the "n-closest"
+atoms near the center metal atom.</p>
+<p>Optionally, it can use the selected atoms and create a
+ConvexHull object, were we can later extract its volume
+and its surface area.</p>
+<p>Optionally, we can compute the angles among the center
+metal atom and its nearest points (excluding Hydrogen
+and Carbon).</p>
+<p>Constructs an object that will create the contact map, along with
+the rest of the data arrays from a given PDB / CSD (metal) file.
+Initially all the class fields are set to None.</p>
+<p>:param compute_angles: Boolean flag that enables the computation of
+the angles among the estimated contact map points. Default is False.</p>
+<p>:param compute_convex_hull: Boolean flag that enables the computation of
+a "convex hull", from the contact map points. This will allow estimating
+quantities such as the area and the volume of the points.
+Default is False.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MetalPdbData(object):
+    &#34;&#34;&#34;
+    Provides assistance with processing the metal PDB files.
+    It generates contact/distance maps from the &#34;n-closest&#34;
+    atoms near the center metal atom.
+
+    Optionally, it can use the selected atoms and create a
+    ConvexHull object, were we can later extract its volume
+    and its surface area.
+
+    Optionally, we can compute the angles among the center
+    metal atom and its nearest points (excluding Hydrogen
+    and Carbon).
+    &#34;&#34;&#34;
+
+    # Object variables.
+    __slots__ = (&#34;_compute_angles&#34;, &#34;_compute_convex_hull&#34;, &#34;_dataset&#34;, &#34;_distance_map&#34;,
+                 &#34;_volume&#34;, &#34;_area&#34;, &#34;_center_metal_atom&#34;, &#34;_angles&#34;, &#34;_stats_counter&#34;)
+
+    # Constructor.
+    def __init__(self, compute_angles=False, compute_convex_hull=False):
+        &#34;&#34;&#34;
+        Constructs an object that will create the contact map, along with
+        the rest of the data arrays from a given PDB / CSD (metal) file.
+        Initially all the class fields are set to None.
+
+        :param compute_angles: Boolean flag that enables the computation of
+        the angles among the estimated contact map points. Default is False.
+
+        :param compute_convex_hull: Boolean flag that enables the computation of
+        a &#34;convex hull&#34;, from the contact map points. This will allow estimating
+        quantities such as the area and the volume of the points.
+        Default is False.
+        &#34;&#34;&#34;
+
+        # Set the flag.
+        self._compute_angles = compute_angles
+        &#34;&#34;&#34;
+        This flag allows the computation of the angles
+        between the selected points of the contact map.
+        &#34;&#34;&#34;
+
+        # Set the flag.
+        self._compute_convex_hull = compute_convex_hull
+        &#34;&#34;&#34;
+        This flag allows the computation of the convex hull
+        related quantities, such as area and volume of the
+        contact map points.
+        &#34;&#34;&#34;
+
+        self._area = None
+        &#34;&#34;&#34;
+        This is the area of the convex-hull object created by
+        the (x,y,z) coordinates of the selected atoms, around
+        the central metal atom.
+        &#34;&#34;&#34;
+
+        self._volume = None
+        &#34;&#34;&#34;
+        This is the volume of the convex-hull object, created by
+        the (x,y,z) coordinates of the selected atoms around the
+        central metal atom.
+        &#34;&#34;&#34;
+
+        self._dataset = None
+        &#34;&#34;&#34;
+        This is the dataset that will hold all the atoms around
+        the central metal atom, along with the distances of the
+        of these atoms (excluding &#39;H&#39; and &#39;C&#39;), from the center
+        atom.
+        &#34;&#34;&#34;
+
+        self._distance_map = None
+        &#34;&#34;&#34;
+        This is the distance/contact map that has been generated
+        by the PDB file using all the pairwise distances from all
+        the selected metal atoms.
+        &#34;&#34;&#34;
+
+        self._angles = None
+        &#34;&#34;&#34;
+        This is a numpy array that contains the computed angles
+        between all the map points.  The first three columns of
+        the array contain the index positions of the points and
+        the last column contains the angle in degrees.
+        &#34;&#34;&#34;
+
+        self._center_metal_atom = None
+        &#34;&#34;&#34;
+        The center metal atom is the point of reference for all
+        the distance / contact maps. It is of &#39;MetalAtom&#39; type.
+        &#34;&#34;&#34;
+
+        self._stats_counter = {&#34;n_calls&#34;: 0,
+                               &#34;metals_freq&#34;: defaultdict(int)}
+        &#34;&#34;&#34;
+        This dictionary will hold statistics for the object. It
+        will hold information like: 1) the number of times that
+        was called, 2) the frequency of the metal site atoms it
+        found, etc.
+        &#34;&#34;&#34;
+    # _end_def_
+
+    # Auxiliary method.
+    def reset_all_data(self, show_warning=False):
+        &#34;&#34;&#34;
+        Clears all the data and resets them back to empty lists.
+        This is to ensure that if we accidentally call the main
+        function twice, we will not append the same data in the
+        lists.
+
+        :param show_warning: Boolean flag to prompt a warning
+        before resetting the data. There is no option to stop
+        the process.
+
+        :return: None.
+        &#34;&#34;&#34;
+
+        # Reset everything to None/False.
+        for field in self.__slots__:
+
+            # Skip the flags and the statistics dictionary.
+            if field in {&#34;_stats_counter&#34;, &#34;_compute_angles&#34;,
+                         &#34;_compute_convex_hull&#34;}:
+                continue
+            # _end_if_
+
+            # Make sure the field exists.
+            if hasattr(self, field):
+
+                # Reset its value to None.
+                setattr(self, field, None)
+
+            # _end_if_
+
+        # _end_for_
+
+        # Check if we want to display a warning.
+        if show_warning:
+            print(f&#34;WARNING: {self.__class__.__name__}: &#34;
+                  f&#34;All the data have been reset to &#39;None&#39;!&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def compute_angles(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the compute_angles flag.
+
+        :return: the boolean value of the compute_angles flag.
+        &#34;&#34;&#34;
+        return self._compute_angles
+
+    # _end_def_
+
+    @compute_angles.setter
+    def compute_angles(self, new_value):
+        &#34;&#34;&#34;
+        Accessor (setter) of the compute_angles flag.
+
+        :param new_value: (bool).
+        &#34;&#34;&#34;
+
+        # Check for correct type.
+        if isinstance(new_value, bool):
+
+            # Update the flag value.
+            self._compute_angles = new_value
+        else:
+            raise TypeError(f&#34;{self.__class__.__name__}: &#34;
+                            f&#34;Compute angles flag should be bool: {type(new_value)}.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def compute_convex_hull(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the compute_convex_hull flag.
+
+        :return: the boolean value of the compute_convex_hull flag.
+        &#34;&#34;&#34;
+        return self._compute_convex_hull
+
+    # _end_def_
+
+    @compute_convex_hull.setter
+    def compute_convex_hull(self, new_value):
+        &#34;&#34;&#34;
+        Accessor (setter) of the compute_convex_hull flag.
+
+        :param new_value: (bool).
+        &#34;&#34;&#34;
+
+        # Check for correct type.
+        if isinstance(new_value, bool):
+
+            # Update the flag value.
+            self._compute_convex_hull = new_value
+        else:
+            raise TypeError(f&#34;{self.__class__.__name__}: &#34;
+                            f&#34;Compute convex hull flag should be bool: {type(new_value)}.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def get_statistics(self):
+        &#34;&#34;&#34;
+        Provides access to the statistics that have
+        been collected during the current life-time
+        of the object.
+
+        :return: the dictionary with the statistics.
+        &#34;&#34;&#34;
+        return self._stats_counter
+    # _end_def_
+
+    @property
+    def dataset(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the dataset.
+
+        :return:  a tuple with a pandas DataFrame containing ALL
+        the atoms along with a list with the sorted distances of
+        the non hydrogen atoms from the central metal atom.
+        &#34;&#34;&#34;
+
+        # Check if the dataset exists.
+        if self._dataset is not None:
+
+            # Return all the data.
+            return self._dataset
+        else:
+
+            # Raise an error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Dataset is not initialized yet.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def distance_map(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the distance/contact map.
+
+        :return: a symmetric [N x N] map with zeros in
+        the diagonal.
+        &#34;&#34;&#34;
+
+        # Check if the distance map exist.
+        if self._distance_map is not None:
+
+            # Return the map.
+            return self._distance_map
+        else:
+
+            # Raise an error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Distance map has not been estimated.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def min_length(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the number of contacts that
+        have been estimated. I.e. the number of atoms we
+        have compared the central atom with.
+
+        :return: the height (or the width) of the distance
+        map.
+        &#34;&#34;&#34;
+
+        # Check if the distance map exist.
+        if self._distance_map is not None:
+
+            # Return the height of the map.
+            return self._distance_map.shape[0]
+        else:
+
+            # Raise an error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Distance map has not been estimated.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def angles(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the calculated angles.
+
+        :return: an array of angles between the contact
+        map points.
+        &#34;&#34;&#34;
+
+        # Check if the angles list exist.
+        if self._angles is not None:
+
+            # Return the list.
+            return self._angles
+        else:
+
+            # Raise an error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Angles array has not been estimated.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def convex_area(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the convex-hull surface area from
+        all the selected points around the central metal atom.
+
+        :return: a list of floats in $L^2$ units [L: Angstrom].
+        &#34;&#34;&#34;
+
+        # Check if the area list is empty.
+        if self._area is not None:
+
+            # Return the list with the surface areas.
+            return self._area
+        else:
+
+            # Raise an error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Convex-hull surface areas &#34;
+                               f&#34;have not been estimated.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def convex_volume(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the convex-hull volume from
+        all the selected atoms around the central metal.
+
+        :return: a list of floats in $L^3$ units.
+
+        --&gt; L: should be in Angstrom.
+        &#34;&#34;&#34;
+
+        # Check if the volume list is empty.
+        if self._volume is not None:
+
+            # Return the convex volume.
+            return self._volume
+        else:
+
+            # Raise an error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Convex-hull volumes list &#34;
+                               f&#34;has not been estimated.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @property
+    def center_metal_atom(self):
+        &#34;&#34;&#34;
+        Accessor (getter) of the center metal atom.
+
+        :return: a MetalAtom (namedtuple).
+        &#34;&#34;&#34;
+
+        # Check if atom exists.
+        if self._center_metal_atom is not None:
+
+            # Return the MetalAtom object.
+            return self._center_metal_atom
+        else:
+
+            # Raise an error.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Central metal atom is not found yet.&#34;)
+        # _end_if_
+
+    # _end_def_
+
+    @staticmethod
+    def angles_from_coordinates(points_xyz, n_closest=None):
+        &#34;&#34;&#34;
+        Computes a list of angles among the points in the input array.
+        We always assume that the first item in the &#34;points_xyz&#34; has
+        the central atom.
+
+        :param points_xyz: Input array with the (x, y, z) coordinates.
+        Each row in the input array is a different point (in 3D space).
+
+        :param n_closest: Number of neighbouring points to consider when
+        computing the angles. If &#39;None&#39;, then we will compute and return
+        all the angles.
+
+        :return: A list with the angles.
+        &#34;&#34;&#34;
+
+        # Total number of points in the input list.
+        L = len(points_xyz)
+
+        # If there are less than three atoms we can&#39;t
+        # compute any angles.
+        if L &lt; 3:
+            return None
+        # _end_if_
+
+        # Check if an input is given.
+        if n_closest is None:
+            # Maximum number of points to consider.
+            n_closest = L-1
+        else:
+            # Make sure we are not out of bounds.
+            n_closest = np.minimum(L-1, np.maximum(1, n_closest))
+        # _end_if_
+
+        # Ensure the input is int.
+        n_closest = int(n_closest)
+
+        # Store the angles.
+        angles_list = []
+
+        # Localize the list append method.
+        angles_list_append = angles_list.append
+
+        # Localize the angle method.
+        get_angle = fast_compute_angle
+
+        # Get a reference of the central metal atom.
+        # NOTE: This is assumed to be in location 0.
+        pt_center = points_xyz[0]
+
+        # Compute the angles among the central
+        # metal atom and its closest neighbors.
+        for j in range(1, n_closest+1):
+
+            # Get the second (LEFT) point.
+            pt_j = points_xyz[j]
+
+            for k in range(j + 1, n_closest+1):
+
+                # Get the third (RIGHT) point.
+                pt_k = points_xyz[k]
+
+                # Get the angle in question (in degrees).
+                angles_list_append((j, 0, k,
+                                    get_angle(pt_j, pt_center, pt_k)))
+            # _end_for_
+
+        # _end_for_
+
+        # Return the numpy array (float).
+        return np.array(angles_list, dtype=float)
+    # _end_def_
+
+    # Auxiliary method.
+    def read_data_file(self, f_path, f_type=&#34;CSD&#34;):
+        &#34;&#34;&#34;
+        Reads the input data file and returns a list with
+        the entries using the PDB file format (see above).
+
+        :param f_path: Path of the metal input file.
+
+        :param f_type: File type CSD (default)/ PDB.
+
+        :return: A list with the required entries.
+        &#34;&#34;&#34;
+
+        # Check the file type.
+        if f_type not in {&#34;CSD&#34;, &#34;PDB&#34;}:
+            raise ValueError(f&#34;{self.__class__.__name__}: &#34;
+                             f&#34;The acceptable file types are &#39;CSD&#39; or &#39;PDB&#39;: {f_type}&#34;)
+        # _end_if_
+
+        # Create a temporary data structure
+        # to hold the data from the file.
+        data_list = []
+
+        # Read the data from the file.
+        with open(f_path, &#34;r&#34;) as f_in:
+
+            # Localize append method for speed.
+            data_list_append = data_list.append
+
+            # Process each line.
+            for row in f_in.readlines():
+
+                # Make sure we capture any exceptions
+                try:
+                    # Get the first entry in the line.
+                    # Make sure there are no empty spaces
+                    # around the word.
+                    entry = str(row[0:6]).strip().upper()
+
+                    # Break when you reach the end of the model.
+                    if &#34;END&#34; == entry:
+                        break
+
+                    # Process only &#39;atom&#39; or &#39;hetero-atom&#39; entries.
+                    elif entry in {&#34;ATOM&#34;, &#34;HETATM&#34;}:
+
+                        # Create a new row for the dataframe.
+                        record = {&#34;ID&#34;: int(row[6:11]),
+                                  &#34;NAME&#34;: str(row[12:16]).strip().upper(),
+                                  &#34;X&#34;: float(row[30:38]),
+                                  &#34;Y&#34;: float(row[38:46]),
+                                  &#34;Z&#34;: float(row[46:54]),
+                                  &#34;TYPE&#34;: str(row[76:78]).strip().upper()}
+
+                        # Update the list.
+                        data_list_append(record)
+
+                    # _end_if_
+
+                except ValueError as v_err:
+
+                    # Show a warning message.
+                    print(f&#34;{self.__class__.__name__}: &#34;
+                          f&#34;WARNING: {v_err} at {f_path.stem}&#34;)
+
+                    # If methods &#39;int&#39; and &#39;float&#39; can&#39;t convert the strings
+                    # they will throw a ValueError. In this case skip and go
+                    # to the next row.
+                    continue
+                # _end_try_
+
+            # _end_for_
+
+        # _end_with_
+
+        # Return the list with the file entries.
+        return data_list
+    # _end_def_
+
+    @staticmethod
+    def find_central_atom(df: pd.DataFrame = None) -&gt; MetalAtom:
+        &#34;&#34;&#34;
+        Find which metal atom (from the accepted list)
+        is closest to the center of mass.
+
+        :param df: dataframe with the entries from the
+        input (metal) PDB file.
+
+        :return: center_metal (as MetalAtom object).
+        &#34;&#34;&#34;
+
+        # Make sure we have an input dataframe.
+        if df is None:
+            return None
+        # _end_if_
+
+        # Find the center mass. This is simply
+        # the mean coordinates from all atoms.
+        center_mass = df[[&#34;X&#34;, &#34;Y&#34;, &#34;Z&#34;]].mean(axis=0). \
+            to_numpy(dtype=float)
+
+        # Center metal and minimum distance.
+        center_metal, min_dist = None, np.inf
+
+        # Localize the Euclidean norm function.
+        get_euclidean_norm = fast_euclidean_norm
+
+        # Localize the array function.
+        np_array = np.array
+
+        # Scan all the values of the df.
+        for it in df.to_dict(&#34;records&#34;):
+
+            # Consider only metal atoms from a target list.
+            if it[&#34;TYPE&#34;].upper().startswith(METAL_TARGETS):
+
+                # Atom coordinates vector.
+                it_coord = np_array([it[&#34;X&#34;],
+                                     it[&#34;Y&#34;],
+                                     it[&#34;Z&#34;]], dtype=float)
+
+                # Distance between coordinates.
+                diff = center_mass - it_coord
+
+                # Euclidean norm.
+                this_dist = get_euclidean_norm(diff)
+
+                # Update the minimum.
+                if np.isfinite(this_dist) and this_dist &lt; min_dist:
+                    # Update the minimum.
+                    min_dist = this_dist
+
+                    # Update the new center atom.
+                    center_metal = MetalAtom(**it, DIST=min_dist)
+                # _end_if_
+
+            # _end_if_
+
+        # _end_for_
+
+        return center_metal
+    # _end_def_
+
+    # Auxiliary method.
+    def estimate_distances(self, f_path, f_type=&#34;CSD&#34;, max_length=None,
+                           n_closest=None):
+        &#34;&#34;&#34;
+        This is the main function of the MetalPdbData class. It accepts
+        as input a Path(/path/to/the/PDB) and then estimates the sorted
+        distances of all the non--hydrogen atoms from the central metal
+        atom.
+
+        :param f_path: Path of the (metal) CSD / PDB file.
+
+        :param f_type: File type CSD (default) or PDB.
+
+        :param max_length: Integer that defines the maximum number of
+        atoms to consider for the contact map. If &#39;None&#39; (default) it
+        will use all the available atoms.
+
+        :param n_closest: Number of neighbouring points to consider when
+        computing the angles.  If &#39;None&#39; (default), then we will compute
+        and return all the angles.
+
+        :return: None.
+        &#34;&#34;&#34;
+
+        # Check file type.
+        if f_type not in {&#34;CSD&#34;, &#34;PDB&#34;}:
+            raise ValueError(f&#34;{self.__class__.__name__}: &#34;
+                             f&#34;File type {f_type} is not recognized.&#34;)
+        # _end_if_
+
+        # If a value has been given.
+        if max_length is not None:
+
+            # Check the type.
+            if not isinstance(max_length, int):
+
+                # This will raise an error if an input has
+                # been given, but it is not an integer type.
+                raise TypeError(f&#34;{self.__class__.__name__}: The maximum length for &#34;
+                                f&#34;a contact map should be an integer: {max_length}. &#34;)
+            # _end_if_
+
+        # _end_if_
+
+        # First we need to  make sure all data are cleared.
+        # That means setting all the fields values to None.
+        self.reset_all_data()
+
+        # Ensure the f_path is Path.
+        f_path = Path(f_path)
+
+        # Make sure is a file.
+        if f_path.is_file():
+
+            # STEP: 1
+            # Create the dataframe from the raw data file.
+            df = pd.DataFrame(data=self.read_data_file(f_path, f_type))
+
+            # Sanity check.
+            if df.empty:
+                raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                                   f&#34;The input data file {f_path} did not return any data.&#34;)
+            # _end_if_
+
+            # STEP: 2
+            # Find the center metal atom.
+            center_metal = MetalPdbData.find_central_atom(df)
+
+            # Sanity check.
+            if center_metal is None:
+
+                # Display a waring message.
+                raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                                   f&#34;Center metal not found in {f_path.stem}.&#34;)
+            # _end_if_
+
+            # Copy the central atom in the object.
+            self._center_metal_atom = center_metal
+
+            # Increase the call counter.
+            self._stats_counter[&#34;n_calls&#34;] += 1
+
+            # Update the statistics dictionary.
+            self._stats_counter[&#34;metals_freq&#34;][center_metal.TYPE] += 1
+
+            # STEP: 4
+            # Get all the distances (ignoring &#34;H&#34; and &#34;C&#34; atoms).
+            #
+
+            # Distances list.
+            distances = []
+
+            # Localize append method (for faster execution).
+            distances_append = distances.append
+
+            # Localize the Euclidean norm function.
+            get_euclidean_norm = fast_euclidean_norm
+
+            # XYZ coordinates of the central metal.
+            center_coord = np.array([center_metal.X,
+                                     center_metal.Y,
+                                     center_metal.Z], dtype=float)
+
+            # Scan all the entries in the dataframe, but
+            # consider only non hydrogen or carbon atoms.
+            for it in df.to_dict(&#34;records&#34;):
+
+                # Skip Hydrogen and Carbon atoms.
+                if it[&#34;TYPE&#34;] in {&#34;H&#34;, &#34;C&#34;}:
+                    continue
+                # _end_if_
+
+                # Atom coordinates vector.
+                it_coord = np.array([it[&#34;X&#34;],
+                                     it[&#34;Y&#34;],
+                                     it[&#34;Z&#34;]], dtype=float)
+
+                # Distance between coordinates.
+                diff = center_coord - it_coord
+
+                # Euclidean norm.
+                dist = get_euclidean_norm(diff)
+
+                # Make sure the distance is finite.
+                if np.isfinite(dist):
+
+                    # Store the pair (id, distance).
+                    distances_append((it[&#34;ID&#34;], dist))
+
+                # _end_if_
+
+            # _end_for_
+
+            # Sort the list of distances (from small to large).
+            sorted_distances = sorted(distances, key=itemgetter(1))
+
+            # Store a copy of the results in the object.
+            self._dataset = (df.copy(), np.copy(sorted_distances))
+
+            # Make sure the max_length has been set.
+            if max_length is None:
+
+                # Set the max to the same length.
+                max_length = len(sorted_distances)
+
+            else:
+
+                # Make sure we are not out of bounds.
+                max_length = np.minimum(max_length,
+                                        len(sorted_distances))
+            # _end_if_
+
+            # Ensure this var is integer.
+            max_length = int(max_length)
+
+            # STEP 5:
+            # Use &#39;cdist&#39; to get the distances among all
+            # atoms. This is very fast (using &#39;C&#39; code).
+
+            # This will &#39;speed up&#39; the search.
+            df.set_index([&#34;ID&#34;], inplace=True)
+
+            # Empty list.
+            coord_xyz = []
+
+            # Localize the append method.
+            coord_xyz_append = coord_xyz.append
+
+            # Copy the first &#34;max_length&#34; coordinates
+            # in a separate list for further process.
+            for n, (id_n, _) in enumerate(sorted_distances):
+
+                # Bounds Check: for safety.
+                if n &gt;= max_length:
+                    break
+                # _end_if_
+
+                # Copy the coordinates vector.
+                coord_xyz_append(df.loc[id_n][[&#34;X&#34;, &#34;Y&#34;, &#34;Z&#34;]])
+            # _end_for_
+
+            # Convert to numpy array.
+            coord_xyz = np.array(coord_xyz, dtype=float)
+
+            # Compute distances between each pair of the same
+            # array and add the distance map to the object.
+            self._distance_map = cdist(coord_xyz, coord_xyz,
+                                       metric=&#34;euclidean&#34;)
+            # STEP 6:
+            #
+            # Optionally get the angles among the &#39;n_closest&#39; points.
+            if self.compute_angles:
+
+                # Store the angles in the object.
+                self._angles = self.angles_from_coordinates(coord_xyz,
+                                                            n_closest=n_closest)
+            # _end_if_
+
+            # STEP 7:
+            #
+            # Optionally get the convex hull quantities.
+            if self.compute_convex_hull:
+
+                # In 3D, we need at least 4 points to define a convex hull.
+                if max_length &gt; 3:
+
+                    # If we don&#39;t have enough points an error will be raised.
+                    try:
+                        # Construct a Convex hull from the selected points.
+                        conv_hull = ConvexHull(coord_xyz, qhull_options=&#39;QJ&#39;)
+
+                        # Get the convex hull surface area.
+                        self._area = conv_hull.area
+
+                        # Get the convex hull volume.
+                        self._volume = conv_hull.volume
+
+                    except QhullError as e:
+
+                        # This error message is not catastrophic. It just
+                        # means that we will not have the ConvexHull obj.
+                        print(f&#34;{self.__class__.__name__}: Error -&gt; {e}&#34;)
+
+                    # _end_try_
+                else:
+                    # Inform the user we need to increase the max_length.
+                    print(f&#34;{self.__class__.__name__}: WARNING: &#34;
+                          &#34;You need at least four points (max_length &gt;= 4) &#34;
+                          &#34;to define a convex hull in 3D.&#34;)
+                # _end_if_
+
+            # _end_if_
+
+        # _end_if_
+
+    # _end_def_
+
+    # Auxiliary.
+    def save_data(self, output_dir=None):
+        &#34;&#34;&#34;
+        Save the object&#39;s data to an HDF5 file.
+
+        :param output_dir: The directory we want to save the data.
+        The default output is the current working directory (CWD).
+
+        :return: None.
+        &#34;&#34;&#34;
+
+        # Check for the output.
+        if output_dir is None:
+            output_dir = Path.cwd()
+        # _end_if_
+
+        # Create an output path.
+        path_out = Path(Path(output_dir) / f&#34;metal_{id(self)}.h5&#34;)
+
+        # This will hold the fields we are saving to file.
+        data_fields = []
+
+        # Create a HDF5 output file (write only).
+        with h5py.File(path_out, &#34;w&#34;) as f_out:
+
+            # Sanity check.
+            if self._area is not None:
+                # Update the list.
+                data_fields.append(&#34;area&#34;)
+
+                # Save the convex-hull area.
+                f_out.create_dataset(&#34;area&#34;,
+                                     data=self._area)
+            # _end_if_
+
+            # Sanity check.
+            if self._angles is not None:
+                # Update the list.
+                data_fields.append(&#34;angles&#34;)
+
+                # Save the angle values.
+                f_out.create_dataset(&#34;angles&#34;,
+                                     data=self._angles)
+            # _end_if_
+
+            # Sanity check.
+            if self._volume is not None:
+                # Update the list.
+                data_fields.append(&#34;volume&#34;)
+
+                # Save the convex-hull volume.
+                f_out.create_dataset(&#34;volume&#34;,
+                                     data=self._volume)
+            # _end_if_
+
+            # Sanity check.
+            if self._distance_map is not None:
+                # Update the list.
+                data_fields.append(&#34;dist_map&#34;)
+
+                # Save the distance maps list.
+                f_out.create_dataset(&#34;dist_map&#34;,
+                                     data=self._distance_map)
+            # _end_if_
+
+            # Sanity check.
+            if self._dataset is not None:
+                # Unpack the data.
+                _, sorted_distances = self._dataset
+
+                # Update the list.
+                data_fields.append(&#34;sorted_distances&#34;)
+
+                # Save the sorted distances.
+                f_out.create_dataset(&#34;idx_sorted_dist&#34;,
+                                     data=sorted_distances)
+            # _end_if_
+
+        # _end_with_
+
+        # Display info.
+        print(f&#34;Saved {data_fields} to: {path_out}&#34;)
+    # _end_def_
+
+    # Auxiliary.
+    def __call__(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        This is only a &#34;wrapper&#34; of the
+        &#34;estimate_distances&#34; method.
+        &#34;&#34;&#34;
+        return self.estimate_distances(*args, **kwargs)
+    # _end_def_
+
+    # Create the feature vector for the ML algorithms.
+    def features_vector(self, map_length=7, num_angles=15):
+        &#34;&#34;&#34;
+        Using the pre-computed distance maps and the angles
+        construct a &#34;feature vector&#34; according to the input
+        requirements.
+
+        If the input requirements are higher than the estimated
+        map/angles, the feature vector will be filled with &#39;-1&#39;
+        which is the default (N/A) values.
+
+        :param map_length: The size of the map we want to extract.
+        Note that the maps are square (MxM).
+
+        :param num_angles: The number of angles we want to include.
+
+        :return: a feature vector with dimensions: &#39;n*(n-1)/2 + m&#39;,
+        where n=map_length and m=num_angles.
+        &#34;&#34;&#34;
+
+        # Sanity check.
+        if self._distance_map is None:
+            raise RuntimeError(f&#34;{self.__class__.__name__}: Distance map is missing.&#34;)
+        # _end_if_
+
+        # Sanity check.
+        if self._angles is None:
+            raise RuntimeError(f&#34;{self.__class__.__name__}: Angles list is missing.&#34;)
+        # _end_if_
+
+        # Local minimum value.
+        _min_value = 5
+
+        # Make sure the input parameters are integers.
+        map_length = max(_min_value, int(map_length))
+        num_angles = max(_min_value, int(num_angles))
+
+        # Preallocate the array with default values.
+        new_distance_map = -1.0 * np.ones((map_length,
+                                           map_length), dtype=float)
+
+        # Preallocate the array with default values.
+        new_angles = -1.0 * np.ones(num_angles, dtype=float)
+
+        # Start copying the angle values.
+        for j, value in enumerate(self._angles, start=0):
+
+            # Checking bounds.
+            if j &gt; num_angles:
+                break
+            # _end_if_
+
+            # Get only the last value.
+            new_angles[j] = value[-1]
+        # _end_for_
+
+        # Get the length of the estimated distance map.
+        # Note: The matrix is square (LxL).
+        L = self._distance_map.shape[0]
+
+        # Check according to the shapes.
+        if L &lt; map_length:
+
+            # If the estimated distance map we will have entries
+            # with the default value of &#39;-1&#39;.
+            new_distance_map[:L, :L] = self._distance_map.copy()
+
+        elif L &gt; map_length:
+
+            # Here we use only a sub-set of the estimated distance map.
+            new_distance_map = self._distance_map[:map_length, :map_length].copy()
+
+        else:
+
+            # Here we have the same dimensions: L == map_length.
+            new_distance_map = self._distance_map.copy()
+        # _end_if_
+
+        # Augment the total vector (with the unpacked values).
+        feature_vector = [*new_distance_map[np.triu_indices(map_length, k=1)],
+                          *new_angles]
+
+        # Return the feature vector (as list).
+        return feature_vector
+    # _end_def_
+
+    # Auxiliary.
+    def __str__(self):
+        &#34;&#34;&#34;
+        Print a readable string presentation of the object.
+        This will include its id(), along with its variables.
+
+        :return: a string representation of a MetalPdbData object.
+        &#34;&#34;&#34;
+
+        # Make the output string 1/5.
+        str_data_exists = False if self._dataset is None else True
+
+        # Make the output string 2/5.
+        str_contact_map = None if self._distance_map is None else self._distance_map.shape
+
+        # Make the output string 3/5.
+        str_list_angles = None if self._compute_angles is False else self._angles.shape
+
+        # Make the output string 4/5.
+        str_convex_area = None if self._area is None else np.round(self._area, 3)
+
+        # Make the output string 5/5.
+        str_convex_vol0 = None if self._volume is None else np.round(self._volume, 3)
+
+        # Return the f-string.
+        return f&#34; MetalPdbData Id({id(self)}): {linesep}&#34; \
+               f&#34; Dataset exists     = {str_data_exists} {linesep}&#34; \
+               f&#34; Contact map shape  = {str_contact_map} {linesep}&#34; \
+               f&#34; Angles list shape  = {str_list_angles} {linesep}&#34; \
+               f&#34; Convex Hull area   = {str_convex_area} {linesep}&#34; \
+               f&#34; Convex Hull volume = {str_convex_vol0} {linesep}&#34; \
+               f&#34; Central metal atom = {self._center_metal_atom} {linesep}&#34; \
+               f&#34; Statistics         = {self._stats_counter}&#34;</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.angles_from_coordinates"><code class="name flex">
+<span>def <span class="ident">angles_from_coordinates</span></span>(<span>points_xyz, n_closest=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes a list of angles among the points in the input array.
+We always assume that the first item in the "points_xyz" has
+the central atom.</p>
+<p>:param points_xyz: Input array with the (x, y, z) coordinates.
+Each row in the input array is a different point (in 3D space).</p>
+<p>:param n_closest: Number of neighbouring points to consider when
+computing the angles. If 'None', then we will compute and return
+all the angles.</p>
+<p>:return: A list with the angles.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def angles_from_coordinates(points_xyz, n_closest=None):
+    &#34;&#34;&#34;
+    Computes a list of angles among the points in the input array.
+    We always assume that the first item in the &#34;points_xyz&#34; has
+    the central atom.
+
+    :param points_xyz: Input array with the (x, y, z) coordinates.
+    Each row in the input array is a different point (in 3D space).
+
+    :param n_closest: Number of neighbouring points to consider when
+    computing the angles. If &#39;None&#39;, then we will compute and return
+    all the angles.
+
+    :return: A list with the angles.
+    &#34;&#34;&#34;
+
+    # Total number of points in the input list.
+    L = len(points_xyz)
+
+    # If there are less than three atoms we can&#39;t
+    # compute any angles.
+    if L &lt; 3:
+        return None
+    # _end_if_
+
+    # Check if an input is given.
+    if n_closest is None:
+        # Maximum number of points to consider.
+        n_closest = L-1
+    else:
+        # Make sure we are not out of bounds.
+        n_closest = np.minimum(L-1, np.maximum(1, n_closest))
+    # _end_if_
+
+    # Ensure the input is int.
+    n_closest = int(n_closest)
+
+    # Store the angles.
+    angles_list = []
+
+    # Localize the list append method.
+    angles_list_append = angles_list.append
+
+    # Localize the angle method.
+    get_angle = fast_compute_angle
+
+    # Get a reference of the central metal atom.
+    # NOTE: This is assumed to be in location 0.
+    pt_center = points_xyz[0]
+
+    # Compute the angles among the central
+    # metal atom and its closest neighbors.
+    for j in range(1, n_closest+1):
+
+        # Get the second (LEFT) point.
+        pt_j = points_xyz[j]
+
+        for k in range(j + 1, n_closest+1):
+
+            # Get the third (RIGHT) point.
+            pt_k = points_xyz[k]
+
+            # Get the angle in question (in degrees).
+            angles_list_append((j, 0, k,
+                                get_angle(pt_j, pt_center, pt_k)))
+        # _end_for_
+
+    # _end_for_
+
+    # Return the numpy array (float).
+    return np.array(angles_list, dtype=float)</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.find_central_atom"><code class="name flex">
+<span>def <span class="ident">find_central_atom</span></span>(<span>df: pandas.core.frame.DataFrame = None) ‑> src.metal_auxiliaries.MetalAtom</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find which metal atom (from the accepted list)
+is closest to the center of mass.</p>
+<p>:param df: dataframe with the entries from the
+input (metal) PDB file.</p>
+<p>:return: center_metal (as MetalAtom object).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def find_central_atom(df: pd.DataFrame = None) -&gt; MetalAtom:
+    &#34;&#34;&#34;
+    Find which metal atom (from the accepted list)
+    is closest to the center of mass.
+
+    :param df: dataframe with the entries from the
+    input (metal) PDB file.
+
+    :return: center_metal (as MetalAtom object).
+    &#34;&#34;&#34;
+
+    # Make sure we have an input dataframe.
+    if df is None:
+        return None
+    # _end_if_
+
+    # Find the center mass. This is simply
+    # the mean coordinates from all atoms.
+    center_mass = df[[&#34;X&#34;, &#34;Y&#34;, &#34;Z&#34;]].mean(axis=0). \
+        to_numpy(dtype=float)
+
+    # Center metal and minimum distance.
+    center_metal, min_dist = None, np.inf
+
+    # Localize the Euclidean norm function.
+    get_euclidean_norm = fast_euclidean_norm
+
+    # Localize the array function.
+    np_array = np.array
+
+    # Scan all the values of the df.
+    for it in df.to_dict(&#34;records&#34;):
+
+        # Consider only metal atoms from a target list.
+        if it[&#34;TYPE&#34;].upper().startswith(METAL_TARGETS):
+
+            # Atom coordinates vector.
+            it_coord = np_array([it[&#34;X&#34;],
+                                 it[&#34;Y&#34;],
+                                 it[&#34;Z&#34;]], dtype=float)
+
+            # Distance between coordinates.
+            diff = center_mass - it_coord
+
+            # Euclidean norm.
+            this_dist = get_euclidean_norm(diff)
+
+            # Update the minimum.
+            if np.isfinite(this_dist) and this_dist &lt; min_dist:
+                # Update the minimum.
+                min_dist = this_dist
+
+                # Update the new center atom.
+                center_metal = MetalAtom(**it, DIST=min_dist)
+            # _end_if_
+
+        # _end_if_
+
+    # _end_for_
+
+    return center_metal</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.angles"><code class="name">var <span class="ident">angles</span></code></dt>
+<dd>
+<div class="desc"><p>Accessor (getter) of the calculated angles.</p>
+<p>:return: an array of angles between the contact
+map points.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def angles(self):
+    &#34;&#34;&#34;
+    Accessor (getter) of the calculated angles.
+
+    :return: an array of angles between the contact
+    map points.
+    &#34;&#34;&#34;
+
+    # Check if the angles list exist.
+    if self._angles is not None:
+
+        # Return the list.
+        return self._angles
+    else:
+
+        # Raise an error.
+        raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                           f&#34;Angles array has not been estimated.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.center_metal_atom"><code class="name">var <span class="ident">center_metal_atom</span></code></dt>
+<dd>
+<div class="desc"><p>Accessor (getter) of the center metal atom.</p>
+<p>:return: a MetalAtom (namedtuple).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def center_metal_atom(self):
+    &#34;&#34;&#34;
+    Accessor (getter) of the center metal atom.
+
+    :return: a MetalAtom (namedtuple).
+    &#34;&#34;&#34;
+
+    # Check if atom exists.
+    if self._center_metal_atom is not None:
+
+        # Return the MetalAtom object.
+        return self._center_metal_atom
+    else:
+
+        # Raise an error.
+        raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                           f&#34;Central metal atom is not found yet.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.compute_angles"><code class="name">var <span class="ident">compute_angles</span></code></dt>
+<dd>
+<div class="desc"><p>Accessor (getter) of the compute_angles flag.</p>
+<p>:return: the boolean value of the compute_angles flag.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def compute_angles(self):
+    &#34;&#34;&#34;
+    Accessor (getter) of the compute_angles flag.
+
+    :return: the boolean value of the compute_angles flag.
+    &#34;&#34;&#34;
+    return self._compute_angles</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.compute_convex_hull"><code class="name">var <span class="ident">compute_convex_hull</span></code></dt>
+<dd>
+<div class="desc"><p>Accessor (getter) of the compute_convex_hull flag.</p>
+<p>:return: the boolean value of the compute_convex_hull flag.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def compute_convex_hull(self):
+    &#34;&#34;&#34;
+    Accessor (getter) of the compute_convex_hull flag.
+
+    :return: the boolean value of the compute_convex_hull flag.
+    &#34;&#34;&#34;
+    return self._compute_convex_hull</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.convex_area"><code class="name">var <span class="ident">convex_area</span></code></dt>
+<dd>
+<div class="desc"><p>Accessor (getter) of the convex-hull surface area from
+all the selected points around the central metal atom.</p>
+<p>:return: a list of floats in $L^2$ units [L: Angstrom].</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def convex_area(self):
+    &#34;&#34;&#34;
+    Accessor (getter) of the convex-hull surface area from
+    all the selected points around the central metal atom.
+
+    :return: a list of floats in $L^2$ units [L: Angstrom].
+    &#34;&#34;&#34;
+
+    # Check if the area list is empty.
+    if self._area is not None:
+
+        # Return the list with the surface areas.
+        return self._area
+    else:
+
+        # Raise an error.
+        raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                           f&#34;Convex-hull surface areas &#34;
+                           f&#34;have not been estimated.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.convex_volume"><code class="name">var <span class="ident">convex_volume</span></code></dt>
+<dd>
+<div class="desc"><p>Accessor (getter) of the convex-hull volume from
+all the selected atoms around the central metal.</p>
+<p>:return: a list of floats in $L^3$ units.</p>
+<p>&ndash;&gt; L: should be in Angstrom.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def convex_volume(self):
+    &#34;&#34;&#34;
+    Accessor (getter) of the convex-hull volume from
+    all the selected atoms around the central metal.
+
+    :return: a list of floats in $L^3$ units.
+
+    --&gt; L: should be in Angstrom.
+    &#34;&#34;&#34;
+
+    # Check if the volume list is empty.
+    if self._volume is not None:
+
+        # Return the convex volume.
+        return self._volume
+    else:
+
+        # Raise an error.
+        raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                           f&#34;Convex-hull volumes list &#34;
+                           f&#34;has not been estimated.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.dataset"><code class="name">var <span class="ident">dataset</span></code></dt>
+<dd>
+<div class="desc"><p>Accessor (getter) of the dataset.</p>
+<p>:return:
+a tuple with a pandas DataFrame containing ALL
+the atoms along with a list with the sorted distances of
+the non hydrogen atoms from the central metal atom.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def dataset(self):
+    &#34;&#34;&#34;
+    Accessor (getter) of the dataset.
+
+    :return:  a tuple with a pandas DataFrame containing ALL
+    the atoms along with a list with the sorted distances of
+    the non hydrogen atoms from the central metal atom.
+    &#34;&#34;&#34;
+
+    # Check if the dataset exists.
+    if self._dataset is not None:
+
+        # Return all the data.
+        return self._dataset
+    else:
+
+        # Raise an error.
+        raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                           f&#34;Dataset is not initialized yet.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.distance_map"><code class="name">var <span class="ident">distance_map</span></code></dt>
+<dd>
+<div class="desc"><p>Accessor (getter) of the distance/contact map.</p>
+<p>:return: a symmetric [N x N] map with zeros in
+the diagonal.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def distance_map(self):
+    &#34;&#34;&#34;
+    Accessor (getter) of the distance/contact map.
+
+    :return: a symmetric [N x N] map with zeros in
+    the diagonal.
+    &#34;&#34;&#34;
+
+    # Check if the distance map exist.
+    if self._distance_map is not None:
+
+        # Return the map.
+        return self._distance_map
+    else:
+
+        # Raise an error.
+        raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                           f&#34;Distance map has not been estimated.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.get_statistics"><code class="name">var <span class="ident">get_statistics</span></code></dt>
+<dd>
+<div class="desc"><p>Provides access to the statistics that have
+been collected during the current life-time
+of the object.</p>
+<p>:return: the dictionary with the statistics.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def get_statistics(self):
+    &#34;&#34;&#34;
+    Provides access to the statistics that have
+    been collected during the current life-time
+    of the object.
+
+    :return: the dictionary with the statistics.
+    &#34;&#34;&#34;
+    return self._stats_counter</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.min_length"><code class="name">var <span class="ident">min_length</span></code></dt>
+<dd>
+<div class="desc"><p>Accessor (getter) of the number of contacts that
+have been estimated. I.e. the number of atoms we
+have compared the central atom with.</p>
+<p>:return: the height (or the width) of the distance
+map.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def min_length(self):
+    &#34;&#34;&#34;
+    Accessor (getter) of the number of contacts that
+    have been estimated. I.e. the number of atoms we
+    have compared the central atom with.
+
+    :return: the height (or the width) of the distance
+    map.
+    &#34;&#34;&#34;
+
+    # Check if the distance map exist.
+    if self._distance_map is not None:
+
+        # Return the height of the map.
+        return self._distance_map.shape[0]
+    else:
+
+        # Raise an error.
+        raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                           f&#34;Distance map has not been estimated.&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.estimate_distances"><code class="name flex">
+<span>def <span class="ident">estimate_distances</span></span>(<span>self, f_path, f_type='CSD', max_length=None, n_closest=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This is the main function of the MetalPdbData class. It accepts
+as input a Path(/path/to/the/PDB) and then estimates the sorted
+distances of all the non&ndash;hydrogen atoms from the central metal
+atom.</p>
+<p>:param f_path: Path of the (metal) CSD / PDB file.</p>
+<p>:param f_type: File type CSD (default) or PDB.</p>
+<p>:param max_length: Integer that defines the maximum number of
+atoms to consider for the contact map. If 'None' (default) it
+will use all the available atoms.</p>
+<p>:param n_closest: Number of neighbouring points to consider when
+computing the angles.
+If 'None' (default), then we will compute
+and return all the angles.</p>
+<p>:return: None.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def estimate_distances(self, f_path, f_type=&#34;CSD&#34;, max_length=None,
+                       n_closest=None):
+    &#34;&#34;&#34;
+    This is the main function of the MetalPdbData class. It accepts
+    as input a Path(/path/to/the/PDB) and then estimates the sorted
+    distances of all the non--hydrogen atoms from the central metal
+    atom.
+
+    :param f_path: Path of the (metal) CSD / PDB file.
+
+    :param f_type: File type CSD (default) or PDB.
+
+    :param max_length: Integer that defines the maximum number of
+    atoms to consider for the contact map. If &#39;None&#39; (default) it
+    will use all the available atoms.
+
+    :param n_closest: Number of neighbouring points to consider when
+    computing the angles.  If &#39;None&#39; (default), then we will compute
+    and return all the angles.
+
+    :return: None.
+    &#34;&#34;&#34;
+
+    # Check file type.
+    if f_type not in {&#34;CSD&#34;, &#34;PDB&#34;}:
+        raise ValueError(f&#34;{self.__class__.__name__}: &#34;
+                         f&#34;File type {f_type} is not recognized.&#34;)
+    # _end_if_
+
+    # If a value has been given.
+    if max_length is not None:
+
+        # Check the type.
+        if not isinstance(max_length, int):
+
+            # This will raise an error if an input has
+            # been given, but it is not an integer type.
+            raise TypeError(f&#34;{self.__class__.__name__}: The maximum length for &#34;
+                            f&#34;a contact map should be an integer: {max_length}. &#34;)
+        # _end_if_
+
+    # _end_if_
+
+    # First we need to  make sure all data are cleared.
+    # That means setting all the fields values to None.
+    self.reset_all_data()
+
+    # Ensure the f_path is Path.
+    f_path = Path(f_path)
+
+    # Make sure is a file.
+    if f_path.is_file():
+
+        # STEP: 1
+        # Create the dataframe from the raw data file.
+        df = pd.DataFrame(data=self.read_data_file(f_path, f_type))
+
+        # Sanity check.
+        if df.empty:
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;The input data file {f_path} did not return any data.&#34;)
+        # _end_if_
+
+        # STEP: 2
+        # Find the center metal atom.
+        center_metal = MetalPdbData.find_central_atom(df)
+
+        # Sanity check.
+        if center_metal is None:
+
+            # Display a waring message.
+            raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
+                               f&#34;Center metal not found in {f_path.stem}.&#34;)
+        # _end_if_
+
+        # Copy the central atom in the object.
+        self._center_metal_atom = center_metal
+
+        # Increase the call counter.
+        self._stats_counter[&#34;n_calls&#34;] += 1
+
+        # Update the statistics dictionary.
+        self._stats_counter[&#34;metals_freq&#34;][center_metal.TYPE] += 1
+
+        # STEP: 4
+        # Get all the distances (ignoring &#34;H&#34; and &#34;C&#34; atoms).
+        #
+
+        # Distances list.
+        distances = []
+
+        # Localize append method (for faster execution).
+        distances_append = distances.append
+
+        # Localize the Euclidean norm function.
+        get_euclidean_norm = fast_euclidean_norm
+
+        # XYZ coordinates of the central metal.
+        center_coord = np.array([center_metal.X,
+                                 center_metal.Y,
+                                 center_metal.Z], dtype=float)
+
+        # Scan all the entries in the dataframe, but
+        # consider only non hydrogen or carbon atoms.
+        for it in df.to_dict(&#34;records&#34;):
+
+            # Skip Hydrogen and Carbon atoms.
+            if it[&#34;TYPE&#34;] in {&#34;H&#34;, &#34;C&#34;}:
+                continue
+            # _end_if_
+
+            # Atom coordinates vector.
+            it_coord = np.array([it[&#34;X&#34;],
+                                 it[&#34;Y&#34;],
+                                 it[&#34;Z&#34;]], dtype=float)
+
+            # Distance between coordinates.
+            diff = center_coord - it_coord
+
+            # Euclidean norm.
+            dist = get_euclidean_norm(diff)
+
+            # Make sure the distance is finite.
+            if np.isfinite(dist):
+
+                # Store the pair (id, distance).
+                distances_append((it[&#34;ID&#34;], dist))
+
+            # _end_if_
+
+        # _end_for_
+
+        # Sort the list of distances (from small to large).
+        sorted_distances = sorted(distances, key=itemgetter(1))
+
+        # Store a copy of the results in the object.
+        self._dataset = (df.copy(), np.copy(sorted_distances))
+
+        # Make sure the max_length has been set.
+        if max_length is None:
+
+            # Set the max to the same length.
+            max_length = len(sorted_distances)
+
+        else:
+
+            # Make sure we are not out of bounds.
+            max_length = np.minimum(max_length,
+                                    len(sorted_distances))
+        # _end_if_
+
+        # Ensure this var is integer.
+        max_length = int(max_length)
+
+        # STEP 5:
+        # Use &#39;cdist&#39; to get the distances among all
+        # atoms. This is very fast (using &#39;C&#39; code).
+
+        # This will &#39;speed up&#39; the search.
+        df.set_index([&#34;ID&#34;], inplace=True)
+
+        # Empty list.
+        coord_xyz = []
+
+        # Localize the append method.
+        coord_xyz_append = coord_xyz.append
+
+        # Copy the first &#34;max_length&#34; coordinates
+        # in a separate list for further process.
+        for n, (id_n, _) in enumerate(sorted_distances):
+
+            # Bounds Check: for safety.
+            if n &gt;= max_length:
+                break
+            # _end_if_
+
+            # Copy the coordinates vector.
+            coord_xyz_append(df.loc[id_n][[&#34;X&#34;, &#34;Y&#34;, &#34;Z&#34;]])
+        # _end_for_
+
+        # Convert to numpy array.
+        coord_xyz = np.array(coord_xyz, dtype=float)
+
+        # Compute distances between each pair of the same
+        # array and add the distance map to the object.
+        self._distance_map = cdist(coord_xyz, coord_xyz,
+                                   metric=&#34;euclidean&#34;)
+        # STEP 6:
+        #
+        # Optionally get the angles among the &#39;n_closest&#39; points.
+        if self.compute_angles:
+
+            # Store the angles in the object.
+            self._angles = self.angles_from_coordinates(coord_xyz,
+                                                        n_closest=n_closest)
+        # _end_if_
+
+        # STEP 7:
+        #
+        # Optionally get the convex hull quantities.
+        if self.compute_convex_hull:
+
+            # In 3D, we need at least 4 points to define a convex hull.
+            if max_length &gt; 3:
+
+                # If we don&#39;t have enough points an error will be raised.
+                try:
+                    # Construct a Convex hull from the selected points.
+                    conv_hull = ConvexHull(coord_xyz, qhull_options=&#39;QJ&#39;)
+
+                    # Get the convex hull surface area.
+                    self._area = conv_hull.area
+
+                    # Get the convex hull volume.
+                    self._volume = conv_hull.volume
+
+                except QhullError as e:
+
+                    # This error message is not catastrophic. It just
+                    # means that we will not have the ConvexHull obj.
+                    print(f&#34;{self.__class__.__name__}: Error -&gt; {e}&#34;)
+
+                # _end_try_
+            else:
+                # Inform the user we need to increase the max_length.
+                print(f&#34;{self.__class__.__name__}: WARNING: &#34;
+                      &#34;You need at least four points (max_length &gt;= 4) &#34;
+                      &#34;to define a convex hull in 3D.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.features_vector"><code class="name flex">
+<span>def <span class="ident">features_vector</span></span>(<span>self, map_length=7, num_angles=15)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Using the pre-computed distance maps and the angles
+construct a "feature vector" according to the input
+requirements.</p>
+<p>If the input requirements are higher than the estimated
+map/angles, the feature vector will be filled with '-1'
+which is the default (N/A) values.</p>
+<p>:param map_length: The size of the map we want to extract.
+Note that the maps are square (MxM).</p>
+<p>:param num_angles: The number of angles we want to include.</p>
+<p>:return: a feature vector with dimensions: 'n*(n-1)/2 + m',
+where n=map_length and m=num_angles.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def features_vector(self, map_length=7, num_angles=15):
+    &#34;&#34;&#34;
+    Using the pre-computed distance maps and the angles
+    construct a &#34;feature vector&#34; according to the input
+    requirements.
+
+    If the input requirements are higher than the estimated
+    map/angles, the feature vector will be filled with &#39;-1&#39;
+    which is the default (N/A) values.
+
+    :param map_length: The size of the map we want to extract.
+    Note that the maps are square (MxM).
+
+    :param num_angles: The number of angles we want to include.
+
+    :return: a feature vector with dimensions: &#39;n*(n-1)/2 + m&#39;,
+    where n=map_length and m=num_angles.
+    &#34;&#34;&#34;
+
+    # Sanity check.
+    if self._distance_map is None:
+        raise RuntimeError(f&#34;{self.__class__.__name__}: Distance map is missing.&#34;)
+    # _end_if_
+
+    # Sanity check.
+    if self._angles is None:
+        raise RuntimeError(f&#34;{self.__class__.__name__}: Angles list is missing.&#34;)
+    # _end_if_
+
+    # Local minimum value.
+    _min_value = 5
+
+    # Make sure the input parameters are integers.
+    map_length = max(_min_value, int(map_length))
+    num_angles = max(_min_value, int(num_angles))
+
+    # Preallocate the array with default values.
+    new_distance_map = -1.0 * np.ones((map_length,
+                                       map_length), dtype=float)
+
+    # Preallocate the array with default values.
+    new_angles = -1.0 * np.ones(num_angles, dtype=float)
+
+    # Start copying the angle values.
+    for j, value in enumerate(self._angles, start=0):
+
+        # Checking bounds.
+        if j &gt; num_angles:
+            break
+        # _end_if_
+
+        # Get only the last value.
+        new_angles[j] = value[-1]
+    # _end_for_
+
+    # Get the length of the estimated distance map.
+    # Note: The matrix is square (LxL).
+    L = self._distance_map.shape[0]
+
+    # Check according to the shapes.
+    if L &lt; map_length:
+
+        # If the estimated distance map we will have entries
+        # with the default value of &#39;-1&#39;.
+        new_distance_map[:L, :L] = self._distance_map.copy()
+
+    elif L &gt; map_length:
+
+        # Here we use only a sub-set of the estimated distance map.
+        new_distance_map = self._distance_map[:map_length, :map_length].copy()
+
+    else:
+
+        # Here we have the same dimensions: L == map_length.
+        new_distance_map = self._distance_map.copy()
+    # _end_if_
+
+    # Augment the total vector (with the unpacked values).
+    feature_vector = [*new_distance_map[np.triu_indices(map_length, k=1)],
+                      *new_angles]
+
+    # Return the feature vector (as list).
+    return feature_vector</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.read_data_file"><code class="name flex">
+<span>def <span class="ident">read_data_file</span></span>(<span>self, f_path, f_type='CSD')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reads the input data file and returns a list with
+the entries using the PDB file format (see above).</p>
+<p>:param f_path: Path of the metal input file.</p>
+<p>:param f_type: File type CSD (default)/ PDB.</p>
+<p>:return: A list with the required entries.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def read_data_file(self, f_path, f_type=&#34;CSD&#34;):
+    &#34;&#34;&#34;
+    Reads the input data file and returns a list with
+    the entries using the PDB file format (see above).
+
+    :param f_path: Path of the metal input file.
+
+    :param f_type: File type CSD (default)/ PDB.
+
+    :return: A list with the required entries.
+    &#34;&#34;&#34;
+
+    # Check the file type.
+    if f_type not in {&#34;CSD&#34;, &#34;PDB&#34;}:
+        raise ValueError(f&#34;{self.__class__.__name__}: &#34;
+                         f&#34;The acceptable file types are &#39;CSD&#39; or &#39;PDB&#39;: {f_type}&#34;)
+    # _end_if_
+
+    # Create a temporary data structure
+    # to hold the data from the file.
+    data_list = []
+
+    # Read the data from the file.
+    with open(f_path, &#34;r&#34;) as f_in:
+
+        # Localize append method for speed.
+        data_list_append = data_list.append
+
+        # Process each line.
+        for row in f_in.readlines():
+
+            # Make sure we capture any exceptions
+            try:
+                # Get the first entry in the line.
+                # Make sure there are no empty spaces
+                # around the word.
+                entry = str(row[0:6]).strip().upper()
+
+                # Break when you reach the end of the model.
+                if &#34;END&#34; == entry:
+                    break
+
+                # Process only &#39;atom&#39; or &#39;hetero-atom&#39; entries.
+                elif entry in {&#34;ATOM&#34;, &#34;HETATM&#34;}:
+
+                    # Create a new row for the dataframe.
+                    record = {&#34;ID&#34;: int(row[6:11]),
+                              &#34;NAME&#34;: str(row[12:16]).strip().upper(),
+                              &#34;X&#34;: float(row[30:38]),
+                              &#34;Y&#34;: float(row[38:46]),
+                              &#34;Z&#34;: float(row[46:54]),
+                              &#34;TYPE&#34;: str(row[76:78]).strip().upper()}
+
+                    # Update the list.
+                    data_list_append(record)
+
+                # _end_if_
+
+            except ValueError as v_err:
+
+                # Show a warning message.
+                print(f&#34;{self.__class__.__name__}: &#34;
+                      f&#34;WARNING: {v_err} at {f_path.stem}&#34;)
+
+                # If methods &#39;int&#39; and &#39;float&#39; can&#39;t convert the strings
+                # they will throw a ValueError. In this case skip and go
+                # to the next row.
+                continue
+            # _end_try_
+
+        # _end_for_
+
+    # _end_with_
+
+    # Return the list with the file entries.
+    return data_list</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.reset_all_data"><code class="name flex">
+<span>def <span class="ident">reset_all_data</span></span>(<span>self, show_warning=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Clears all the data and resets them back to empty lists.
+This is to ensure that if we accidentally call the main
+function twice, we will not append the same data in the
+lists.</p>
+<p>:param show_warning: Boolean flag to prompt a warning
+before resetting the data. There is no option to stop
+the process.</p>
+<p>:return: None.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset_all_data(self, show_warning=False):
+    &#34;&#34;&#34;
+    Clears all the data and resets them back to empty lists.
+    This is to ensure that if we accidentally call the main
+    function twice, we will not append the same data in the
+    lists.
+
+    :param show_warning: Boolean flag to prompt a warning
+    before resetting the data. There is no option to stop
+    the process.
+
+    :return: None.
+    &#34;&#34;&#34;
+
+    # Reset everything to None/False.
+    for field in self.__slots__:
+
+        # Skip the flags and the statistics dictionary.
+        if field in {&#34;_stats_counter&#34;, &#34;_compute_angles&#34;,
+                     &#34;_compute_convex_hull&#34;}:
+            continue
+        # _end_if_
+
+        # Make sure the field exists.
+        if hasattr(self, field):
+
+            # Reset its value to None.
+            setattr(self, field, None)
+
+        # _end_if_
+
+    # _end_for_
+
+    # Check if we want to display a warning.
+    if show_warning:
+        print(f&#34;WARNING: {self.__class__.__name__}: &#34;
+              f&#34;All the data have been reset to &#39;None&#39;!&#34;)</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.save_data"><code class="name flex">
+<span>def <span class="ident">save_data</span></span>(<span>self, output_dir=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Save the object's data to an HDF5 file.</p>
+<p>:param output_dir: The directory we want to save the data.
+The default output is the current working directory (CWD).</p>
+<p>:return: None.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_data(self, output_dir=None):
+    &#34;&#34;&#34;
+    Save the object&#39;s data to an HDF5 file.
+
+    :param output_dir: The directory we want to save the data.
+    The default output is the current working directory (CWD).
+
+    :return: None.
+    &#34;&#34;&#34;
+
+    # Check for the output.
+    if output_dir is None:
+        output_dir = Path.cwd()
+    # _end_if_
+
+    # Create an output path.
+    path_out = Path(Path(output_dir) / f&#34;metal_{id(self)}.h5&#34;)
+
+    # This will hold the fields we are saving to file.
+    data_fields = []
+
+    # Create a HDF5 output file (write only).
+    with h5py.File(path_out, &#34;w&#34;) as f_out:
+
+        # Sanity check.
+        if self._area is not None:
+            # Update the list.
+            data_fields.append(&#34;area&#34;)
+
+            # Save the convex-hull area.
+            f_out.create_dataset(&#34;area&#34;,
+                                 data=self._area)
+        # _end_if_
+
+        # Sanity check.
+        if self._angles is not None:
+            # Update the list.
+            data_fields.append(&#34;angles&#34;)
+
+            # Save the angle values.
+            f_out.create_dataset(&#34;angles&#34;,
+                                 data=self._angles)
+        # _end_if_
+
+        # Sanity check.
+        if self._volume is not None:
+            # Update the list.
+            data_fields.append(&#34;volume&#34;)
+
+            # Save the convex-hull volume.
+            f_out.create_dataset(&#34;volume&#34;,
+                                 data=self._volume)
+        # _end_if_
+
+        # Sanity check.
+        if self._distance_map is not None:
+            # Update the list.
+            data_fields.append(&#34;dist_map&#34;)
+
+            # Save the distance maps list.
+            f_out.create_dataset(&#34;dist_map&#34;,
+                                 data=self._distance_map)
+        # _end_if_
+
+        # Sanity check.
+        if self._dataset is not None:
+            # Unpack the data.
+            _, sorted_distances = self._dataset
+
+            # Update the list.
+            data_fields.append(&#34;sorted_distances&#34;)
+
+            # Save the sorted distances.
+            f_out.create_dataset(&#34;idx_sorted_dist&#34;,
+                                 data=sorted_distances)
+        # _end_if_
+
+    # _end_with_
+
+    # Display info.
+    print(f&#34;Saved {data_fields} to: {path_out}&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="MetalHawk.src" href="index.html">MetalHawk.src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData" href="#MetalHawk.src.metal_pdb_data.MetalPdbData">MetalPdbData</a></code></h4>
+<ul class="">
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.angles" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.angles">angles</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.angles_from_coordinates" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.angles_from_coordinates">angles_from_coordinates</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.center_metal_atom" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.center_metal_atom">center_metal_atom</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.compute_angles" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.compute_angles">compute_angles</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.compute_convex_hull" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.compute_convex_hull">compute_convex_hull</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.convex_area" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.convex_area">convex_area</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.convex_volume" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.convex_volume">convex_volume</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.dataset" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.dataset">dataset</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.distance_map" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.distance_map">distance_map</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.estimate_distances" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.estimate_distances">estimate_distances</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.features_vector" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.features_vector">features_vector</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.find_central_atom" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.find_central_atom">find_central_atom</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.get_statistics" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.get_statistics">get_statistics</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.min_length" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.min_length">min_length</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.read_data_file" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.read_data_file">read_data_file</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.reset_all_data" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.reset_all_data">reset_all_data</a></code></li>
+<li><code><a title="MetalHawk.src.metal_pdb_data.MetalPdbData.save_data" href="#MetalHawk.src.metal_pdb_data.MetalPdbData.save_data">save_data</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

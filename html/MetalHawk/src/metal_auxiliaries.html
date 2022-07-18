@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>MetalHawk.src.metal_auxiliaries API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>MetalHawk.src.metal_auxiliaries</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import numpy as np
+from numba import njit
+from numpy import array as array_t
+from collections import namedtuple
+
+
+# Add documentation to the NamedTuple.
+__pdoc__ = {}
+
+# Module level declaration.
+MetalAtom = namedtuple(&#34;MetalAtom&#34;,
+                       (&#34;ID&#34;, &#34;NAME&#34;, &#34;X&#34;, &#34;Y&#34;, &#34;Z&#34;, &#34;TYPE&#34;, &#34;DIST&#34;))
+
+# Add documentation for the fields.
+__pdoc__[&#34;MetalAtom.X&#34;] = &#34;Metal atom X coordinate.&#34;
+__pdoc__[&#34;MetalAtom.Y&#34;] = &#34;Metal atom Y coordinate.&#34;
+__pdoc__[&#34;MetalAtom.Z&#34;] = &#34;Metal atom Z coordinate.&#34;
+__pdoc__[&#34;MetalAtom.ID&#34;] = &#34;Metal atom ID (in the PDB file).&#34;
+__pdoc__[&#34;MetalAtom.NAME&#34;] = &#34;Metal atom name.&#34;
+__pdoc__[&#34;MetalAtom.TYPE&#34;] = &#34;Metal atom type.&#34;
+__pdoc__[&#34;MetalAtom.DIST&#34;] = &#34;Distance from the center of the protein.&#34;
+
+# Target set of metal atoms. We fix this here internally.
+METAL_TARGETS = (&#34;MN&#34;, &#34;FE&#34;, &#34;CO&#34;, &#34;NI&#34;, &#34;CU&#34;, &#34;ZN&#34;, &#34;MO&#34;, &#34;HO&#34;, &#34;SC&#34;,
+                 &#34;MG&#34;, &#34;PT&#34;, &#34;PD&#34;, &#34;TA&#34;, &#34;CD&#34;, &#34;AU&#34;, &#34;HG&#34;, &#34;OS&#34;, &#34;TI&#34;,
+                 &#34;RH&#34;, &#34;AS&#34;, &#34;IR&#34;, &#34;AG&#34;, &#34;RU&#34;, &#34;PB&#34;, &#34;GD&#34;, &#34;HF&#34;, &#34;ZR&#34;,
+                 &#34;EU&#34;, &#34;GA&#34;, &#34;PA&#34;, &#34;RE&#34;, &#34;WB&#34;, &#34;SM&#34;, &#34;CR&#34;, &#34;UN&#34;, &#34;NB&#34;,
+                 &#34;TC&#34;, &#34;LA&#34;, &#34;P&#34;, &#34;Y&#34;, &#34;U&#34;, &#34;V&#34;, &#34;W&#34;)
+
+# These are the atoms that should bond with the central atom.
+BOND_METAL_TARGETS = (&#34;N&#34;, &#34;O&#34;, &#34;S&#34;, &#34;SE&#34;, &#34;CL&#34;, &#34;BR&#34;, &#34;I&#34;)
+
+# Tuple of class targets: This is immutable to avoid changes.
+CLASS_TARGETS = (&#34;LIN&#34;, &#34;TRI&#34;, &#34;TET&#34;, &#34;SPL&#34;, &#34;SQP&#34;, &#34;TBP&#34;, &#34;OCT&#34;)
+
+@njit(fastmath=True)
+def fast_euclidean_norm(x: array_t) -&gt; float:
+    &#34;&#34;&#34;
+    Computes the Euclidean norm using Numba fast code.
+    This implementation is &gt; 26 times faster than the
+    numpy norm() version.
+
+    :param x: is the difference vector for which we
+    want to compute the norm. I.e. x = (a-b).
+
+    :return: Euclidean norm of the input vector.
+    &#34;&#34;&#34;
+
+    # Return the result.
+    return np.sqrt(np.dot(x, x))
+# _end_def_
+
+@njit(fastmath=True)
+def fast_compute_angle(pt_A: array_t, pt_B: array_t, pt_C: array_t) -&gt; float:
+    &#34;&#34;&#34;
+    Calculates the angle among 3 points in 3D (x, y, z). If the inputs are
+    the points: A-B-C, it will return the angle from the vectors: BA to BC.
+
+    :param pt_A: First point  (x1, y1, z1).
+
+    :param pt_B: Second point (x2, y2, z2) &lt;-- here we compute the angle.
+
+    :param pt_C: Third point  (x3, y3, z3).
+
+    :return: Angle (in degrees) or &#39;0&#39;.
+    &#34;&#34;&#34;
+
+    # Distance from &#39;B&#39; to &#39;A&#39;.
+    BA = pt_A - pt_B
+
+    # Compute the Euclidean norm of &#39;BA&#39;.
+    norm_BA = np.sqrt(np.dot(BA, BA))
+
+    # Distance from &#39;B&#39; to &#39;C&#39;.
+    BC = pt_C - pt_B
+
+    # Compute the Euclidean norm of &#39;BC&#39;.
+    norm_BC = np.sqrt(np.dot(BC, BC))
+
+    # If the norms {BA, BC} are positive continue.
+    if (norm_BA &gt; 0.0) and (norm_BC &gt; 0.0):
+
+        # Get the cosine of the angle.
+        angle_cosine = np.dot(BA, BC) / (norm_BA * norm_BC)
+
+        # Make sure  the cosine is  in the range [-1.0, 1.0].
+        # This will correct for small over/under flow errors.
+        angle_cosine = np.minimum(1.0, np.maximum(-1.0, angle_cosine))
+
+        # Get the angle in radians.
+        angle_radians = np.arccos(angle_cosine)
+
+        # Return the angle in degrees.
+        return (180.0 * angle_radians) / np.pi
+    else:
+        # Otherwise, return 0.
+        return 0.0
+
+    # _end_if_
+# _end_def_
+
+@njit(fastmath=True)
+def fast_entropy(x: array_t) -&gt; float:
+    &#34;&#34;&#34;
+    Calculate the entropy of a distribution for
+    given probability values.
+
+    :param x: input array (assuming probabilities).
+
+    :return: the Shannon Entropy.
+
+    NB: This is equivalent to scipy.stats.entropy.
+    &#34;&#34;&#34;
+
+    # Make sure the probabilities are positive.
+    x = np.abs(x)
+
+    # Exclude zero entries.
+    not_zero = x != 0.0
+
+    # Compute the entropy (using the probabilities).
+    y_entropy = -np.sum(x[not_zero] * np.log(x[not_zero]))
+
+    # The Shannon Entropy value.
+    return y_entropy
+# _end_def_
+
+# _end_module_</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="MetalHawk.src.metal_auxiliaries.fast_compute_angle"><code class="name flex">
+<span>def <span class="ident">fast_compute_angle</span></span>(<span>pt_A: <built-in function array>, pt_B: <built-in function array>, pt_C: <built-in function array>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculates the angle among 3 points in 3D (x, y, z). If the inputs are
+the points: A-B-C, it will return the angle from the vectors: BA to BC.</p>
+<p>:param pt_A: First point
+(x1, y1, z1).</p>
+<p>:param pt_B: Second point (x2, y2, z2) &lt;&ndash; here we compute the angle.</p>
+<p>:param pt_C: Third point
+(x3, y3, z3).</p>
+<p>:return: Angle (in degrees) or '0'.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@njit(fastmath=True)
+def fast_compute_angle(pt_A: array_t, pt_B: array_t, pt_C: array_t) -&gt; float:
+    &#34;&#34;&#34;
+    Calculates the angle among 3 points in 3D (x, y, z). If the inputs are
+    the points: A-B-C, it will return the angle from the vectors: BA to BC.
+
+    :param pt_A: First point  (x1, y1, z1).
+
+    :param pt_B: Second point (x2, y2, z2) &lt;-- here we compute the angle.
+
+    :param pt_C: Third point  (x3, y3, z3).
+
+    :return: Angle (in degrees) or &#39;0&#39;.
+    &#34;&#34;&#34;
+
+    # Distance from &#39;B&#39; to &#39;A&#39;.
+    BA = pt_A - pt_B
+
+    # Compute the Euclidean norm of &#39;BA&#39;.
+    norm_BA = np.sqrt(np.dot(BA, BA))
+
+    # Distance from &#39;B&#39; to &#39;C&#39;.
+    BC = pt_C - pt_B
+
+    # Compute the Euclidean norm of &#39;BC&#39;.
+    norm_BC = np.sqrt(np.dot(BC, BC))
+
+    # If the norms {BA, BC} are positive continue.
+    if (norm_BA &gt; 0.0) and (norm_BC &gt; 0.0):
+
+        # Get the cosine of the angle.
+        angle_cosine = np.dot(BA, BC) / (norm_BA * norm_BC)
+
+        # Make sure  the cosine is  in the range [-1.0, 1.0].
+        # This will correct for small over/under flow errors.
+        angle_cosine = np.minimum(1.0, np.maximum(-1.0, angle_cosine))
+
+        # Get the angle in radians.
+        angle_radians = np.arccos(angle_cosine)
+
+        # Return the angle in degrees.
+        return (180.0 * angle_radians) / np.pi
+    else:
+        # Otherwise, return 0.
+        return 0.0</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_auxiliaries.fast_entropy"><code class="name flex">
+<span>def <span class="ident">fast_entropy</span></span>(<span>x: <built-in function array>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate the entropy of a distribution for
+given probability values.</p>
+<p>:param x: input array (assuming probabilities).</p>
+<p>:return: the Shannon Entropy.</p>
+<p>NB: This is equivalent to scipy.stats.entropy.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@njit(fastmath=True)
+def fast_entropy(x: array_t) -&gt; float:
+    &#34;&#34;&#34;
+    Calculate the entropy of a distribution for
+    given probability values.
+
+    :param x: input array (assuming probabilities).
+
+    :return: the Shannon Entropy.
+
+    NB: This is equivalent to scipy.stats.entropy.
+    &#34;&#34;&#34;
+
+    # Make sure the probabilities are positive.
+    x = np.abs(x)
+
+    # Exclude zero entries.
+    not_zero = x != 0.0
+
+    # Compute the entropy (using the probabilities).
+    y_entropy = -np.sum(x[not_zero] * np.log(x[not_zero]))
+
+    # The Shannon Entropy value.
+    return y_entropy</code></pre>
+</details>
+</dd>
+<dt id="MetalHawk.src.metal_auxiliaries.fast_euclidean_norm"><code class="name flex">
+<span>def <span class="ident">fast_euclidean_norm</span></span>(<span>x: <built-in function array>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes the Euclidean norm using Numba fast code.
+This implementation is &gt; 26 times faster than the
+numpy norm() version.</p>
+<p>:param x: is the difference vector for which we
+want to compute the norm. I.e. x = (a-b).</p>
+<p>:return: Euclidean norm of the input vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@njit(fastmath=True)
+def fast_euclidean_norm(x: array_t) -&gt; float:
+    &#34;&#34;&#34;
+    Computes the Euclidean norm using Numba fast code.
+    This implementation is &gt; 26 times faster than the
+    numpy norm() version.
+
+    :param x: is the difference vector for which we
+    want to compute the norm. I.e. x = (a-b).
+
+    :return: Euclidean norm of the input vector.
+    &#34;&#34;&#34;
+
+    # Return the result.
+    return np.sqrt(np.dot(x, x))</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="MetalHawk.src.metal_auxiliaries.MetalAtom"><code class="flex name class">
+<span>class <span class="ident">MetalAtom</span></span>
+<span>(</span><span>ID, NAME, X, Y, Z, TYPE, DIST)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>MetalAtom(ID, NAME, X, Y, Z, TYPE, DIST)</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="MetalHawk.src.metal_auxiliaries.MetalAtom.DIST"><code class="name">var <span class="ident">DIST</span></code></dt>
+<dd>
+<div class="desc"><p>Distance from the center of the protein.</p></div>
+</dd>
+<dt id="MetalHawk.src.metal_auxiliaries.MetalAtom.ID"><code class="name">var <span class="ident">ID</span></code></dt>
+<dd>
+<div class="desc"><p>Metal atom ID (in the PDB file).</p></div>
+</dd>
+<dt id="MetalHawk.src.metal_auxiliaries.MetalAtom.NAME"><code class="name">var <span class="ident">NAME</span></code></dt>
+<dd>
+<div class="desc"><p>Metal atom name.</p></div>
+</dd>
+<dt id="MetalHawk.src.metal_auxiliaries.MetalAtom.TYPE"><code class="name">var <span class="ident">TYPE</span></code></dt>
+<dd>
+<div class="desc"><p>Metal atom type.</p></div>
+</dd>
+<dt id="MetalHawk.src.metal_auxiliaries.MetalAtom.X"><code class="name">var <span class="ident">X</span></code></dt>
+<dd>
+<div class="desc"><p>Metal atom X coordinate.</p></div>
+</dd>
+<dt id="MetalHawk.src.metal_auxiliaries.MetalAtom.Y"><code class="name">var <span class="ident">Y</span></code></dt>
+<dd>
+<div class="desc"><p>Metal atom Y coordinate.</p></div>
+</dd>
+<dt id="MetalHawk.src.metal_auxiliaries.MetalAtom.Z"><code class="name">var <span class="ident">Z</span></code></dt>
+<dd>
+<div class="desc"><p>Metal atom Z coordinate.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="MetalHawk.src" href="index.html">MetalHawk.src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="MetalHawk.src.metal_auxiliaries.fast_compute_angle" href="#MetalHawk.src.metal_auxiliaries.fast_compute_angle">fast_compute_angle</a></code></li>
+<li><code><a title="MetalHawk.src.metal_auxiliaries.fast_entropy" href="#MetalHawk.src.metal_auxiliaries.fast_entropy">fast_entropy</a></code></li>
+<li><code><a title="MetalHawk.src.metal_auxiliaries.fast_euclidean_norm" href="#MetalHawk.src.metal_auxiliaries.fast_euclidean_norm">fast_euclidean_norm</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="MetalHawk.src.metal_auxiliaries.MetalAtom" href="#MetalHawk.src.metal_auxiliaries.MetalAtom">MetalAtom</a></code></h4>
+<ul class="two-column">
+<li><code><a title="MetalHawk.src.metal_auxiliaries.MetalAtom.DIST" href="#MetalHawk.src.metal_auxiliaries.MetalAtom.DIST">DIST</a></code></li>
+<li><code><a title="MetalHawk.src.metal_auxiliaries.MetalAtom.ID" href="#MetalHawk.src.metal_auxiliaries.MetalAtom.ID">ID</a></code></li>
+<li><code><a title="MetalHawk.src.metal_auxiliaries.MetalAtom.NAME" href="#MetalHawk.src.metal_auxiliaries.MetalAtom.NAME">NAME</a></code></li>
+<li><code><a title="MetalHawk.src.metal_auxiliaries.MetalAtom.TYPE" href="#MetalHawk.src.metal_auxiliaries.MetalAtom.TYPE">TYPE</a></code></li>
+<li><code><a title="MetalHawk.src.metal_auxiliaries.MetalAtom.X" href="#MetalHawk.src.metal_auxiliaries.MetalAtom.X">X</a></code></li>
+<li><code><a title="MetalHawk.src.metal_auxiliaries.MetalAtom.Y" href="#MetalHawk.src.metal_auxiliaries.MetalAtom.Y">Y</a></code></li>
+<li><code><a title="MetalHawk.src.metal_auxiliaries.MetalAtom.Z" href="#MetalHawk.src.metal_auxiliaries.MetalAtom.Z">Z</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
