@@ -27,7 +27,7 @@ are:
 
 > scipy, numpy, pathlib, pandas, etc.
 
-To simplify the required packages just use:
+To ensure the required packages are installed just use:
 
     $ pip install -r requirements.txt
 
@@ -72,13 +72,13 @@ This is the simplest way to run MetalHawk.
 
 This will run MetalHawk on all the files (in the directory) with the '.pdb' extension.
 
-Additionally, if you want the output to be saved in a csv file format, use the
-'-o path/to/save/' option. This will use the path "path/to/save/" and create
+Finally, if you want the output to be saved in a csv file format, use the
+'-o path/to/save/' option. This will use the "path/to/save/" and create
 a file with the output of the prediction. The filename is generated automatically.
 
 ---
 
-To explore all the options of NapShift, use:
+To explore all the options of MetalHawk, use:
 
     $ ./metalhawk.py -h
 
@@ -86,7 +86,7 @@ You will see the following menu:
 
 ![Help](./logos/help_menu.png)
 
-## References (and documentation)
+## References
 
 The original work is described in detail at:
 
