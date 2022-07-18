@@ -5,7 +5,7 @@ import argparse
 
 # Check the current python version before running.
 if sys.version_info < (3, 8, 0):
-    sys.exit("Error: Metal-Sites predictor requires Python 3.8 or greater.")
+    sys.exit("Error: MetalHawk requires Python 3.8 or greater.")
 # _end_if_
 
 import os
