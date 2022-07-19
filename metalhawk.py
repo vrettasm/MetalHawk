@@ -84,6 +84,7 @@ def main(input_file=None, csd_target_model=True, output_path=None, verbose=False
 
         # Check for verbose.
         if verbose:
+
             # In verbose mode, use the list without 'tqdm'.
             file_range = input_file
         else:
@@ -146,14 +147,14 @@ def main(input_file=None, csd_target_model=True, output_path=None, verbose=False
             # Make a header for the filename.
             header = "CSD" if csd_target_model else "PDB"
 
-            # Make sure its Path object.
+            # Make sure it is Path object.
             output_path = Path(output_path)
 
             # Get the timestamp.
             date_now = datetime.now().strftime("%Y_%m_%d_%I_%M_%S")
 
             # Save to output_path with a date-related name.
-            df.to_csv(Path(output_path/f"{header}_metal_sites_predictions_{date_now}.csv"))
+            df.to_csv(Path(output_path/f"{header}_metalhawk_predictions_{date_now}.csv"))
         # _end_if_
 
     except Exception as e1:
