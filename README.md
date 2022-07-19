@@ -76,7 +76,7 @@ generated automatically.
 
 ---
 
-To explore all the options of MetalHawk, type:
+To explore all the options MetalHawk has to offer, type:
 
     $ ./metalhawk.py -h
 
