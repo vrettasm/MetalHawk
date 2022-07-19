@@ -1,8 +1,8 @@
+from collections import namedtuple
+
 import numpy as np
 from numba import njit
 from numpy import array as array_t
-from collections import namedtuple
-
 
 # Add documentation to the NamedTuple.
 __pdoc__ = {}

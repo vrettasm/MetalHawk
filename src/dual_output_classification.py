@@ -1,5 +1,6 @@
-import numpy as np
 from copy import deepcopy
+
+import numpy as np
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import RobustScaler
 

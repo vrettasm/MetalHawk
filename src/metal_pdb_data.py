@@ -3,23 +3,24 @@ This module includes the main class that handles
 the data generation from the Metal PDB files.
 """
 
+from collections import defaultdict
+from operator import itemgetter
+from os import linesep
+from pathlib import Path
+
 # Python import(s).
 import h5py
 import numpy as np
 import pandas as pd
-
-from os import linesep
-from pathlib import Path
-from operator import itemgetter
-from collections import defaultdict
 from scipy.spatial import ConvexHull
-from scipy.spatial.qhull import QhullError
 from scipy.spatial.distance import cdist
+from scipy.spatial.qhull import QhullError
 
 from src.metal_auxiliaries import (MetalAtom,
                                    METAL_TARGETS,
                                    fast_compute_angle,
                                    fast_euclidean_norm)
+
 """
 PDB/CSD Record Format
 
