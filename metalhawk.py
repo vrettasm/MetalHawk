@@ -8,10 +8,10 @@ if sys.version_info < (3, 8, 0):
     sys.exit("Error: MetalHawk requires Python 3.8 or greater.")
 # _end_if_
 
-import os
 import textwrap
 import pandas as pd
 from tqdm import tqdm
+from os import linesep
 from pathlib import Path
 from datetime import datetime
 
@@ -237,7 +237,7 @@ if __name__ == "__main__":
 
     else:
         # Display error message.
-        sys.exit(f"Error: Not enough input parameters. {os.linesep}"
+        sys.exit(f"Error: Not enough input parameters. {linesep}"
                  f" Run : {sys.argv[0]} -h/--help ")
     # _end_if_
 
