@@ -12,18 +12,16 @@ M. Vrettas, PhD.
 There are two options to install the software.
 
 1. The easiest way is to visit the GitHub web-page of the project and
-[download the code](https://github.com/vrettasm/MetalHawk/archive/master.zip)
-in zip format. This option does not require a prior installation of git on the
-computer.
+[download the code](https://github.com/vrettasm/MetalHawk/archive/master.zip) in zip format. This option does not
+require a prior installation of **git** on the computer.
 
-2. Alternatively one can clone the project directly using git as follows:
-
-    `$ git clone https://github.com/vrettasm/MetalHawk.git`
+2. Alternatively one can use **git** to clone the project directly as follows:
+   
+   `$ git clone https://github.com/vrettasm/MetalHawk.git`
 
 ## Required packages
 
-The recommended version is **Python 3.8** (and above). Some required packages
-are:
+The recommended version is **Python 3.8** (and above). Some required packages are:
 
 > scipy, numpy, pathlib, pandas, etc.
 
@@ -33,9 +31,8 @@ To ensure the required packages are installed just use:
 
 ## Virtual environment (recommended)
 
-It is highly advised to create a separate virtual environment to avoid
-messing with the main Python installation. On Linux and macOS systems
-type:
+It is highly advised to create a separate virtual environment to avoid messing with the main Python installation.
+On Linux and macOS systems type:
 
     $ python3 -m venv metalhawk_venv
 
@@ -57,13 +54,11 @@ N.B. For Windows systems follow the **equivalent** instructions.
 
 ## How to run
 
-To execute the program (within the activated virtual environment), you can either
-navigate  to the main directory of the project (i.e. where the metalhawk.py is located),
-or locate it through the command line and then run the following command:
+To execute the program (within the activated virtual environment), you can either navigate to the main
+directory of the project (i.e. where the metalhawk.py is located), or locate it through the command line
+and then run the following command:
 
     $ ./metalhawk.py -f path/to/filename.pdb
-
-This is the simplest way to run MetalHawk. 
 
    > **Hint**: If you want to run the program on multiple files (in the same directory)
    > you can use the '*' wildcard as follows:
@@ -72,13 +67,16 @@ This is the simplest way to run MetalHawk.
 
 This will run MetalHawk on all the files (in the directory) with the '.pdb' extension.
 
-Finally, if you want the output to be saved in a csv file format, use the
-'-o path/to/save/' option. This will use the "path/to/save/" and create
-a file with the output of the prediction. The filename is generated automatically.
+Finally, if you want the output to be saved in a csv file format, use the '-o path/to/save/' option.
+
+      $ ./metalhawk.py -f path/to/*.pdb -o /path/to/save/
+
+This will use the "path/to/save/" and create a file with the output of the prediction. The filename is
+generated automatically.
 
 ---
 
-To explore all the options of MetalHawk, use:
+To explore all the options of MetalHawk, type:
 
     $ ./metalhawk.py -h
 
@@ -90,14 +88,12 @@ You will see the following menu:
 
 The original work is described in detail at:
 
-Gianmattia Sguelia, Michail D. Vrettas, Marco Chino, Angela Lombardi
-and Alfonso De Simone (2022). _"TBD"_ Submitted for publication.
+Gianmattia Sguelia, Michail D. Vrettas, Marco Chino, Angela Lombardi and Alfonso De Simone (2022).
+_"TBD"_. Submitted for publication.
 
 ## Documentation
 
-The documentation of the code can be found at:
-
-[MetalHawk-doc](./html/MetalHawk/index.html)
+Here you can find the [documentation](./html/MetalHawk/index.html) of the code.
 
 ### Contact
 
