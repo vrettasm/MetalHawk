@@ -95,7 +95,7 @@ _"TBD"_. Submitted for publication.
 
 Here you can find the [documentation](./html/MetalHawk/index.html) of the code.
 
-### Contact
+## Contact
 
 For any questions/comments (**_regarding this code_**) please contact me at:
 vrettasm@gmail.com
