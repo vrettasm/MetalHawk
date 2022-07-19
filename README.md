@@ -3,7 +3,7 @@
 ![Logo](./logos/metalhawk_logo.jpg)
 
 This repository provides a Python implementation of the MetalHawk program
-to predict metal sites classes.
+to predict metal sites geometries.
 
 M. Vrettas, PhD.
 
