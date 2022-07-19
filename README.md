@@ -93,6 +93,12 @@ The original work is described in detail at:
 Gianmattia Sguelia, Michail D. Vrettas, Marco Chino, Angela Lombardi
 and Alfonso De Simone (2022). _"TBD"_ Submitted for publication.
 
+## Documentation
+
+The documentation of the code can be found at:
+
+[MetalHawk-doc](./html/MetalHawk/index.html)
+
 ### Contact
 
 For any questions/comments (**_regarding this code_**) please contact me at:
