@@ -93,7 +93,7 @@ _"TBD"_. Submitted for publication.
 
 ## Documentation
 
-Here you can find the [documentation](./html/MetalHawk/index.html) of the code.
+Here you can find the [documentation](./docs/MetalHawk/index.html) of the code.
 
 ## Contact
 
