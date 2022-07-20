@@ -1,3 +1,7 @@
+"""
+This module includes the main interface that handles the predictions.
+"""
+
 # Python import(s).
 from pathlib import Path
 
@@ -11,6 +15,11 @@ from src.metal_pdb_data import MetalPdbData
 
 # Predictor Class.
 class MetalSitesPredictor(object):
+    """
+    Metal Sites Predictor class. This is the "wrapper" class that performs the
+    predictions in the input vectors. It processes the input (PDB) files, extracts
+    the features and finally performs the prediction using pre-trained models.
+    """
 
     # For parsing the PDB/CSD files.
     metal_tool = MetalPdbData(compute_angles=True)

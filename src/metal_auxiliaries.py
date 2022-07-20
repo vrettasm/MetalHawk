@@ -1,3 +1,7 @@
+"""
+This module includes auxiliary support methods and data structures.
+"""
+
 from collections import namedtuple
 
 import numpy as np

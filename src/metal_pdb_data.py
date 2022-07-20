@@ -1,6 +1,5 @@
 """
-This module includes the main class that handles
-the data generation from the Metal PDB files.
+This module includes the main class that handles the data generation from the Metal PDB files.
 """
 
 from collections import defaultdict

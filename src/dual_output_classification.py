@@ -1,3 +1,8 @@
+"""
+This module includes a dual classification method. Not used in the current
+implementation of the MetalHawk, but will be included in a future version.
+"""
+
 from copy import deepcopy
 
 import numpy as np
@@ -13,6 +18,7 @@ class DualOutputClassifier(object):
     train two different classifiers!
 
     The procedure works as follows:
+
         1) The first classifier is trained on the "first-k" features
         of the input matrix [x] to predict "Coordinate Numbers" (CN).
         These include only the distances from the contact map.
