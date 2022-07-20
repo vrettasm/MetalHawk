@@ -1,36 +1,6 @@
 """
 This module includes the main class that handles the data generation from the Metal PDB files.
-"""
 
-from collections import defaultdict
-from operator import itemgetter
-from os import linesep
-from pathlib import Path
-
-# Python import(s).
-import h5py
-import numpy as np
-import pandas as pd
-from scipy.spatial import ConvexHull
-from scipy.spatial.distance import cdist
-from scipy.spatial.qhull import QhullError
-
-from src.metal_auxiliaries import (MetalAtom,
-                                   METAL_TARGETS,
-                                   fast_compute_angle,
-                                   fast_euclidean_norm)
-
-
-class MetalPdbData(object):
-    """
-    Provides assistance with processing the metal PDB files. It generates contact/
-    distance maps from the "n-closest" atoms near the center metal atom.
-
-    Optionally, it can use the selected atoms and create a ConvexHull object, were
-    we can later extract its volume and its surface area.
-
-    Optionally, we can compute the angles among the center metal atom and its nearest
-    points (excluding Hydrogen and Carbon).
 
                                     PDB/CSD Record Format
 
@@ -71,6 +41,38 @@ class MetalPdbData(object):
         -------------------------------------------------------------------------------------
 
         NOTE: The numbering of the columns starts from '1', not '0'.
+
+"""
+
+from collections import defaultdict
+from operator import itemgetter
+from os import linesep
+from pathlib import Path
+
+# Python import(s).
+import h5py
+import numpy as np
+import pandas as pd
+from scipy.spatial import ConvexHull
+from scipy.spatial.distance import cdist
+from scipy.spatial.qhull import QhullError
+
+from src.metal_auxiliaries import (MetalAtom,
+                                   METAL_TARGETS,
+                                   fast_compute_angle,
+                                   fast_euclidean_norm)
+
+
+class MetalPdbData(object):
+    """
+    Provides assistance with processing the metal PDB files. It generates contact/
+    distance maps from the "n-closest" atoms near the center metal atom.
+
+    Optionally, it can use the selected atoms and create a ConvexHull object, were
+    we can later extract its volume and its surface area.
+
+    Optionally, we can compute the angles among the center metal atom and its nearest
+    points (excluding Hydrogen and Carbon).
     """
 
     # Object variables.
