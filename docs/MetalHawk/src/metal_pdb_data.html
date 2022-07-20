@@ -34,23 +34,24 @@ This module includes the main class that handles
 the data generation from the Metal PDB files.
 &#34;&#34;&#34;
 
+from collections import defaultdict
+from operator import itemgetter
+from os import linesep
+from pathlib import Path
+
 # Python import(s).
 import h5py
 import numpy as np
 import pandas as pd
-
-from os import linesep
-from pathlib import Path
-from operator import itemgetter
-from collections import defaultdict
 from scipy.spatial import ConvexHull
-from scipy.spatial.qhull import QhullError
 from scipy.spatial.distance import cdist
+from scipy.spatial.qhull import QhullError
 
 from src.metal_auxiliaries import (MetalAtom,
                                    METAL_TARGETS,
                                    fast_compute_angle,
                                    fast_euclidean_norm)
+
 &#34;&#34;&#34;
 PDB/CSD Record Format
 
@@ -2222,7 +2223,8 @@ Default is False.</p></div>
                f&#34; Convex Hull area   = {str_convex_area} {linesep}&#34; \
                f&#34; Convex Hull volume = {str_convex_vol0} {linesep}&#34; \
                f&#34; Central metal atom = {self._center_metal_atom} {linesep}&#34; \
-               f&#34; Statistics         = {self._stats_counter}&#34;</code></pre>
+               f&#34; Statistics         = {self._stats_counter}&#34;
+    # _end_def_</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
@@ -2424,7 +2426,8 @@ def angles(self):
 
         # Raise an error.
         raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
-                           f&#34;Angles array has not been estimated.&#34;)</code></pre>
+                           f&#34;Angles array has not been estimated.&#34;)
+    # _end_if_</code></pre>
 </details>
 </dd>
 <dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.center_metal_atom"><code class="name">var <span class="ident">center_metal_atom</span></code></dt>
@@ -2452,7 +2455,8 @@ def center_metal_atom(self):
 
         # Raise an error.
         raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
-                           f&#34;Central metal atom is not found yet.&#34;)</code></pre>
+                           f&#34;Central metal atom is not found yet.&#34;)
+    # _end_if_</code></pre>
 </details>
 </dd>
 <dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.compute_angles"><code class="name">var <span class="ident">compute_angles</span></code></dt>
@@ -2519,7 +2523,8 @@ def convex_area(self):
         # Raise an error.
         raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
                            f&#34;Convex-hull surface areas &#34;
-                           f&#34;have not been estimated.&#34;)</code></pre>
+                           f&#34;have not been estimated.&#34;)
+    # _end_if_</code></pre>
 </details>
 </dd>
 <dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.convex_volume"><code class="name">var <span class="ident">convex_volume</span></code></dt>
@@ -2553,7 +2558,8 @@ def convex_volume(self):
         # Raise an error.
         raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
                            f&#34;Convex-hull volumes list &#34;
-                           f&#34;has not been estimated.&#34;)</code></pre>
+                           f&#34;has not been estimated.&#34;)
+    # _end_if_</code></pre>
 </details>
 </dd>
 <dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.dataset"><code class="name">var <span class="ident">dataset</span></code></dt>
@@ -2586,7 +2592,8 @@ def dataset(self):
 
         # Raise an error.
         raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
-                           f&#34;Dataset is not initialized yet.&#34;)</code></pre>
+                           f&#34;Dataset is not initialized yet.&#34;)
+    # _end_if_</code></pre>
 </details>
 </dd>
 <dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.distance_map"><code class="name">var <span class="ident">distance_map</span></code></dt>
@@ -2616,7 +2623,8 @@ def distance_map(self):
 
         # Raise an error.
         raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
-                           f&#34;Distance map has not been estimated.&#34;)</code></pre>
+                           f&#34;Distance map has not been estimated.&#34;)
+    # _end_if_</code></pre>
 </details>
 </dd>
 <dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.get_statistics"><code class="name">var <span class="ident">get_statistics</span></code></dt>
@@ -2672,7 +2680,8 @@ def min_length(self):
 
         # Raise an error.
         raise RuntimeError(f&#34;{self.__class__.__name__}: &#34;
-                           f&#34;Distance map has not been estimated.&#34;)</code></pre>
+                           f&#34;Distance map has not been estimated.&#34;)
+    # _end_if_</code></pre>
 </details>
 </dd>
 </dl>
@@ -2927,7 +2936,12 @@ and return all the angles.</p>
                 # Inform the user we need to increase the max_length.
                 print(f&#34;{self.__class__.__name__}: WARNING: &#34;
                       &#34;You need at least four points (max_length &gt;= 4) &#34;
-                      &#34;to define a convex hull in 3D.&#34;)</code></pre>
+                      &#34;to define a convex hull in 3D.&#34;)
+            # _end_if_
+
+        # _end_if_
+
+    # _end_if_</code></pre>
 </details>
 </dd>
 <dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.features_vector"><code class="name flex">
@@ -3177,7 +3191,8 @@ the process.</p>
     # Check if we want to display a warning.
     if show_warning:
         print(f&#34;WARNING: {self.__class__.__name__}: &#34;
-              f&#34;All the data have been reset to &#39;None&#39;!&#34;)</code></pre>
+              f&#34;All the data have been reset to &#39;None&#39;!&#34;)
+    # _end_if_</code></pre>
 </details>
 </dd>
 <dt id="MetalHawk.src.metal_pdb_data.MetalPdbData.save_data"><code class="name flex">

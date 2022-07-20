@@ -26,8 +26,9 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import numpy as np
-from copy import deepcopy
+<pre><code class="python">from copy import deepcopy
+
+import numpy as np
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import RobustScaler
 
@@ -513,7 +514,8 @@ pass to the model's <strong>init</strong> method.</p></div>
         y_predict_proba[:, 0] = self.classifiers[1].predict_proba(z)
 
         # Return the total (dual) prediction probabilities.
-        return y_predict_proba</code></pre>
+        return y_predict_proba
+    # _end_def_</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>

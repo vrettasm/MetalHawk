@@ -27,13 +27,14 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python"># Python import(s).
-import joblib
-import numpy as np
 from pathlib import Path
 
+import joblib
+import numpy as np
+
+from src.metal_auxiliaries import fast_entropy
 # Custom code imports.
 from src.metal_pdb_data import MetalPdbData
-from src.metal_auxiliaries import fast_entropy
 
 
 # Predictor Class.
@@ -277,7 +278,8 @@ class MetalSitesPredictor(object):
 
         return f&#34; MetalSitesPredictor Id({id(self)}): \n&#34; \
                f&#34; Model path: {self.dir_model} \n&#34; \
-               f&#34; Model pipe: {self.nn_model}&#34;</code></pre>
+               f&#34; Model pipe: {self.nn_model}&#34;
+    # _end_def_</code></pre>
 </details>
 <h3>Class variables</h3>
 <dl>

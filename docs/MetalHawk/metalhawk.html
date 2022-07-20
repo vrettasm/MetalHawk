@@ -32,14 +32,14 @@ import sys
 import argparse
 
 # Check the current python version before running.
-if sys.version_info &lt; (3, 7, 0):
+if sys.version_info &lt; (3, 8, 0):
     sys.exit(&#34;Error: MetalHawk requires Python 3.8 or greater.&#34;)
 # _end_if_
 
-import os
 import textwrap
 import pandas as pd
 from tqdm import tqdm
+from os import linesep
 from pathlib import Path
 from datetime import datetime
 
@@ -48,7 +48,8 @@ from src.metal_auxiliaries import CLASS_TARGETS
 from src.model_predictor import MetalSitesPredictor
 
 # INFO:
-__version__ = &#39;0.0.1&#39;
+__program__ = &#34;MetalHawk&#34;
+__version__ = &#39;0.1.0&#39;
 __author__ = &#39;Michail Vrettas, PhD&#39;
 __email__ = &#39;vrettasm@duck.com&#39;
 
@@ -111,6 +112,7 @@ def main(input_file=None, csd_target_model=True, output_path=None, verbose=False
 
         # Check for verbose.
         if verbose:
+
             # In verbose mode, use the list without &#39;tqdm&#39;.
             file_range = input_file
         else:
@@ -173,14 +175,14 @@ def main(input_file=None, csd_target_model=True, output_path=None, verbose=False
             # Make a header for the filename.
             header = &#34;CSD&#34; if csd_target_model else &#34;PDB&#34;
 
-            # Make sure its Path object.
+            # Make sure it is Path object.
             output_path = Path(output_path)
 
             # Get the timestamp.
             date_now = datetime.now().strftime(&#34;%Y_%m_%d_%I_%M_%S&#34;)
 
             # Save to output_path with a date-related name.
-            df.to_csv(Path(output_path/f&#34;{header}_metal_sites_predictions_{date_now}.csv&#34;))
+            df.to_csv(Path(output_path/f&#34;{header}_metalhawk_predictions_{date_now}.csv&#34;))
         # _end_if_
 
     except Exception as e1:
@@ -248,7 +250,7 @@ if __name__ == &#34;__main__&#34;:
 
         # Shows the version of the program.
         parser.add_argument(&#34;--version&#34;, action=&#34;version&#34;,
-                            version=f&#34; MetalSitesPredictor (c), version: {__version__}&#34;,
+                            version=f&#34; {__program__} (c), version: {__version__}&#34;,
                             help=&#34;Print version information and exit.&#34;)
 
         # Make sure the defaults are set.
@@ -263,7 +265,7 @@ if __name__ == &#34;__main__&#34;:
 
     else:
         # Display error message.
-        sys.exit(f&#34;Error: Not enough input parameters. {os.linesep}&#34;
+        sys.exit(f&#34;Error: Not enough input parameters. {linesep}&#34;
                  f&#34; Run : {sys.argv[0]} -h/--help &#34;)
     # _end_if_
 
@@ -356,6 +358,7 @@ display additional information on the screen. Default is "False".</p>
 
         # Check for verbose.
         if verbose:
+
             # In verbose mode, use the list without &#39;tqdm&#39;.
             file_range = input_file
         else:
@@ -418,20 +421,21 @@ display additional information on the screen. Default is "False".</p>
             # Make a header for the filename.
             header = &#34;CSD&#34; if csd_target_model else &#34;PDB&#34;
 
-            # Make sure its Path object.
+            # Make sure it is Path object.
             output_path = Path(output_path)
 
             # Get the timestamp.
             date_now = datetime.now().strftime(&#34;%Y_%m_%d_%I_%M_%S&#34;)
 
             # Save to output_path with a date-related name.
-            df.to_csv(Path(output_path/f&#34;{header}_metal_sites_predictions_{date_now}.csv&#34;))
+            df.to_csv(Path(output_path/f&#34;{header}_metalhawk_predictions_{date_now}.csv&#34;))
         # _end_if_
 
     except Exception as e1:
 
         # Exit the program.
-        sys.exit(f&#34; Program ended with message: {e1}&#34;)</code></pre>
+        sys.exit(f&#34; Program ended with message: {e1}&#34;)
+    # _end_try_</code></pre>
 </details>
 </dd>
 </dl>
