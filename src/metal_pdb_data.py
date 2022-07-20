@@ -20,46 +20,57 @@ from src.metal_auxiliaries import (MetalAtom,
                                    fast_compute_angle,
                                    fast_euclidean_norm)
 
-"""
-PDB/CSD Record Format
-
-COLUMNS        DATA  TYPE    FIELD        DEFINITION
--------------------------------------------------------------------------------------
- 1 -  6        Record name   "ATOM  "
- 7 - 11        Integer       serial       Atom serial number.
-13 - 16        Atom          name         Atom name.
-17             Character     altLoc       Alternate location indicator.
-18 - 20        Residue name  resName      Residue name.
-22             Character     chainID      Chain identifier.
-23 - 26        Integer       resSeq       Residue sequence number.
-27             AChar         iCode        Code for insertion of residues.
-31 - 38        Real(8.3)     x            Orthogonal coordinates for X in Angstroms.
-39 - 46        Real(8.3)     y            Orthogonal coordinates for Y in Angstroms.
-47 - 54        Real(8.3)     z            Orthogonal coordinates for Z in Angstroms.
-55 - 60        Real(6.2)     occupancy    Occupancy.
-61 - 66        Real(6.2)     tempFactor   Temperature factor.
-77 - 78        LString(2)    element      Element symbol, right-justified.
-79 - 80        LString(2)    charge       Charge on the atom.
--------------------------------------------------------------------------------------
-
-NOTE: The numbering of the columns starts from '1', not '0'.
-
-"""
-
 
 class MetalPdbData(object):
     """
-    Provides assistance with processing the metal PDB files.
-    It generates contact/distance maps from the "n-closest"
-    atoms near the center metal atom.
+    Provides assistance with processing the metal PDB files. It generates contact/
+    distance maps from the "n-closest" atoms near the center metal atom.
 
-    Optionally, it can use the selected atoms and create a
-    ConvexHull object, were we can later extract its volume
-    and its surface area.
+    Optionally, it can use the selected atoms and create a ConvexHull object, were
+    we can later extract its volume and its surface area.
 
-    Optionally, we can compute the angles among the center
-    metal atom and its nearest points (excluding Hydrogen
-    and Carbon).
+    Optionally, we can compute the angles among the center metal atom and its nearest
+    points (excluding Hydrogen and Carbon).
+
+                                    PDB/CSD Record Format
+
+        COLUMNS        DATA  TYPE    FIELD        DEFINITION
+
+        -------------------------------------------------------------------------------------
+
+         1 -  6        Record name   "ATOM  "
+
+         7 - 11        Integer       serial       Atom serial number.
+
+        13 - 16        Atom          name         Atom name.
+
+        17             Character     altLoc       Alternate location indicator.
+
+        18 - 20        Residue name  resName      Residue name.
+
+        22             Character     chainID      Chain identifier.
+
+        23 - 26        Integer       resSeq       Residue sequence number.
+
+        27             AChar         iCode        Code for insertion of residues.
+
+        31 - 38        Real(8.3)     x            Orthogonal coordinates for X in Angstroms.
+
+        39 - 46        Real(8.3)     y            Orthogonal coordinates for Y in Angstroms.
+
+        47 - 54        Real(8.3)     z            Orthogonal coordinates for Z in Angstroms.
+
+        55 - 60        Real(6.2)     occupancy    Occupancy.
+
+        61 - 66        Real(6.2)     tempFactor   Temperature factor.
+
+        77 - 78        LString(2)    element      Element symbol, right-justified.
+
+        79 - 80        LString(2)    charge       Charge on the atom.
+
+        -------------------------------------------------------------------------------------
+
+        NOTE: The numbering of the columns starts from '1', not '0'.
     """
 
     # Object variables.
