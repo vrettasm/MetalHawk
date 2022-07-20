@@ -217,7 +217,7 @@ if __name__ == "__main__":
                             help="Output 'path' to save the predicted values. ")
 
         # Enables verbosity.
-        parser.add_argument("--verbose", dest="verbose", action="store_true",
+        parser.add_argument("-v", "--verbose", dest="verbose", action="store_true",
                             help="Display information while running.")
 
         # Shows the version of the program.
