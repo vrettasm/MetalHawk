@@ -66,11 +66,22 @@ class TestAuxiliaries(unittest.TestCase):
         :return: None.
         """
 
-        # Create a random vector.
+        # Create a random vector from U(0,1).
         x = np.random.rand(10)
 
-        # Normalize the values.
+        # Normalize the values to sum to one.
         x /= np.sum(x)
+
+        # Perturb the entropy by altering the
+        # probability values at two entries in
+        # the array.
+        x[0] += x[1]
+        x[0] += x[4]
+
+        # We must set these entries to zero
+        # to still account for probability.
+        x[1] = 0.0
+        x[4] = 0.0
 
         # Check if they are equal to 7 decimal places.
         self.assertAlmostEqual(entropy(x), fast_entropy(x))
@@ -78,7 +89,7 @@ class TestAuxiliaries(unittest.TestCase):
         # We set a vector with equal probability values.
         z = np.ones(10) / 10
 
-        # In this case the entropy is maximum.
+        # In this scenario the entropy is maximum.
         MAX_ENTROPY_Z = float(2.3025850929940455)
 
         # Check if they are equal to 7 decimal places.
