@@ -1,3 +1,7 @@
+"""
+    Test the methods in the metal_auxiliaries module.
+"""
+
 import unittest
 import numpy as np
 from scipy.stats import entropy
@@ -9,6 +13,13 @@ from src.metal_auxiliaries import (CLASS_TARGETS, fast_entropy,
 class TestAuxiliaries(unittest.TestCase):
 
     def test_class_targets(self):
+        """
+        Test the CLASS_TARGET list. It should be in a
+        very specific order otherwise the predictions
+        will be wrong.
+
+        :return: None.
+        """
 
         # The order of the CLASS_TARGETS should be identical with:
         _test_targets = ("LIN", "TRI", "TET", "SPL", "SQP", "TBP",
@@ -42,6 +53,18 @@ class TestAuxiliaries(unittest.TestCase):
     # _end_def_
 
     def test_entropy(self):
+        """
+        Test the fast_entropy method. Here we test:
+
+            1) that the method works correctly compared
+            to scipy methods
+
+            2) that the method returns the correct max
+            value for a test case where we can compute
+            its entropy analytically
+
+        :return: None.
+        """
 
         # Create a random vector.
         x = np.random.rand(10)
@@ -63,6 +86,11 @@ class TestAuxiliaries(unittest.TestCase):
     # _end_def_
 
     def test_angles(self):
+        """
+        Test the angles' calculation.
+
+        :return: None.
+        """
 
         # This point is at the origin.
         pt0 = np.array([0.0, 0.0, 0.0])
