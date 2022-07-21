@@ -44,12 +44,11 @@ This module includes the main class that handles the data generation from the Me
 
 """
 
+# Python import(s).
 from collections import defaultdict
 from operator import itemgetter
 from os import linesep
 from pathlib import Path
-
-# Python import(s).
 import h5py
 import numpy as np
 import pandas as pd
@@ -57,6 +56,7 @@ from scipy.spatial import ConvexHull
 from scipy.spatial.distance import cdist
 from scipy.spatial.qhull import QhullError
 
+# Custom code imports.
 from src.metal_auxiliaries import (MetalAtom,
                                    METAL_TARGETS,
                                    fast_compute_angle,

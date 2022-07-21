@@ -8,9 +8,9 @@ from pathlib import Path
 import joblib
 import numpy as np
 
-from src.metal_auxiliaries import fast_entropy
 # Custom code imports.
 from src.metal_pdb_data import MetalPdbData
+from src.metal_auxiliaries import fast_entropy
 
 
 # Predictor Class.
