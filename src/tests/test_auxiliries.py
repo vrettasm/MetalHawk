@@ -106,7 +106,7 @@ class TestAuxiliaries(unittest.TestCase):
         # This point is at the origin.
         pt0 = np.array([0.0, 0.0, 0.0])
 
-        # This is at x=1.0 .
+        # This is at x=1.0.
         pt1 = np.array([1.0, 0.0, 0.0])
 
         # This is at z=1.0.
