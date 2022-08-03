@@ -6,6 +6,7 @@ This module includes the main interface that handles the predictions.
 from pathlib import Path
 
 import joblib
+import warnings
 import numpy as np
 
 # Custom code imports.
@@ -53,9 +54,9 @@ class MetalSitesPredictor(object):
         if hash_code not in ('e822834883d8f6a3546480f5ae77f5e1',
                              '5e26fd38b2d0628a000f1202ab3511ee'):
 
-            # Make sure we load one of the correct models.
-            raise RuntimeError(f"{self.__class__.__name__}: "
-                               f"Unknown md5-hash code for the loaded model: {hash_code}")
+            # Show a warning message instead of an error.
+            warnings.warn("Unknown MD5-hash code for the loaded model.")
+
         # _end_if_
 
         # For parsing the PDB/CSD files.
