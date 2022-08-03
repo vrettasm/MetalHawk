@@ -44,6 +44,20 @@ class MetalSitesPredictor(object):
         # Load the (target) neural network model.
         self.nn_model = joblib.load(self.dir_model)
 
+        # Get the hash of the loaded model.
+        hash_code = joblib.hash(self.nn_model, hash_name='md5')
+
+        # Check the 'md5-hash code' of the loaded files.
+        # CSD_CSD model: e822834883d8f6a3546480f5ae77f5e1
+        # PDB_PDB model: 5e26fd38b2d0628a000f1202ab3511ee
+        if hash_code not in ('e822834883d8f6a3546480f5ae77f5e1',
+                             '5e26fd38b2d0628a000f1202ab3511ee'):
+
+            # Make sure we load one of the correct models.
+            raise RuntimeError(f"{self.__class__.__name__}: "
+                               f"Unknown md5-hash code for the loaded model: {hash_code}")
+        # _end_if_
+
         # For parsing the PDB/CSD files.
         self.metal_tool = MetalPdbData(compute_angles=True)
     # _end_def_
