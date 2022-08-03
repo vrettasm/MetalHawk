@@ -50,15 +50,8 @@ class MetalSitesPredictor(object):
     the features and finally performs the prediction using pre-trained models.
     &#34;&#34;&#34;
 
-    # For parsing the PDB/CSD files.
-    metal_tool = MetalPdbData(compute_angles=True)
-    &#34;&#34;&#34;
-    This will be used to load the PDB file(s) before we make the prediction
-    with the ANN model. Here we set (for brevity) all the input parameters.
-    &#34;&#34;&#34;
-
     # Object variables.
-    __slots__ = (&#34;nn_model&#34;, &#34;dir_model&#34;)
+    __slots__ = (&#34;nn_model&#34;, &#34;dir_model&#34;, &#34;metal_tool&#34;)
 
     # Constructor.
     def __init__(self, dir_model=None):
@@ -79,6 +72,9 @@ class MetalSitesPredictor(object):
 
         # Load the (target) neural network model.
         self.nn_model = joblib.load(self.dir_model)
+
+        # For parsing the PDB/CSD files.
+        self.metal_tool = MetalPdbData(compute_angles=True)
     # _end_def_
 
     @property
@@ -191,15 +187,8 @@ the features and finally performs the prediction using pre-trained models.</p>
     the features and finally performs the prediction using pre-trained models.
     &#34;&#34;&#34;
 
-    # For parsing the PDB/CSD files.
-    metal_tool = MetalPdbData(compute_angles=True)
-    &#34;&#34;&#34;
-    This will be used to load the PDB file(s) before we make the prediction
-    with the ANN model. Here we set (for brevity) all the input parameters.
-    &#34;&#34;&#34;
-
     # Object variables.
-    __slots__ = (&#34;nn_model&#34;, &#34;dir_model&#34;)
+    __slots__ = (&#34;nn_model&#34;, &#34;dir_model&#34;, &#34;metal_tool&#34;)
 
     # Constructor.
     def __init__(self, dir_model=None):
@@ -220,6 +209,9 @@ the features and finally performs the prediction using pre-trained models.</p>
 
         # Load the (target) neural network model.
         self.nn_model = joblib.load(self.dir_model)
+
+        # For parsing the PDB/CSD files.
+        self.metal_tool = MetalPdbData(compute_angles=True)
     # _end_def_
 
     @property
@@ -299,17 +291,13 @@ the features and finally performs the prediction using pre-trained models.</p>
                f&#34; Model pipe: {self.nn_model}&#34;
     # _end_def_</code></pre>
 </details>
-<h3>Class variables</h3>
-<dl>
-<dt id="MetalHawk.src.model_predictor.MetalSitesPredictor.metal_tool"><code class="name">var <span class="ident">metal_tool</span></code></dt>
-<dd>
-<div class="desc"><p>This will be used to load the PDB file(s) before we make the prediction
-with the ANN model. Here we set (for brevity) all the input parameters.</p></div>
-</dd>
-</dl>
 <h3>Instance variables</h3>
 <dl>
 <dt id="MetalHawk.src.model_predictor.MetalSitesPredictor.dir_model"><code class="name">var <span class="ident">dir_model</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+<dt id="MetalHawk.src.model_predictor.MetalSitesPredictor.metal_tool"><code class="name">var <span class="ident">metal_tool</span></code></dt>
 <dd>
 <div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
 </dd>

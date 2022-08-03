@@ -21,15 +21,8 @@ class MetalSitesPredictor(object):
     the features and finally performs the prediction using pre-trained models.
     """
 
-    # For parsing the PDB/CSD files.
-    metal_tool = MetalPdbData(compute_angles=True)
-    """
-    This will be used to load the PDB file(s) before we make the prediction
-    with the ANN model. Here we set (for brevity) all the input parameters.
-    """
-
     # Object variables.
-    __slots__ = ("nn_model", "dir_model")
+    __slots__ = ("nn_model", "dir_model", "metal_tool")
 
     # Constructor.
     def __init__(self, dir_model=None):
@@ -50,6 +43,9 @@ class MetalSitesPredictor(object):
 
         # Load the (target) neural network model.
         self.nn_model = joblib.load(self.dir_model)
+
+        # For parsing the PDB/CSD files.
+        self.metal_tool = MetalPdbData(compute_angles=True)
     # _end_def_
 
     @property
