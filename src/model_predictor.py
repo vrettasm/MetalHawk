@@ -11,7 +11,8 @@ import numpy as np
 
 # Custom code imports.
 from src.metal_pdb_data import MetalPdbData
-from src.metal_auxiliaries import fast_entropy
+from src.metal_auxiliaries import (fast_entropy,
+                                   MD5_HASH_CODES)
 
 
 # Predictor Class.
@@ -48,11 +49,8 @@ class MetalSitesPredictor(object):
         # Get the hash of the loaded model.
         hash_code = joblib.hash(self.nn_model, hash_name='md5')
 
-        # Check the 'md5-hash code' of the loaded files.
-        # CSD_CSD model: e822834883d8f6a3546480f5ae77f5e1
-        # PDB_PDB model: 5e26fd38b2d0628a000f1202ab3511ee
-        if hash_code not in ('e822834883d8f6a3546480f5ae77f5e1',
-                             '5e26fd38b2d0628a000f1202ab3511ee'):
+        # Check the 'md5-hash' of the loaded files.
+        if hash_code not in MD5_HASH_CODES.values():
 
             # Show a warning message instead of an error.
             warnings.warn("Unknown MD5-hash code for the loaded model.")
