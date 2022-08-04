@@ -37,6 +37,10 @@ BOND_METAL_TARGETS = ("N", "O", "S", "SE", "CL", "BR", "I")
 # Tuple of class targets: This is immutable to avoid changes.
 CLASS_TARGETS = ("LIN", "TRI", "TET", "SPL", "SQP", "TBP", "OCT")
 
+# Trained models MD5-hash codes.
+MD5_HASH_CODES = {"CSD": "e822834883d8f6a3546480f5ae77f5e1",
+                  "PDB": "5e26fd38b2d0628a000f1202ab3511ee"}
+
 @njit(fastmath=True)
 def fast_euclidean_norm(x: array_t) -> float:
     """
