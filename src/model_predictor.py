@@ -128,7 +128,7 @@ class MetalSitesPredictor(object):
     def __str__(self):
         """
         Override to print a readable string presentation of the
-        object. This will include its id(), along with its field
+        object. This will include its id() along with its field
         values.
 
         :return: a string representation of a MetalSitesPredictor
