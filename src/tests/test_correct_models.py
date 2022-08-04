@@ -26,7 +26,7 @@ class TestTrainedModels(unittest.TestCase):
                                hash_name='md5')
 
         # Check against the correct md5-hash.
-        self.assertEqual(CSD_hash, model_hash["CSD"],
+        self.assertEqual(model_hash["CSD"], CSD_hash,
                          msg="CSD model md5-hash code is not correct.")
 
         # Get the hash code of the PDB_PDB model.
@@ -34,7 +34,7 @@ class TestTrainedModels(unittest.TestCase):
                                hash_name='md5')
 
         # Check against the correct md5-hash.
-        self.assertEqual(PDB_hash, model_hash["PDB"],
+        self.assertEqual(model_hash["PDB"], PDB_hash,
                          msg="PDB model md5-hash code is not correct.")
     # _end_def_
 
