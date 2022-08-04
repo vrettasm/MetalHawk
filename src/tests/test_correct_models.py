@@ -6,6 +6,8 @@
 import unittest
 import joblib
 from pathlib import Path
+from src.metal_auxiliaries import MD5_HASH_CODES
+
 
 class TestTrainedModels(unittest.TestCase):
 
@@ -17,16 +19,12 @@ class TestTrainedModels(unittest.TestCase):
         :return: None.
         """
 
-        # Correct md5-hash codes.
-        model_hash = {"CSD": 'e822834883d8f6a3546480f5ae77f5e1',
-                      "PDB": '5e26fd38b2d0628a000f1202ab3511ee'}
-
         # Get the hash code of the CSD_CSD model.
         CSD_hash = joblib.hash(joblib.load(Path("../../models/HPO_CSD_CSD_CV.model")),
                                hash_name='md5')
 
         # Check against the correct md5-hash.
-        self.assertEqual(model_hash["CSD"], CSD_hash,
+        self.assertEqual(MD5_HASH_CODES["CSD"], CSD_hash,
                          msg="CSD model md5-hash code is not correct.")
 
         # Get the hash code of the PDB_PDB model.
@@ -34,7 +32,7 @@ class TestTrainedModels(unittest.TestCase):
                                hash_name='md5')
 
         # Check against the correct md5-hash.
-        self.assertEqual(model_hash["PDB"], PDB_hash,
+        self.assertEqual(MD5_HASH_CODES["PDB"], PDB_hash,
                          msg="PDB model md5-hash code is not correct.")
     # _end_def_
 
