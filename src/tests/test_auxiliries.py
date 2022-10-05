@@ -6,17 +6,18 @@ import unittest
 import numpy as np
 from scipy.stats import entropy
 
-from src.metal_auxiliaries import (CLASS_TARGETS, fast_entropy,
-                                   fast_compute_angle)
+from metal_auxiliaries import (fast_compute_angle,
+                               CLASS_TARGETS, fast_entropy)
 
 
 class TestAuxiliaries(unittest.TestCase):
 
     def test_class_targets(self):
         """
-        Test the CLASS_TARGET list. It should be in a
-        very specific order otherwise the predictions
-        will be wrong.
+        Test the order in CLASS_TARGET list.
+
+        It should be in a very specific order otherwise
+        the predictions will be wrong.
 
         :return: None.
         """
@@ -54,7 +55,9 @@ class TestAuxiliaries(unittest.TestCase):
 
     def test_entropy(self):
         """
-        Test the fast_entropy method. Here we test:
+        Test the fast_entropy method.
+
+        Here we test:
 
             1) that the method works correctly compared
             to scipy methods
