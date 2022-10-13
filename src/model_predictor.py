@@ -116,8 +116,7 @@ class MetalSitesPredictor(object):
     # Auxiliary.
     def __call__(self, *args, **kwargs):
         """
-        This is only a "wrapper" method of the
-        predict() method.
+        This is only a "wrapper" method of predict() method.
         """
         return self.predict(*args, **kwargs)
     # _end_def_
