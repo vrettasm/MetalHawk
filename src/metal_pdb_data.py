@@ -44,7 +44,7 @@ This module includes the main class that handles the data generation from the Me
 
 """
 
-# Python import(s).
+# Python imports.
 from collections import defaultdict
 from operator import itemgetter
 from os import linesep
@@ -79,7 +79,6 @@ class MetalPdbData(object):
     __slots__ = ("_compute_angles", "_compute_convex_hull", "_dataset", "_distance_map",
                  "_volume", "_area", "_center_metal_atom", "_angles", "_stats_counter")
 
-    # Constructor.
     def __init__(self, compute_angles=False, compute_convex_hull=False):
         """
         Constructs an object that will create the contact map, along with
@@ -95,14 +94,12 @@ class MetalPdbData(object):
         Default is False.
         """
 
-        # Set the flag.
         self._compute_angles = compute_angles
         """
         This flag allows the computation of the angles
         between the selected points of the contact map.
         """
 
-        # Set the flag.
         self._compute_convex_hull = compute_convex_hull
         """
         This flag allows the computation of the convex hull
@@ -163,7 +160,6 @@ class MetalPdbData(object):
         """
     # _end_def_
 
-    # Auxiliary method.
     def reset_all_data(self, show_warning=False):
         """
         Clears all the data and resets them back to empty lists.
@@ -520,7 +516,6 @@ class MetalPdbData(object):
         return np.array(angles_list, dtype=float)
     # _end_def_
 
-    # Auxiliary method.
     def read_data_file(self, f_path, f_type="CSD"):
         """
         Reads the input data file and returns a list with
@@ -666,7 +661,6 @@ class MetalPdbData(object):
         return center_metal
     # _end_def_
 
-    # Auxiliary method.
     def estimate_distances(self, f_path, f_type="CSD", max_length=None,
                            n_closest=None):
         """
@@ -905,7 +899,6 @@ class MetalPdbData(object):
 
     # _end_def_
 
-    # Auxiliary.
     def save_data(self, output_dir=None):
         """
         Save the object's data to an HDF5 file.
@@ -989,7 +982,6 @@ class MetalPdbData(object):
         print(f"Saved {data_fields} to: {path_out}")
     # _end_def_
 
-    # Auxiliary.
     def __call__(self, *args, **kwargs):
         """
         This is only a "wrapper" of the
@@ -998,7 +990,6 @@ class MetalPdbData(object):
         return self.estimate_distances(*args, **kwargs)
     # _end_def_
 
-    # Create the feature vector for the ML algorithms.
     def features_vector(self, map_length=7, num_angles=15):
         """
         Using the pre-computed distance maps and the angles
@@ -1084,7 +1075,6 @@ class MetalPdbData(object):
         return feature_vector
     # _end_def_
 
-    # Auxiliary.
     def __str__(self):
         """
         Print a readable string presentation of the object.
