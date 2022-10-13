@@ -49,13 +49,13 @@ def fast_euclidean_norm(x: array_t) -> float:
     numpy norm() version.
 
     :param x: is the difference vector for which we
-    want to compute the norm. I.e. x = (a-b).
+    want to compute the norm (i.e. x = (a-b)).
 
     :return: Euclidean norm of the input vector.
     """
 
     # Return the result.
-    return np.sqrt(np.dot(x, x))
+    return np.sqrt(x.dot(x))
 # _end_def_
 
 @njit(fastmath=True)
@@ -77,23 +77,23 @@ def fast_compute_angle(pt_A: array_t, pt_B: array_t, pt_C: array_t) -> float:
     BA = pt_A - pt_B
 
     # Compute the Euclidean norm of 'BA'.
-    norm_BA = np.sqrt(np.dot(BA, BA))
+    norm_BA = fast_euclidean_norm(BA)
 
     # Distance from 'B' to 'C'.
     BC = pt_C - pt_B
 
     # Compute the Euclidean norm of 'BC'.
-    norm_BC = np.sqrt(np.dot(BC, BC))
+    norm_BC = fast_euclidean_norm(BC)
 
     # If the norms {BA, BC} are positive continue.
     if (norm_BA > 0.0) and (norm_BC > 0.0):
 
         # Get the cosine of the angle.
-        angle_cosine = np.dot(BA, BC) / (norm_BA * norm_BC)
+        angle_cosine = BA.dot(BC) / (norm_BA * norm_BC)
 
         # Make sure  the cosine is  in the range [-1.0, 1.0].
         # This will correct for small over/under flow errors.
-        angle_cosine = np.minimum(1.0, np.maximum(-1.0, angle_cosine))
+        angle_cosine = min(1.0, max(-1.0, angle_cosine))
 
         # Get the angle in radians.
         angle_radians = np.arccos(angle_cosine)
@@ -101,10 +101,11 @@ def fast_compute_angle(pt_A: array_t, pt_B: array_t, pt_C: array_t) -> float:
         # Return the angle in degrees.
         return (180.0 * angle_radians) / np.pi
     else:
+
         # Otherwise, return 0.
         return 0.0
-
     # _end_if_
+
 # _end_def_
 
 @njit(fastmath=True)
@@ -123,8 +124,8 @@ def fast_entropy(x: array_t) -> float:
     # Make sure the probabilities are positive.
     x = np.abs(x)
 
-    # Exclude zero entries.
-    not_zero = x != 0.0
+    # Find non zero indexes.
+    not_zero = (x != 0.0)
 
     # Compute the entropy (using the probabilities).
     y_entropy = -np.sum(x[not_zero] * np.log(x[not_zero]))
