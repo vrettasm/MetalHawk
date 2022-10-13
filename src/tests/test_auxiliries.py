@@ -6,8 +6,8 @@ import unittest
 import numpy as np
 from scipy.stats import entropy
 
-from metal_auxiliaries import (fast_compute_angle,
-                               CLASS_TARGETS, fast_entropy)
+from metal_auxiliaries import (fast_compute_angle, fast_entropy,
+                               fast_euclidean_norm, CLASS_TARGETS)
 
 
 class TestAuxiliaries(unittest.TestCase):
@@ -117,6 +117,27 @@ class TestAuxiliaries(unittest.TestCase):
 
         # The angle at the origin should be exactly 90 degrees.
         self.assertEqual(90.0, fast_compute_angle(pt1, pt0, pt2))
+    # _end_def_
+
+    def test_euclidean_norm(self):
+        """
+        Test the numba Euclidean norm.
+
+        :return: None.
+        """
+
+        # Create a random vector.
+        v = np.random.rand(10)
+
+        # Get the norm from numpy.
+        norm1 = np.linalg.norm(v)
+
+        # Get the numba version norm.
+        norm2 = fast_euclidean_norm(v)
+
+        # Test equality to 7 decimal places.
+        self.assertAlmostEqual(norm1, norm2,
+                               msg="Numba norm failed to 7 decimal places.")
     # _end_def_
 
 # _end_class_
