@@ -478,7 +478,7 @@ class MetalPdbData(object):
             n_closest = L-1
         else:
             # Make sure we are not out of bounds.
-            n_closest = np.minimum(L-1, np.maximum(1, n_closest))
+            n_closest = min(L-1, max(1, n_closest))
         # _end_if_
 
         # Ensure the input is int.
@@ -627,6 +627,9 @@ class MetalPdbData(object):
         # Localize the Euclidean norm function.
         get_euclidean_norm = fast_euclidean_norm
 
+        # Localize numpy method.
+        _isfinite = np.isfinite
+
         # Localize the array function.
         np_array = np.array
 
@@ -648,7 +651,7 @@ class MetalPdbData(object):
                 this_dist = get_euclidean_norm(diff)
 
                 # Update the minimum.
-                if np.isfinite(this_dist) and this_dist < min_dist:
+                if _isfinite(this_dist) and this_dist < min_dist:
                     # Update the minimum.
                     min_dist = this_dist
 
@@ -761,6 +764,9 @@ class MetalPdbData(object):
             # Localize the Euclidean norm function.
             get_euclidean_norm = fast_euclidean_norm
 
+            # Localize numpy method.
+            _isfinite = np.isfinite
+
             # XYZ coordinates of the central metal.
             center_coord = np.array([center_metal.X,
                                      center_metal.Y,
@@ -787,7 +793,7 @@ class MetalPdbData(object):
                 dist = get_euclidean_norm(diff)
 
                 # Make sure the distance is finite.
-                if np.isfinite(dist):
+                if _isfinite(dist):
 
                     # Store the pair (id, distance).
                     distances_append((it["ID"], dist))
@@ -811,8 +817,7 @@ class MetalPdbData(object):
             else:
 
                 # Make sure we are not out of bounds.
-                max_length = np.minimum(max_length,
-                                        len(sorted_distances))
+                max_length = min(max_length, len(sorted_distances))
             # _end_if_
 
             # Ensure this var is integer.
