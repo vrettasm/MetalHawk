@@ -2,4 +2,5 @@
 /data/
 /results/
 /src/__pycache__/
+/src/tests/__pycache__/
 /notebooks/.ipynb_checkpoints/
