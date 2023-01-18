@@ -539,7 +539,7 @@ class MetalPdbData(object):
         data_list = []
 
         # Read the data from the file.
-        with open(f_path, "r") as f_in:
+        with open(f_path, "r", encoding='utf_8') as f_in:
 
             # Localize append method for speed.
             data_list_append = data_list.append
