@@ -102,6 +102,8 @@ Gianmattia Sguelia, Michail D. Vrettas, Marco Chino, Alfonso De Simone and Angel
 _"MetalHawk: Enhanced Classification of Metal Coordination Geometries by Artificial Neural Networks"_.
 Submitted for publication at Journal of Chemical Theory and Computation.
 
+The MetalHawk logo (GitHub image) is designed by Gianmattia Sguelia.
+
 ## Documentation
 
 Here you can find the [documentation](./docs/MetalHawk/index.html) of the code.
