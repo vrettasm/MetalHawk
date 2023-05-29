@@ -56,6 +56,12 @@ or
 
 N.B. For Windows systems follow the **equivalent** instructions.
 
+## Data extraction (conversion)
+The program as it is expects sphere pdb/csd files as input. For a generic input file you need to pass the input
+first from the 'extract_metal_sites.py'. The input of the script is a directory containing the generic 'pdb' or
+'cif' files, while the output is a new directory containing the sphere 'pdb' files that can be used directly as
+input for MetalHawk.
+
 ## How to run
 
 To execute the program (within the activated virtual environment), you can either navigate to the main
@@ -92,8 +98,9 @@ You will see the following menu:
 
 The original work is described in detail at:
 
-Gianmattia Sguelia, Michail D. Vrettas, Marco Chino, Angela Lombardi and Alfonso De Simone (2022).
-_"TBD"_. Submitted for publication.
+Gianmattia Sguelia, Michail D. Vrettas, Marco Chino, Alfonso De Simone and Angela Lombardi (2023).
+_"MetalHawk: Enhanced Classification of Metal Coordination Geometries by Artificial Neural Networks"_.
+Submitted for publication at Journal of Chemical Theory and Computation.
 
 ## Documentation
 
