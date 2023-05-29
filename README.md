@@ -60,7 +60,7 @@ N.B. For Windows systems follow the **equivalent** instructions.
 The program as it is expects sphere pdb/csd files as input. For a generic input file you need to pass the input
 first from the 'extract_metal_sites.py'. The input of the script is a directory containing the generic 'pdb' or
 'cif' files, while the output is a new directory containing the sphere 'pdb' files that can be used directly as
-input for MetalHawk.
+input for MetalHawk. This scripts requires "pymol-open-source=2.5.0" to run.
 
 ## How to run
 
