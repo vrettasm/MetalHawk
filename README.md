@@ -35,7 +35,7 @@ To ensure the required packages are installed just use:
 It is highly advised to create a separate virtual environment to avoid messing with the main Python installation.
 On Linux and macOS systems type:
 
-    $ python3.8 -m venv metalhawk_venv
+    $ python3 -m venv metalhawk_venv
 
 Note: "metalhawk_venv" is an _optional_ name.
 
@@ -45,7 +45,7 @@ Once the virtual environment is created activate it with:
 
 Make sure **pip** is updated:
 
-    $ python3.8 -m pip install --upgrade pip
+    $ python3 -m pip install --upgrade pip
 
 Then we can install all the requirements as above:
 
@@ -53,7 +53,7 @@ Then we can install all the requirements as above:
 
 or
 
-    $ python3.8 -m pip install -r requirements.txt
+    $ python3 -m pip install -r requirements.txt
 
 N.B. For Windows systems follow the **equivalent** instructions.
 
