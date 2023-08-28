@@ -21,7 +21,8 @@ require a prior installation of **git** on the computer.
 
 ## Required packages
 
-The recommended version is **Python 3.8** (and above). Some required packages are:
+The recommended version is **Python 3.8** (and above -- in that case you might see some warnings
+due to the newer python version used). Some required packages are:
 
 > scipy, numpy, pathlib, pandas, etc.
 
@@ -34,7 +35,7 @@ To ensure the required packages are installed just use:
 It is highly advised to create a separate virtual environment to avoid messing with the main Python installation.
 On Linux and macOS systems type:
 
-    $ python3 -m venv metalhawk_venv
+    $ python3.8 -m venv metalhawk_venv
 
 Note: "metalhawk_venv" is an _optional_ name.
 
@@ -44,7 +45,7 @@ Once the virtual environment is created activate it with:
 
 Make sure **pip** is updated:
 
-    $ python3 -m pip install --upgrade pip
+    $ python3.8 -m pip install --upgrade pip
 
 Then we can install all the requirements as above:
 
@@ -52,12 +53,12 @@ Then we can install all the requirements as above:
 
 or
 
-    $ python3 -m pip install -r requirements.txt
+    $ python3.8 -m pip install -r requirements.txt
 
 N.B. For Windows systems follow the **equivalent** instructions.
 
 ## Data extraction (conversion)
-The program as it is expects sphere pdb/csd files as input. For a generic input file you need to pass the input
+The program as it is expecting sphere pdb/csd files as input. For a generic input file you need to pass the input
 first from the 'extract_metal_sites.py'. The input of the script is a directory containing the generic 'pdb' or
 'cif' files, while the output is a new directory containing the sphere 'pdb' files that can be used directly as
 input for MetalHawk. This scripts requires "pymol-open-source=2.5.0" to run.
