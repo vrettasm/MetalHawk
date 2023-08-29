@@ -15,13 +15,12 @@ from os import linesep
 from pathlib import Path
 from datetime import datetime
 
-
 from src.metal_auxiliaries import CLASS_TARGETS
 from src.model_predictor import MetalSitesPredictor
 
 # INFO:
 __program__ = "MetalHawk"
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 __author__ = 'Michail Vrettas, PhD'
 __email__ = 'vrettasm@duck.com'
 
@@ -55,7 +54,7 @@ def main(input_file=None, csd_target_model=True, output_path=None, verbose=False
         parent_dir = Path(__file__).resolve().parent
 
         # Make sure the model directory is Path.
-        model_dir = Path(parent_dir/"models/")
+        model_dir = Path(parent_dir / "models/")
 
         # Sanity check.
         if not model_dir.is_dir():
@@ -66,11 +65,11 @@ def main(input_file=None, csd_target_model=True, output_path=None, verbose=False
         if csd_target_model:
 
             # CSD -> CSD (Bayesian optimized model).
-            target_path = Path(model_dir/"HPO_CSD_CSD_CV.model")
+            target_path = Path(model_dir / "HPO_CSD_CSD_CV.model")
         else:
 
             # PDB -> PDB (Bayesian optimized model).
-            target_path = Path(model_dir/"HPO_PDB_PDB_CV.model")
+            target_path = Path(model_dir / "HPO_PDB_PDB_CV.model")
         # _end_if_
 
         # Create a predictor object.
@@ -115,11 +114,10 @@ def main(input_file=None, csd_target_model=True, output_path=None, verbose=False
 
                 # Check for verbosity.
                 if verbose:
-
                     # This might clatter the screen output if there are many files!
-                    print(f" {it}: File= {f_path.stem},"
+                    print(f" {it:<5}: File= {f_path.stem},"
                           f" Prediction= {CLASS_TARGETS[class_i]},"
-                          f" Entropy= {entropy_i:.4E} \n")
+                          f" Entropy= {entropy_i:.4E}")
                 # _end_if_
 
             else:
@@ -131,30 +129,38 @@ def main(input_file=None, csd_target_model=True, output_path=None, verbose=False
         # Convert results to DataFrame.
         df = pd.DataFrame(results)
 
-        # Print the results.
-        print(f"\n {df}")
-
         # Final message.
         if verbose:
 
             # Print the total predictions.
-            print(f" Successfully predicted {count_success} file(s)")
+            print(f" Successfully predicted {count_success} file(s).")
+        else:
+
+            # Print a small summary of results.
+            print(f"\n {df}")
         # _end_if_
 
         # Check if we want to save the results in a csv file.
         if output_path:
 
-            # Make a header for the filename.
-            header = "CSD" if csd_target_model else "PDB"
-
             # Make sure it is Path object.
             output_path = Path(output_path)
+
+            # If the output_path doesn't exist (or is not a directory).
+            if not (output_path.exists() and output_path.is_dir()):
+
+                # Create the full path (including the parents).
+                output_path.mkdir(parents=True, exist_ok=True)
+            # _end_if_
+
+            # Make a header for the filename.
+            header = "CSD" if csd_target_model else "PDB"
 
             # Get the timestamp.
             date_now = datetime.now().strftime("%Y_%m_%d_%I_%M_%S")
 
             # Save to output_path with a date-related name.
-            df.to_csv(Path(output_path/f"{header}_metalhawk_predictions_{date_now}.csv"))
+            df.to_csv(Path(output_path / f"{header}_metalhawk_predictions_{date_now}.csv"))
         # _end_if_
 
     except Exception as e1:
@@ -162,6 +168,7 @@ def main(input_file=None, csd_target_model=True, output_path=None, verbose=False
         # Exit the program.
         sys.exit(f" Program ended with message: {e1}")
     # _end_try_
+
 
 # _end_main_
 
@@ -175,16 +182,16 @@ if __name__ == "__main__":
         # Create a parser object.
         parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,
                                          description=textwrap.dedent('''
-                                         
+
                                          [MetalHawk]
-                                         
+
                                          Python metal sites predictor, with artificial neural networks (ANN).
-                                         
+
                                          We have trained (and optimized) two different models. One on CSD metal
                                          sites and a second one on PDB metal sites. By default the program will
                                          choose the CSD model to use for prediction, unless we pass explicitly
                                          the option '--no-csd'.
-                                                                                  
+
                                          The selected model can predict one of the following target classes:
                                          -------------------------------------------------------------------
                                             0: LIN (Linear)
@@ -194,7 +201,7 @@ if __name__ == "__main__":
                                             4: SQP (Square pyramidal)
                                             5: TBP (Trigonal bi-pyramidal)
                                             6: OCT (Octahedral)
-                                         
+
                                          Along with the predicted class the program provides the "entropy" value,
                                          as a measure of uncertainty. Note that for seven classes, assuming equal
                                          priors, the maximum value of entropy is equal to: '1.945910149055313'.
@@ -226,7 +233,7 @@ if __name__ == "__main__":
                             help="Print version information and exit.")
 
         # Make sure the defaults are set.
-        parser.set_defaults(csd_model=True, verose=False, out=None)
+        parser.set_defaults(csd_model=True, verbose=False, out=None)
 
         # Parse the arguments.
         args = parser.parse_args()
