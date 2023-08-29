@@ -547,12 +547,15 @@ class MetalPdbData(object):
             # Process each line.
             for row in f_in.readlines():
 
+                # Convert everything to upper case.
+                row = row.upper()
+
                 # Make sure we capture any exceptions
                 try:
                     # Get the first entry in the line.
                     # Make sure there are no empty spaces
                     # around the word.
-                    entry = str(row[0:6]).strip().upper()
+                    entry = str(row[0:6]).strip()
 
                     # Break when you reach the end of the model.
                     if "END" == entry:
@@ -563,11 +566,11 @@ class MetalPdbData(object):
 
                         # Create a new row for the dataframe.
                         record = {"ID": int(row[6:11]),
-                                  "NAME": str(row[12:16]).strip().upper(),
+                                  "NAME": str(row[12:16]).strip(),
                                   "X": float(row[30:38]),
                                   "Y": float(row[38:46]),
                                   "Z": float(row[46:54]),
-                                  "TYPE": str(row[76:78]).strip().upper()}
+                                  "TYPE": str(row[76:78]).strip()}
 
                         # Update the list.
                         data_list_append(record)
