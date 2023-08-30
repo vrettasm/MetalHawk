@@ -638,9 +638,9 @@ class MetalPdbData(object):
             if it["TYPE"].upper().startswith(METAL_TARGETS):
 
                 # Atom coordinates vector.
-                it_coord = np_array([it["X"],
+                it_coord = np_array((it["X"],
                                      it["Y"],
-                                     it["Z"]], dtype=float)
+                                     it["Z"]), dtype=float)
 
                 # Distance between coordinates.
                 diff = center_mass - it_coord
@@ -779,9 +779,9 @@ class MetalPdbData(object):
                 # _end_if_
 
                 # Atom coordinates vector.
-                it_coord = np.array([it["X"],
+                it_coord = np.array((it["X"],
                                      it["Y"],
-                                     it["Z"]], dtype=float)
+                                     it["Z"]), dtype=float)
 
                 # Distance between coordinates.
                 diff = center_coord - it_coord
@@ -803,7 +803,7 @@ class MetalPdbData(object):
             sorted_distances = sorted(distances, key=itemgetter(1))
 
             # Store a copy of the results in the object.
-            self._dataset = (df.copy(), np.copy(sorted_distances))
+            self._dataset = (df.copy(), sorted_distances)
 
             # Make sure the max_length has been set.
             if max_length is None:
