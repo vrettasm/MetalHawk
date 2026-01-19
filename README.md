@@ -7,6 +7,8 @@ to predict metal sites geometries.
 
 M. Vrettas, PhD.
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18297999.svg)](https://doi.org/10.5281/zenodo.18297999)
+
 ## Installation
 
 There are two options to install the software.
